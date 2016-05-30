@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sigils>
+  <sigil>
+    <id>
+      0
+    </id>
+    <house>
+      House Baratheon of Dragonstone
+    </house>
+    <src>
+      ~/images/sigils/0.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      1
+    </id>
+    <house>
+      House Lannister
+    </house>
+    <src>
+      ~/images/sigils/1.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      2
+    </id>
+    <house>
+      House Tuly
+    </house>
+    <src>
+      ~/images/sigils/2.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      3
+    </id>
+    <house>
+      House Tyrell
+    </house>
+    <src>
+      ~/images/sigils/3.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      4
+    </id>
+    <house>
+      House Arryn
+    </house>
+    <src>
+      ~/images/sigils/4.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      5
+    </id>
+    <house>
+      House Mallister
+    </house>
+    <src>
+      ~/images/sigils/5.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      6
+    </id>
+    <house>
+      House Marbrand
+    </house>
+    <src>
+      ~/images/sigils/6.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      7
+    </id>
+    <house>
+      House Swyft
+    </house>
+    <src>
+      ~/images/sigils/7.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      8
+    </id>
+    <house>
+      House Baratheon of Storm's End (Renly)
+    </house>
+    <src>
+      ~/images/sigils/8.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      9
+    </id>
+    <house>
+      House Bolton
+    </house>
+    <src>
+      ~/images/sigils/9.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      10
+    </id>
+    <house>
+      House Martell
+    </house>
+    <src>
+      ~/images/sigils/10.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      11
+    </id>
+    <house>
+      House Baratheon (Robert)
+    </house>
+    <src>
+      ~/images/sigils/11.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      12
+    </id>
+    <house>
+      House Stark
+    </house>
+    <src>
+      ~/images/sigils/12.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      13
+    </id>
+    <house>
+      House Bracken
+    </house>
+    <src>
+      ~/images/sigils/13.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      14
+    </id>
+    <house>
+      House Payne
+    </house>
+    <src>
+      ~/images/sigils/14.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      15
+    </id>
+    <house>
+      House Greyjoy
+    </house>
+    <src>
+      ~/images/sigils/15.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      16
+    </id>
+    <house>
+      House Targaryen
+    </house>
+    <src>
+      ~/images/sigils/16.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      17
+    </id>
+    <house>
+      House Karstark
+    </house>
+    <src>
+      ~/images/sigils/17.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      18
+    </id>
+    <house>
+      House Florent
+    </house>
+    <src>
+      ~/images/sigils/18.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      19
+    </id>
+    <house>
+      House Umber
+    </house>
+    <src>
+      ~/images/sigils/19.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      20
+    </id>
+    <house>
+      House Blackwood
+    </house>
+    <src>
+      ~/images/sigils/20.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      21
+    </id>
+    <house>
+      House Crakenhall
+    </house>
+    <src>
+      ~/images/sigils/21.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      22
+    </id>
+    <house>
+      House Redwyne
+    </house>
+    <src>
+      ~/images/sigils/22.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      23
+    </id>
+    <house>
+      House Frey
+    </house>
+    <src>
+      ~/images/sigils/23.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      24
+    </id>
+    <house>
+      House Clegane
+    </house>
+    <src>
+      ~/images/sigils/24.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      25
+    </id>
+    <house>
+      House Mormont
+    </house>
+    <src>
+      ~/images/sigils/25.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      26
+    </id>
+    <house>
+      House Selmy
+    </house>
+    <src>
+      ~/images/sigils/26.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      27
+    </id>
+    <house>
+      House Manderly
+    </house>
+    <src>
+      ~/images/sigils/27.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      28
+    </id>
+    <house>
+      House Reed
+    </house>
+    <src>
+      ~/images/sigils/28.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      29
+    </id>
+    <house>
+      House Whent
+    </house>
+    <src>
+      ~/images/sigils/29.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      30
+    </id>
+    <house>
+      House Tarth
+    </house>
+    <src>
+      ~/images/sigils/30.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      31
+    </id>
+    <house>
+      House Caron
+    </house>
+    <src>
+      ~/images/sigils/31.png
+    </src>
+  </sigil>
+  <sigil>
+    <id>
+      32
+    </id>
+    <house>
+      House Swann
+    </house>
+    <src>
+      ~/images/sigils/32.png
+    </src>
+  </sigil>
+</sigils>

@@ -1,0 +1,703 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Text;
+using System.Web.UI.HtmlControls;
+
+
+public partial class tblDetails : System.Web.UI.Page
+{
+    Dictionary<string, decimal> menuOrder = new Dictionary<string, decimal>();
+    Dictionary<string, int> menuIDs = new Dictionary<string, int>();
+    sqlController sqC = new sqlController();
+    AjaxControlToolkit.TabContainer TabContainerBills;
+    Server server;
+    Table table;
+    Order order;
+    Bill bill;
+    string paymentAmount;
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        ClientScript.RegisterClientScriptInclude(this.GetType(), "myScript", "Scripts/JScript.js");
+        server = (Server)Session["Employee"];
+        lblTableNum.Text = String.Format("Table {0}", Request.QueryString["Table"].ToString());
+        lblServerName.Text = server.Name;
+        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+        //BillMain.HeaderText = String.Format("Table {0} / 1", Request.QueryString["Table"].ToString());
+        populateBeverageButtons();
+        populateSoupButtons();
+        populateAppButtons();
+        populateSaladButtons();
+        populateSandwhichButtons();
+        populateEntreeButtons();
+        populateWineButtons();
+        populateBeerButtons();
+        populateDessertButtons();
+        AddTab();
+        loadDataTabs();
+
+
+
+    }
+
+
+    public void populateBeverageButtons()
+    {
+        DataTable dt = sqC.getBeverages();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+        datalistBeverage.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistBeverage.DataBind();
+        }
+    }
+
+    public void populateSoupButtons()
+    {
+        DataTable dt = sqC.getSoup();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+        datalistSoup.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistSoup.DataBind();
+        }
+    }
+
+    public void populateAppButtons()
+    {
+
+        DataTable dt = sqC.getApps();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+
+        datalistApps.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistApps.DataBind();
+        }
+    }
+
+    public void populateSandwhichButtons()
+    {
+
+        DataTable dt = sqC.getSandwichs();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+
+        datalistSandwichs.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistSandwichs.DataBind();
+        }
+    }
+
+    public void populateDessertButtons()
+    {
+
+        DataTable dt = sqC.getDesserts();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+   
+        datalistDessert.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistDessert.DataBind();
+        }
+    }
+
+    public void populateBeerButtons()
+    {
+    
+        DataTable dt = sqC.getBeer();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+      
+        datalistBeer.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistBeer.DataBind();
+        }
+    }
+
+    public void populateWineButtons()
+    {
+
+        DataTable dt = sqC.getWine();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+ 
+        datalistWine.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistWine.DataBind();
+        }
+    }
+
+    public void populateEntreeButtons()
+    {
+        
+        DataTable dt = sqC.getEntree();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+   
+        datalistEntree.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistEntree.DataBind();
+        }
+    }
+
+    public void populateSaladButtons()
+    {
+       
+        DataTable dt = sqC.getSalads();
+        foreach (DataRow dr in dt.Rows)
+        {
+            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+        }
+  
+        datalistSalad.DataSource = dt;
+        if (!IsPostBack)
+        {
+            datalistSalad.DataBind();
+        }
+    }
+
+    protected int getActiveTabIndex()
+    {
+
+        return TabContainerBills.ActiveTabIndex;
+    }
+
+
+    protected void updateValues(string value, int index, int status = 0)
+    {
+        //System.Web.UI.HtmlControls.HtmlGenericControl divContainer =
+        //new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+
+        HtmlTable divContainer = new HtmlTable();
+        divContainer.Style.Add("width", "100%");
+        divContainer.Style.Add("min-height", "500px");
+        divContainer.BgColor = "cyan";
+        divContainer.Style.Add("position", "relative");
+        HtmlTableRow containerrow = new HtmlTableRow();
+        HtmlTableCell containercell = new HtmlTableCell();
+        containercell.VAlign = "top";
+
+        HtmlTable httable = new HtmlTable();
+        httable.Style.Add("width", "100%");
+        httable.BgColor = "cyan";
+        HtmlTable billTotal = new HtmlTable();
+        billTotal.Style.Add("width", "100%");
+        billTotal.Style.Add("color", "red");
+        billTotal.BgColor = "cyan";
+        HtmlTable paymentTable = new HtmlTable();
+        paymentTable.Style.Add("width", "100%");
+        paymentTable.Style.Add("color", "red");
+        paymentTable.BgColor = "cyan";
+        HtmlTable totalTable = new HtmlTable();
+        totalTable.Style.Add("width", "100%");
+        totalTable.Style.Add("color", "red");
+        totalTable.BgColor = "cyan";
+        httable.Attributes.Add("class", "add");
+        HtmlTableRow row;
+        HtmlTableCell first_cell;
+        HtmlTableCell second_cell;
+        httable.ID = "ordersTable" + index.ToString();
+        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+        StringBuilder sb = new StringBuilder();
+        sb.Append("<table>");
+
+        if (value != "")
+        {
+            Order order = new Order(menuIDs[value], value, menuOrder[value], table.ID);
+            order.Status = (OrderStatus)status;
+            order.ServerID = Int32.Parse(server.ID);
+            server.TakeOrder(order, index);
+        }
+
+        bill = table.GetBills()[index];
+        if (bill != null)
+        {
+            foreach (Order o in bill.Orders)
+            {
+                row = new HtmlTableRow();
+                row.Style.Add("width", "100%");
+                first_cell = new HtmlTableCell();
+                first_cell.Width = "50%";
+                second_cell = new HtmlTableCell();
+                second_cell.Align = "right";
+                switch (o.Status)
+                {
+                    case OrderStatus.UnOrdered:
+                        first_cell.InnerText = String.Format("{0}", o.GetName);
+                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
+                        break;
+                    case OrderStatus.Ordered:
+                        first_cell.InnerText = String.Format(">>{0}", o.GetName);
+                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
+                        break;
+                    case OrderStatus.OnHold:
+                        first_cell.InnerText = String.Format("{0}", o.GetName);
+                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
+                        row.BgColor = "pink";
+                        break;
+                }
+
+                row.Cells.Add(first_cell);
+                row.Cells.Add(second_cell);
+                httable.Rows.Add(row);
+
+            }
+            if (table.tableBill(index).Payment > 0.00M)
+            {
+                HtmlTableRow paymentrow = new HtmlTableRow();
+                paymentrow.Style.Add("width", "100%");
+                HtmlTableCell paymentcell = new HtmlTableCell();
+                paymentcell.Width = "50%";
+                HtmlTableCell second_paymentcell = new HtmlTableCell();
+                second_paymentcell.Align = "right";
+                paymentcell.InnerText = String.Format("Cash");
+                second_paymentcell.InnerText = String.Format("({0:C})", table.tableBill(index).Payment);
+                paymentrow.Cells.Add(paymentcell);
+                paymentrow.Cells.Add(second_paymentcell);
+                paymentTable.Rows.Add(paymentrow);
+                HtmlTableRow totalrow = new HtmlTableRow();
+                HtmlTableCell totalcell = new HtmlTableCell();
+                HtmlTableCell second_totalcell = new HtmlTableCell();
+                second_totalcell.Align = "right";
+                totalcell.InnerText = String.Format("Balance Due");
+                second_totalcell.InnerText = String.Format("{0:C}", (table.tableBill(index).FinalTotal - table.tableBill(index).Payment));
+                totalrow.Cells.Add(totalcell);
+                totalrow.Cells.Add(second_totalcell);
+                totalTable.Rows.Add(totalrow);
+            }
+            HtmlTableRow subtotalrow = new HtmlTableRow();
+            subtotalrow.Style.Add("width", "100%");
+            HtmlTableCell subtotalcell = new HtmlTableCell();
+            subtotalcell.Width = "50%";
+            HtmlTableCell second_subtotalcell = new HtmlTableCell();
+            second_subtotalcell.Align = "right";
+            subtotalcell.InnerText = String.Format("Subtotal");
+            second_subtotalcell.InnerText = String.Format("{0:C}", table.tableBill(index).SubTotal);
+            subtotalrow.Cells.Add(subtotalcell);
+            subtotalrow.Cells.Add(second_subtotalcell);
+            billTotal.Rows.Add(subtotalrow);
+
+            HtmlTableRow taxrow = new HtmlTableRow();
+            taxrow.Style.Add("width", "100%");
+            HtmlTableCell taxcell = new HtmlTableCell();
+            HtmlTableCell second_taxcell = new HtmlTableCell();
+            second_taxcell.Align = "right";
+            taxcell.InnerText = String.Format("Tax", table.tableBill(index).TaxTotal);
+            second_taxcell.InnerText = String.Format("{0:C}", table.tableBill(index).TaxTotal);
+            taxrow.Cells.Add(taxcell);
+            taxrow.Cells.Add(second_taxcell);
+            billTotal.Rows.Add(taxrow);
+
+            HtmlTableRow finalrow = new HtmlTableRow();
+            finalrow.Style.Add("width", "100%");
+            HtmlTableCell finalcell = new HtmlTableCell();
+            HtmlTableCell second_finalcell = new HtmlTableCell();
+            second_finalcell.Align = "right";
+            finalcell.InnerText = String.Format("Total");
+            second_finalcell.InnerText = String.Format("{0:C}", table.tableBill(index).FinalTotal);
+            finalrow.Cells.Add(finalcell);
+            finalrow.Cells.Add(second_finalcell);
+            billTotal.Rows.Add(finalrow);
+
+
+
+
+        }
+
+
+        TabContainerBills.Tabs[index].Controls.Clear();
+        containercell.Controls.Add(httable);
+        containercell.Controls.Add(billTotal);
+        containercell.Controls.Add(paymentTable);
+        containercell.Controls.Add(totalTable);
+        containerrow.Cells.Add(containercell);
+        divContainer.Rows.Add(containerrow);
+        //divContainer.Controls.Add(httable); 
+        //divContainer.Controls.Add(billTotal);
+        //divContainer.Controls.Add(paymentTable);
+        //divContainer.Controls.Add(totalTable);
+        TabContainerBills.Tabs[index].Controls.Add(divContainer);
+
+        //TabContainerBills.Tabs[index].Controls.Add(httable); 
+        //TabContainerBills.Tabs[index].Controls.Add(billTotal);
+        //TabContainerBills.Tabs[index].Controls.Add(paymentTable);
+        //TabContainerBills.Tabs[index].Controls.Add(totalTable);
+
+    }
+    protected void datalistEntree_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+    protected void datalistBeverage_ItemCommand1(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+    protected void datalistSandwichs_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void datalistSoup_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void datalistBeer_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+
+    protected void datalistWine_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void datalistDessert_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void datalistSalad_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void datalistApps_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void Item_Command(object source, DataListCommandEventArgs e)
+    {
+        //datalistRunningTotal.SelectedIndex = e.Item.ItemIndex;
+        //datalistRunningTotal.DataBind();
+    }
+    protected void addButton_Click(object sender, EventArgs e)
+    {
+
+        AddTab(true);
+        loadDataTabs();
+    }
+
+    protected void loadDataTabs(bool buttonClick = false)
+    {
+
+        int tabCount = table.BillCount;
+        if (buttonClick)
+        {
+            tabCount += 1;
+        }
+        for (int i = 0; i < tabCount; i++)
+        {
+
+            updateValues("", i);
+        }
+    }
+
+    protected void AddTab(bool buttonClick = false)
+    {
+
+        int tabCount = table.BillCount;
+        if (buttonClick)
+        {
+            tabCount += 1;
+        }
+
+        billContainter.Controls.Remove(TabContainerBills);
+
+        TabContainerBills = new AjaxControlToolkit.TabContainer();
+        TabContainerBills.ID = "tabContainerBills";
+        TabContainerBills.ActiveTabChanged += tabContainerBills_ActiveTabChanged;
+
+        TabContainerBills.CssClass = "MyTabStyle";
+        //TabContainerBills.Style.Add("min-height", "400px");
+        TabContainerBills.Style.Add("position", "relative");
+        TabContainerBills.Width = 250;
+
+        AjaxControlToolkit.TabPanel initialTab = new AjaxControlToolkit.TabPanel();
+        initialTab.BackColor = System.Drawing.Color.Cyan;
+        initialTab.ID = "tabPanel" + "1".ToString();
+        initialTab.HeaderText = String.Format("Table {0} / 1", Request.QueryString["Table"]);
+        TabContainerBills.Tabs.Add(initialTab);
+        for (int i = 1; i < tabCount; i++)
+        {
+            AjaxControlToolkit.TabPanel Dyntab = new AjaxControlToolkit.TabPanel();
+            Dyntab.ID = "tabPanel" + (i + 1).ToString();
+            Dyntab.BackColor = System.Drawing.Color.Cyan;
+            Dyntab.HeaderText = String.Format("Table {0} / {1}", Request.QueryString["Table"], i + 1);
+            TabContainerBills.Tabs.Add(Dyntab);
+
+        }
+
+
+        if (buttonClick)
+        {
+            table.AddNewList(false);
+        }
+        billContainter.Controls.Add(TabContainerBills);
+
+    }
+    protected void tabContainerBills_ActiveTabChanged(object sender, EventArgs e)
+    {
+        Session["TabIndex"] = getActiveTabIndex();
+    }
+    protected void repeatButton_Click(object sender, EventArgs e)
+    {
+        string value = "";
+
+        if (lblSelectedRow.Value != "")
+        {
+            value = lblSelectedRow.Value;
+            value = value.Split('$')[0];
+            updateValues(value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace(">>", "").Trim(), getActiveTabIndex());
+
+        }
+    }
+    protected void deleteButton_Click(object sender, EventArgs e)
+    {
+
+        if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
+        {
+            order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            server.DeleteOrder(order, table);
+            updateValues("", getActiveTabIndex());
+            lblSelectedRowIndex.Value = "";
+        }
+    }
+
+
+    protected void exitButton_Click(object sender, EventArgs e)
+    {
+        List<Bill> bills = table.GetBills();
+
+        foreach (Bill bill in bills)
+        {
+            bill.Update();
+        }
+
+        Response.Redirect("PointOfSaleMain.aspx");
+    }
+    protected void sendButton_Click(object sender, EventArgs e)
+    {
+        if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
+        {
+
+            order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            server.SendOrder(order);
+        }
+        else
+        {
+            server.SendOrders(table);
+        }
+        updateValues("", getActiveTabIndex());
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "1";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "2";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "3";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "4";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "5";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "6";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button7_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "7";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button8_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "8";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void Button9_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "9";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void ButtonZero_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += "0";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void btnDecimal_Click(object sender, EventArgs e)
+    {
+        paymentAmount = txtTblPayment.Text;
+        paymentAmount += ".";
+        txtTblPayment.Text = paymentAmount;
+        modalPopup.Show();
+    }
+    protected void ButtonClear_Click(object sender, EventArgs e)
+    {
+        paymentAmount = "";
+        txtTblPayment.Text = "";
+        modalPopup.Show();
+    }
+    protected void ButtonpaymentAmountBack_Click(object sender, EventArgs e)
+    {
+        if (txtTblPayment.Text.Length > 0)
+        {
+            paymentAmount = txtTblPayment.Text.Substring(0, txtTblPayment.Text.Length - 1);
+            txtTblPayment.Text = paymentAmount;
+        }
+        modalPopup.Show();
+    }
+
+    protected void btnEnter_Click(object sender, EventArgs e)
+    {
+        if ((txtTblPayment.Text == ""))
+        {
+            if (txtTblPayment.Text == "")
+            {
+                tblNumError.Text = "*Required.";
+            }
+            modalPopup.Show();
+
+        }
+        else
+        {
+
+            modalPopup.Hide();
+            bill = table.GetBills()[getActiveTabIndex()];
+            server.ApplyPayment(bill, Decimal.Parse(txtTblPayment.Text));
+            txtTblPayment.Text = "";
+            updateValues("", getActiveTabIndex());
+        }
+
+    }
+    protected void holdButton_Click(object sender, EventArgs e)
+    {
+        if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
+        {
+            order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            server.HoldOrder(order);
+            updateValues("", getActiveTabIndex());
+        }
+    }
+    protected void btnCloseTable_Click(object sender, EventArgs e)
+    {
+        decimal total = 0.00M;
+        foreach (Bill bill in table.GetBills())
+        {
+
+            total += (bill.FinalTotal - bill.Payment);
+        }
+
+        if (total > 0.00M)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+      "err_msg",
+      "alert('Full payment must be received before closing');",
+      true);
+
+        }
+        else
+        {
+            foreach (Bill bill in table.GetBills())
+            {
+
+                bill.Update();
+            }
+            server.CloseTable(table);
+            Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+        }
+
+    }
+    protected void btnClose_Click(object sender, EventArgs e)
+    {
+        txtTblPayment.Text = "";
+        modalPopup.Hide();
+    }
+
+    protected void btnSplit_Click(object sender, EventArgs e)
+    {
+        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+        Response.Redirect("~/Sales_App/SplitBills.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()));
+
+    }
+}
