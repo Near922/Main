@@ -18,7 +18,6 @@
     <p style="color: #808080; font-size: 50px; padding-bottom: 20px; padding-top: 50px;">
         Admin
     </p>
-
     <asp:UpdatePanel ID="updatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
     <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">

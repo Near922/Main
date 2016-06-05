@@ -1,32 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Net.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        HyperLink hlHome = Master.FindControl("hlHome") as HyperLink;
-        hlHome.Visible = false;
+        HtmlGenericControl hlHome = Master.FindControl("hlHome") as HtmlGenericControl;
+        hlHome.Style["display"] = "none";
 
-        HyperLink hlContact = Master.FindControl("hlContact") as HyperLink;
-        hlContact.Visible = true;
+        HtmlGenericControl hlContact = Master.FindControl("hlContact") as HtmlGenericControl;
+        hlContact.Style["display"] = "block";
 
-        HyperLink hlPortfolio = Master.FindControl("hlPortfolio") as HyperLink;
-        hlPortfolio.Visible = true;
+        HtmlGenericControl hlPortfolio = Master.FindControl("hlPortfolio") as HtmlGenericControl;
+        hlPortfolio.Style["display"] = "block";
 
-        HyperLink hlExperience = Master.FindControl("hlExperience") as HyperLink;
-        hlExperience.Visible = true;
+        HtmlGenericControl hlExperience = Master.FindControl("hlExperience") as HtmlGenericControl;
+        hlExperience.Style["display"] = "block";
 
-        HyperLink hlAbout = Master.FindControl("hlAbout") as HyperLink;
-        hlAbout.Visible = true;
+        HtmlGenericControl hlAbout = Master.FindControl("hlAbout") as HtmlGenericControl;
+        hlAbout.Style["display"] = "block";
 
-        HyperLink hlSkills = Master.FindControl("hlSkills") as HyperLink;
-        hlSkills.Visible = true;
+        HtmlGenericControl hlSkills = Master.FindControl("hlSkills") as HtmlGenericControl;
+        hlSkills.Style["display"] = "block";
 
         if (!IsPostBack)
         {

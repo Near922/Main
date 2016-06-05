@@ -61,27 +61,27 @@ $(document).ready(function () {
 
     $("#hlExperience").click(function () {
 
-        $('html, body').animate({ scrollTop: $("#divExperience").offset().top }, 'slow');
+        $('html, body').animate({ scrollTop: $("#divExperience").offset().top - $('#nav_bar').height() }, 'slow');
     });
 
     $("#hlAbout").click(function () {
 
-        $('html, body').animate({ scrollTop: $("#divAbout").offset().top }, 'slow');
+        $('html, body').animate({ scrollTop: $("#divAbout").offset().top - $('#nav_bar').height() }, 'slow');
     });
 
     $("#hlSkills").click(function () {
 
-        $('html, body').animate({ scrollTop: $("#divSkills").offset().top }, 'slow');
+        $('html, body').animate({ scrollTop: $("#divSkills").offset().top - $('#nav_bar').height() }, 'slow');
     });
 
     $("#hlPortfolio").click(function () {
 
-        $('html, body').animate({ scrollTop: $("#divPortfolio").offset().top }, 'slow');
+        $('html, body').animate({ scrollTop: $("#divPortfolio").offset().top - $('#nav_bar').height() }, 'slow');
     });
 
     $("#hlContact").click(function () {
 
-        $('html, body').animate({ scrollTop: $("#divContact").offset().top }, 'slow');
+        $('html, body').animate({ scrollTop: $("#divContact").offset().top - $('#nav_bar').height() }, 'slow');
     });
 
 

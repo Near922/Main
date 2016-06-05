@@ -402,6 +402,9 @@ tr.selected {
     background-color: #2C3E50 !important;
     background-image: none;
     border: none;
+    text-align: right;
+    font-size: 18px;
+    min-height: 60px;
 }
 
 #header {
@@ -428,13 +431,17 @@ tr.selected {
 }
 
 .header_cell {
-    float: right;
+   /*float: left;
     overflow: hidden;
     padding-left: 20px;
     padding-right: 20px;
     line-height: 70px;
     text-align: center;
     margin: 0 auto;
+       */
+   cursor: pointer;
+   min-height: 60px;
+   line-height: 60px;
 }
 
     .header_cell:hover {
@@ -501,13 +508,14 @@ tr.selected {
     height: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: white;
+    color: #3498db;
     /*background-color: #42729B;*/
-    background-color: #3498db;
+    background-color: white;
     font-size: large !important;
     font-weight: 200;
     border-style: solid;
-    border-color: white;
+    border-color: #3498db;
+    border-width: thin;
     text-decoration: none;
     font-family: Roboto;
     -moz-box-sizing: border-box;
@@ -517,8 +525,8 @@ tr.selected {
 }
 
     .special_button_blue:hover {
-        color: #3498db;
-        background-color: white;
+        color: white;
+        background-color: #3498db;
         text-decoration: none !important;
     }
 
@@ -572,6 +580,32 @@ td {
 }
 
     .special_button_red:hover {
+        opacity: 0.8;
+        color: white !important;
+    }
+
+    .special_button_blue_two {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    /*background-color: #42729B;*/
+    background-color: #3498db;
+    font-size: large !important;
+    font-weight: 200;
+    border-style: none;
+    text-decoration: none;
+    font-family: Roboto;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+
+    .special_button_blue_two:hover {
         opacity: 0.8;
         color: white !important;
     }
@@ -891,9 +925,19 @@ td {
 
 }
 
+.header_button{
+
+}
+
 @media screen and (min-device-width: 320px) 
   and (max-device-width: 480px) {
     .table_button {
+        width: 100% !important;
+    }
+}
+
+@media screen and  (max-width: 900px) {
+    .header_button {
         width: 100% !important;
     }
 }

@@ -1,12 +1,25 @@
 ﻿using System;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Data;
+
 public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(Page.User.Identity.IsAuthenticated && Session["User"] != null)
+        {
+            var user = (User)Session["User"];
+            if (user.IsAdmin)
+            {
+                Response.Redirect("~/Sales_App/Admin.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+            }
+        }
     }
 
     protected bool Validate(string userid, string password)
@@ -67,9 +80,13 @@ public partial class login : System.Web.UI.Page
 
         if (Validate(txtUserID.Text, txtPassword.Text))
         {
-            
+
             FormsAuthentication.RedirectFromLoginPage(txtUserID.Text, false);
-            Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+            var user = (User)Session["User"];
+            if (user.IsAdmin)
+            {
+                Response.Redirect("~/Sales_App/Admin.aspx");
+            }
         }
         else
         {

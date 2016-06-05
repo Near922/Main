@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,13 +13,21 @@ public partial class PointOfSaleMain : System.Web.UI.Page
     sqlController sqC = new sqlController();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //string userName = HttpContext.Current.User.Identity.Name.ToString();
+        if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
+        {
+            Response.Redirect("~/login.aspx");
+        }
+        Response.Cache.SetExpires(DateTime.Now);
+        Response.Cache.SetValidUntilExpires(false);
+        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.Cache.SetNoStore();
+
         var user = (User)Session["User"];
         lblGreeting.Text = String.Format("Welcome {0}!", user.Name.ToUpper());
+
         if (!IsPostBack)
         {
-            //DataTable dt = sqC.GetCredentials(user);
-            //server = new Server(user, (int)dt.Rows[0]["id"]);
             Session["Employee"] = null;
             DataTable dt = sqC.GetJob(user.Name);
             var employee = EmployeeService.GetEmployee(user.Name, dt.Rows[0]["Job"].ToString());
@@ -35,8 +42,7 @@ public partial class PointOfSaleMain : System.Web.UI.Page
                     LoadObjects(employee, Opentables);
                 }
                 openTblList.DataBind();
-                //Session["Employee"] = null;
-                //if (Session["Employee"] == null && Opentables.Rows.Count > 0)
+
             }
         }
 
@@ -46,7 +52,6 @@ public partial class PointOfSaleMain : System.Web.UI.Page
     {
         try
         {
-            //need to change how I style buttons pink when on hold
             EmployeeService.LoadObjects(employee, openTables);
             Session["Employee"] = employee;
         }
@@ -254,26 +259,29 @@ public partial class PointOfSaleMain : System.Web.UI.Page
         txtNumGuests.Text = guestsNum;
     }
 
-    protected void openTblList_ItemCommand1(object source, DataListCommandEventArgs e)
+    protected void openTblList_ItemCommand1(object source, ListViewCommandEventArgs e)
     {
       Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + e.CommandName);
     }
 
     protected void btnClockOut_Click(object sender, EventArgs e)
     {
-        FormsAuthentication.SignOut();
-        Response.Redirect(FormsAuthentication.LoginUrl);
-        Roles.DeleteCookie();
         Session.Clear();
         Session.Abandon();
-        Response.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now.AddDays(-1);
+        FormsAuthentication.SignOut();
+        Session["user_id"] = null;
+        Session["user_pass"] = null;
+        Session["user_name"] = null;
+        Session["login_status"] = "no";
+        Response.Redirect("~/login.aspx");
     }
+
     protected void btnSales_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Sales_App/Sales.aspx");
     }
 
-    protected void openTblList_ItemDataBound(object sender, DataListItemEventArgs e)
+    protected void openTblList_ItemDataBound(object sender, ListViewItemEventArgs e)
     {
         var tableNumber = DataBinder.Eval(e.Item.DataItem, "TableNumber").ToString();
         var employee = (Server)Session["Employee"];

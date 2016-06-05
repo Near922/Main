@@ -28,6 +28,15 @@ public partial class Sales_App_Sales : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["User"] == null)
+        {
+            Response.Redirect("~/login.aspx");
+        }
+        Response.Cache.SetExpires(DateTime.Now);
+        Response.Cache.SetValidUntilExpires(false);
+        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.Cache.SetNoStore();
         server = (Server)Session["Employee"];
         SQC = new sqlController();
         DataTable dt = SQC.GetTotals(server);

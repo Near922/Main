@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "..\..\WebSites\WebSite1\", "{97A5EB47-29FE-4BDC-AC07-DBC582E7722A}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "..\..\GitHub\Main\", "{97A5EB47-29FE-4BDC-AC07-DBC582E7722A}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/WebSite1"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\WebSite1\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite1\"
+		Debug.AspNetCompiler.VirtualPath = "/Main"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\GitHub\Main\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Main\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/WebSite1"
-		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\WebSite1\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite1\"
+		Release.AspNetCompiler.VirtualPath = "/Main"
+		Release.AspNetCompiler.PhysicalPath = "..\..\GitHub\Main\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Main\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "53222"
-		SlnRelativePath = "..\..\WebSites\WebSite1\"
+		SlnRelativePath = "..\..\GitHub\Main\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

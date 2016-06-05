@@ -22,77 +22,76 @@
 </head>
 <body>
     <form id="form1" runat="server" style="margin: 0px;">
-            <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-            </cc1:ToolkitScriptManager>
+        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </cc1:ToolkitScriptManager>
 
-                <div id="nav_bar" class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div id="DivNav" style="float: right; margin: 0 auto;" runat="server">
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlAdmin" runat="server" Text="Admin" ForeColor="White" Visible="false" Font-Underline="false"
-                                    Font-Size="X-Large" NavigateUrl="~/Sales_App/Admin.aspx"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlHome" runat="server" Text="Home" ForeColor="White" Font-Underline="false"
-                                    Font-Size="X-Large" NavigateUrl="Home.aspx"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlContact" runat="server" Text="Contact" ForeColor="White" Font-Underline="false"
-                                    Font-Size="X-Large" Style="cursor: pointer;" Visible="False"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlPortfolio" runat="server" Text="Projects" Font-Underline="false"
-                                    ForeColor="White" Font-Size="X-Large" Style="cursor: pointer;" Visible="False"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlExperience" runat="server" Text="Experience" Font-Underline="false"
-                                    ForeColor="White" Font-Size="X-Large" Style="cursor: pointer;" Visible="False"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlSkills" runat="server" Text="Skills" ForeColor="White" Font-Underline="false"
-                                    Font-Size="X-Large" Style="cursor: pointer;" Visible="False"></asp:HyperLink>
-                            </div>
-                            <div class="header_cell">
-                                <asp:HyperLink CssClass="element" ID="hlAbout" runat="server" Text="About" ForeColor="White" Font-Underline="false"
-                                    Font-Size="X-Large" Style="cursor: pointer;" Visible="False"></asp:HyperLink>
-                            </div>
-                        </div>
+        <div id="nav_bar" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" style="background-color: #34495E;" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height: 100%; text-align: right;">
+                        <ul id="ulNav" runat="server" class="nav navbar-nav" style="float: right;">
+                            <li id="hlHome" class="header_cell" runat="server"><asp:HyperLink runat="server" id="homeLink" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
+                            <li id="hlAbout" class="header_cell"  runat="server" style="display: none; "><a>About</a></li>
+                            <li id="hlSkills" class="header_cell"  runat="server" style="display: none;"><a>Skills</a></li>
+                            <li id="hlExperience" class="header_cell"  runat="server" style="display: none;"><a>Experience</a></li>
+                            <li id="hlPortfolio" class="header_cell"  runat="server" style="display: none;"><a>Projects</a></li>
+                            <li id="hlContact" class="header_cell"  runat="server" style="display: none;"><a>Contact</a></li>
+                            <li id="hlAdmin" class="header_cell"  runat="server" style="display: none;"><asp:HyperLink runat="server" ID="adminLink" href="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                        </ul>
                     </div>
                 </div>
-            <div id="contentWrapper" runat="server" style="height: 100%; min-height: 900px; margin-top: 70px;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </div>
+        </div>
+        <div id="contentWrapper" runat="server" style="height: 100%; min-height: 900px; margin-top: 60px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
-                <div class="container">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-
-                </div>
-                <div style="clear: both;">
-                </div>
 
             </div>
-            <div id="divFooter" class="footer" runat="server">
-                <div class="container">
-                    <div style="padding: 20px; float: left">
-                        <div style="padding-right: 10px; float: left;">
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/icons/1444682352_facebook_online_social_media.png"
-                                Height="35" PostBackUrl="http://www.facebook.com/james.bergen.35" />
-                        </div>
-                        <div style="padding-right: 10px; float: left;">
-                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="images/icons/1444682404_twitter_online_social_media.png"
-                                Height="35" PostBackUrl="http://twitter.com/jmbergen922" />
-                        </div>
-                        <div style="padding-right: 10px; float: left;">
-                            <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="images/icons/1444682364_linked_in_online_social_media.png"
-                                Height="35" PostBackUrl="https://www.linkedin.com/pub/james-bergen/79/235/528" />
+            <div style="clear: both;">
+            </div>
+
+        </div>
+        <div id="divFooter" class="footer" runat="server">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div style="padding: 20px; width: 100%; text-align: center; overflow: hidden;">
+                            <div style="margin: 0 auto; width: 150px;">
+                                <div style="padding-right: 10px; float: left;">
+                                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/icons/1444682352_facebook_online_social_media.png"
+                                        Height="35" PostBackUrl="http://www.facebook.com/james.bergen.35" />
+                                </div>
+                                <div style="padding-right: 10px; float: left;">
+                                    <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="images/icons/1444682404_twitter_online_social_media.png"
+                                        Height="35" PostBackUrl="http://twitter.com/jmbergen922" />
+                                </div>
+                                <div style="padding-right: 10px; float: left;">
+                                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="images/icons/1444682364_linked_in_online_social_media.png"
+                                        Height="35" PostBackUrl="https://www.linkedin.com/pub/james-bergen/79/235/528" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div style="padding: 20px; float: right;">
-                        <asp:Label ID="lblCopyRight" runat="server" ForeColor="#808080" Style="font-size: x-large;"
-                            Text="Copyright © James Bergen 2016"></asp:Label>
+                    <div class="col-sm-6">
+                        <div style="padding: 20px; width: 100%; text-align: center;">
+                            <asp:Label ID="lblCopyRight" runat="server" ForeColor="#808080" Style="font-size: 16px;"
+                                Text="Copyright © James Bergen 2016"></asp:Label>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
     <script src='<%= ResolveUrl("~/Scripts/jquery-2.1.4.js") %>'></script>
     <script src='<%= ResolveUrl("~/Scripts/JScript.js") %>'></script>

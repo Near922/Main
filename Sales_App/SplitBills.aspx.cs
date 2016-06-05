@@ -13,6 +13,15 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
     sqlController sqC;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["User"] == null)
+        {
+            Response.Redirect("~/login.aspx");
+        }
+        Response.Cache.SetExpires(DateTime.Now);
+        Response.Cache.SetValidUntilExpires(false);
+        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.Cache.SetNoStore();
         PopulateBills();
     }
 

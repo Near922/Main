@@ -24,50 +24,54 @@
                         ForeColor="Black" Width="100%" Height="300">
                         <cc1:TabPanel runat="server" ID="TabPanelBev" HeaderText="Beverages" Style="position: relative;">
                             <ContentTemplate>
-                                <div>
-                                    <asp:DataList ID="datalistBeverage" runat="server" RepeatColumns="4"
-                                        RepeatDirection="Horizontal" OnItemCommand="datalistBeverage_ItemCommand1">
+                                    <asp:ListView ID="ListViewBeverage" runat="server" RepeatColumns="4"
+                                        RepeatDirection="Horizontal" OnItemCommand="ListViewBeverage_ItemCommand1">
                                         <ItemTemplate>
-
-                                            <asp:Button ID="bvgButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-
+                                            <div style="padding: 15px; float: left;" class="table_button">
+                                                <asp:Button ID="bvgButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                    CommandName='<%# Eval("Name") %>' />
+                                            </div>
                                         </ItemTemplate>
-                                    </asp:DataList>
-                                </div>
+                                    </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelSoup" HeaderText="Soup" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistSoup" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistSoup_ItemCommand">
+                                <asp:ListView ID="ListViewSoup" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSoup_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="soupButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="soupButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelApps" HeaderText="Appetizers" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistApps" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistApps_ItemCommand">
+                                <asp:ListView ID="ListViewApps" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewApps_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="appsButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="appsButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelSalad" HeaderText="Salads" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistSalad" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistSalad_ItemCommand">
+                                <asp:ListView ID="ListViewSalad" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSalad_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="saladButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="saladButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelSandwichs" HeaderText="Sandwichs" Width="100%">
@@ -75,57 +79,67 @@
                                 Sandwichs
                             </HeaderTemplate>
                             <ContentTemplate>
-                                <asp:DataList ID="datalistSandwichs" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistSandwichs_ItemCommand">
+                                <asp:ListView ID="ListViewSandwichs" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSandwichs_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="sandwichButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="sandwichButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelEntree" HeaderText="Entrees" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistEntree" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistEntree_ItemCommand">
+                                <asp:ListView ID="ListViewEntree" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewEntree_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="entreeButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="entreeButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelDessert" HeaderText="Desserts" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistDessert" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistDessert_ItemCommand">
+                                <asp:ListView ID="ListViewDessert" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewDessert_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="dessertButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="dessertButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelBeer" HeaderText="Beer" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistBeer" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistBeer_ItemCommand">
+                                <asp:ListView ID="ListViewBeer" runat="server" CellSpacing="5" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewBeer_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="beerButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="beerButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelWine" HeaderText="Wine" Width="100%">
                             <ContentTemplate>
-                                <asp:DataList ID="datalistWine" runat="server" CellSpacing="5" RepeatColumns="5"
-                                    RepeatDirection="Horizontal" OnItemCommand="datalistWine_ItemCommand">
+                                <asp:ListView ID="ListViewWine" runat="server" CellSpacing="5" RepeatColumns="5"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewWine_ItemCommand">
                                     <ItemTemplate>
-                                        <asp:Button ID="wineButton" runat="server" class="special_link_button opac" Text='<%# Eval("Name") %>'
-                                            CommandName='<%# Eval("Name") %>' />
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="wineButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
                                     </ItemTemplate>
-                                </asp:DataList>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                     </cc1:TabContainer>
@@ -153,46 +167,65 @@
             </cc1:ModalPopupExtender>
             <br />
             <br />
-            <div class="row" style="padding-bottom: 20px;">
+            <div class="row">
                 <div class="col-sm-3">
-                    <asp:Button ID="sendButton" runat="server" class="special_button_dark" Text='Send' OnClick="sendButton_Click" />
+
+                    <div style="padding: 10px;">
+                        <asp:Button ID="sendButton" runat="server" class="special_button_dark table_button" Text='Send' OnClick="sendButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="holdButton" runat="server" class="special_button_dark" Text='Hold' OnClick="holdButton_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="holdButton" runat="server" class="special_button_dark table_button" Text='Hold' OnClick="holdButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="deleteButton" runat="server" class="special_button_dark" Text='Delete'
-                        OnClick="deleteButton_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="deleteButton" runat="server" class="special_button_dark table_button" Text='Delete'
+                            OnClick="deleteButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <asp:Button ID="addButton" runat="server" class="special_button_dark" Text='Add Check'
-                        OnClick="addButton_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="addButton" runat="server" class="special_button_dark table_button" Text='Add Check'
+                            OnClick="addButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="repeatButton" runat="server" class="special_button_dark" Text='Repeat'
-                        OnClick="repeatButton_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="repeatButton" runat="server" class="special_button_dark table_button" Text='Repeat'
+                            OnClick="repeatButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="btnSplit" runat="server" class="special_button_dark" Text='Split' OnClick="btnSplit_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="btnSplit" runat="server" class="special_button_dark table_button" Text='Split' OnClick="btnSplit_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 20px;">
+            <div class="row">
                 <div class="col-sm-3">
-                    <asp:Button ID="paymentButton" runat="server" class="special_button_dark" Text='Apply Payment' />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="paymentButton" runat="server" class="special_button_dark table_button" Text='Apply Payment' />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="btnCloseTable" runat="server" class="special_button_dark" Text='Close'
-                        OnClick="btnCloseTable_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="btnCloseTable" runat="server" class="special_button_dark table_button" Text='Close'
+                            OnClick="btnCloseTable_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
-                    <asp:Button ID="exitButton" runat="server" class="special_button_dark" Text='Exit' BackColor="Red"
-                        OnClick="exitButton_Click" />
+                    <div style="padding: 10px;">
+                        <asp:Button ID="exitButton" runat="server" class="special_button_dark table_button" Text='Exit' BackColor="Red"
+                            OnClick="exitButton_Click" />
+                    </div>
                 </div>
                 <div class="col-sm-3">
                 </div>
@@ -208,7 +241,6 @@
                         <table id="msgDetails">
                             <tr>
                                 <td>
-
                                     <table id="tblPaymentButtons" runat="server" visible="true">
                                         <tr>
                                             <td colspan="3" style="border-top-style: none; border-bottom-style: none">

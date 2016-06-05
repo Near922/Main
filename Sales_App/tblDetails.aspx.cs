@@ -56,10 +56,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
-        datalistBeverage.DataSource = dt;
+        ListViewBeverage.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistBeverage.DataBind();
+            ListViewBeverage.DataBind();
         }
     }
 
@@ -71,10 +71,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
-        datalistSoup.DataSource = dt;
+        ListViewSoup.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistSoup.DataBind();
+            ListViewSoup.DataBind();
         }
     }
 
@@ -88,10 +88,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
 
-        datalistApps.DataSource = dt;
+        ListViewApps.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistApps.DataBind();
+            ListViewApps.DataBind();
         }
     }
 
@@ -105,10 +105,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
 
-        datalistSandwichs.DataSource = dt;
+        ListViewSandwichs.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistSandwichs.DataBind();
+            ListViewSandwichs.DataBind();
         }
     }
 
@@ -122,10 +122,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
    
-        datalistDessert.DataSource = dt;
+        ListViewDessert.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistDessert.DataBind();
+            ListViewDessert.DataBind();
         }
     }
 
@@ -139,10 +139,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
       
-        datalistBeer.DataSource = dt;
+        ListViewBeer.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistBeer.DataBind();
+            ListViewBeer.DataBind();
         }
     }
 
@@ -156,10 +156,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
  
-        datalistWine.DataSource = dt;
+        ListViewWine.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistWine.DataBind();
+            ListViewWine.DataBind();
         }
     }
 
@@ -173,10 +173,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
    
-        datalistEntree.DataSource = dt;
+        ListViewEntree.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistEntree.DataBind();
+            ListViewEntree.DataBind();
         }
     }
 
@@ -190,10 +190,10 @@ public partial class tblDetails : System.Web.UI.Page
             menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
         }
   
-        datalistSalad.DataSource = dt;
+        ListViewSalad.DataSource = dt;
         if (!IsPostBack)
         {
-            datalistSalad.DataBind();
+            ListViewSalad.DataBind();
         }
     }
 
@@ -365,54 +365,54 @@ public partial class tblDetails : System.Web.UI.Page
         //TabContainerBills.Tabs[index].Controls.Add(totalTable);
 
     }
-    protected void datalistEntree_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewEntree_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
-    protected void datalistBeverage_ItemCommand1(object source, DataListCommandEventArgs e)
+    protected void ListViewBeverage_ItemCommand1(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
-    protected void datalistSandwichs_ItemCommand(object source, DataListCommandEventArgs e)
-    {
-        updateValues(e.CommandName, getActiveTabIndex());
-    }
-
-    protected void datalistSoup_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewSandwichs_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
-    protected void datalistBeer_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewSoup_ItemCommand(object source, ListViewCommandEventArgs e)
+    {
+        updateValues(e.CommandName, getActiveTabIndex());
+    }
+
+    protected void ListViewBeer_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
 
-    protected void datalistWine_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewWine_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
-    protected void datalistDessert_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewDessert_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
-    protected void datalistSalad_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewSalad_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
-    protected void datalistApps_ItemCommand(object source, DataListCommandEventArgs e)
+    protected void ListViewApps_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
     }
 
-    protected void Item_Command(object source, DataListCommandEventArgs e)
+    protected void Item_Command(object source, ListViewCommandEventArgs e)
     {
-        //datalistRunningTotal.SelectedIndex = e.Item.ItemIndex;
-        //datalistRunningTotal.DataBind();
+        //ListViewRunningTotal.SelectedIndex = e.Item.ItemIndex;
+        //ListViewRunningTotal.DataBind();
     }
     protected void addButton_Click(object sender, EventArgs e)
     {

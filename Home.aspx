@@ -28,7 +28,7 @@
                             I have experience building user friendly web applications using C# and ASP.NET as well as test automation frameworks.
                         </p>-->
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="Download Resume" NavigateUrl="~/Scripts/James Bergen Resume.docx" CssClass="special_button_red opac" Style="width: 300px;" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_red opac" Style="width: 300px;" />
                     </div>
                 </div>
                 <!--<div style="text-align: center;">
@@ -237,10 +237,10 @@
             </div>
         </div>
     </div>
-    <div id="divPortfolio" runat="server" clientidmode="static" class="contentDiv" style="background-color: #3498db; color: white;"
+    <div id="divPortfolio" runat="server" clientidmode="static" class="contentDiv" style="background-color: #F4F4F4;"
         text-align="center">
         <div class="container">
-            <p class="section_header" style="color: white;">
+            <p class="section_header">
                 Projects
             </p>
             <!--<div class="row">
@@ -322,76 +322,89 @@
                 </div>
             </div>
         </div>-->
-            <div class="row" style="padding-bottom: 200px;">
-                <div class="col-sm-12">
+            <div class="row" style="padding-bottom: 100px;">
+                <div class="col-sm-6">
                     <div>
                         <asp:Label ID="lblCashout" runat="server" Text="Cash Out" Font-Bold="True"
                             Font-Size="X-Large"></asp:Label>
-                        <div style="max-height:900px; max-width: 800px;">
-                            <img src="images/cashout.PNG" class="img-responsive" style="padding-bottom: 50px;" />
-                            <br />
-                            <br />
-                        </div>
                         <p>Utility that allows restaurant management to document cash collected from front of house employees at the end of each shift, storing information in a SQL Server database.</p>
                         <p>Also calculates the wages of support staff based on support staff hours and front of house sales.</p>
                         <br />
                         <br />
                         <asp:LinkButton ID="btnCashout" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/Checkout.aspx" />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div>
+                        <img src="images/cashout_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 200px;">
-                <div class="col-sm-12">
+            <div class="row" style="padding-bottom: 100px;">
+                <div class="col-sm-6">
+                    <div>
+                        <img src="images/schedule_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div class="col-sm-6">
                     <div>
                         <asp:Label ID="lblScheduler" runat="server" Text="Scheduler" Font-Bold="True"
                             Font-Size="X-Large"></asp:Label>
-                        <div style="max-height:900px; max-width: 800px;">
-                            <img src="images/scheduler.PNG" class="img-responsive" style="padding-bottom: 50px;" />
-                            <br />
-                            <br />
-                        </div>
                         <p>Allows restaurant managers to easily add and delete shifts for staff.  Features filtering by role and easily allows management to track the number of shifts and hours per week an employee is scheduled.</p>
                         <br />
                         <br />
                         <asp:LinkButton ID="btnSchedule" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/Schedule.aspx" />
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 200px;">
-                <div class="col-sm-12">
+            <div class="row" style="padding-bottom: 100px;">
+                <div class="col-sm-6">
                     <div>
                         <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" Font-Bold="True"
                             Font-Size="X-Large"></asp:Label>
-                        <div style="max-height:900px; max-width: 800px;">
-                            <img src="images/pos.PNG" class="img-responsive" style="padding-bottom: 50px;" />
-                            <br />
-                            <br />
-                        </div>
                         <p>Point of sale system that allows restaurant front of house staff to order menu items for their patrons.  Features login system, sales report, adding and removing items, placing items on hold, splitting checks, and appying payment.</p>
                         <br />
                         <br />
                         <asp:LinkButton ID="btnPointSale" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/login.aspx" />
+                        <br />
+                        <br />
                     </div>
                 </div>
+                <div class="col-sm-6">
+                    <img src="images/pos_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                    <br />
+                    <br />
+                </div>
             </div>
-            <div class="row" style="padding-bottom: 200px;">
-                <div class="col-sm-12">
+            <div class="row" style="padding-bottom: 100px;">
+                <div class="col-sm-6">
+                    <div>
+                        <img src="images/sigil_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <div class="col-sm-6">
                     <div>
                         <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" Font-Bold="True"
                             Font-Size="X-Large"></asp:Label>
-                        <div style="max-height:900px; max-width: 800px;">
-                            <img src="images/sigil.PNG" class="img-responsive" style="padding-bottom: 50px;" />
-                            <br />
-                            <br />
-                        </div>
+
                         <p>A simple 20 question quiz inspired by the HBO series Game Of Thrones.  Choose the correct sigil for the given house.</p>
                         <br />
                         <br />
                         <asp:LinkButton ID="btnQuiz" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/SigilQuiz.aspx" />
+                        <br />
+                        <br />
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -413,7 +426,6 @@
                         Contact
                     </p>
                     <div class="email">
-
                         <div class="form-group">
                             <asp:TextBox ID="txtName" runat="server" BackColor="white" ForeColor="black" placeholder="Name"
                                 CssClass="textbox"></asp:TextBox>
@@ -430,7 +442,7 @@
                                 ForeColor="black" Style="margin-left: 0px; height: 200px !important;" placeholder="Message" CssClass="textbox"></asp:TextBox>
                         </div>
                         <div>
-                            <asp:LinkButton ID="btnSubmit" CssClass="highlighted special_link_button" Style="width: 100%; max-width: 600px;" runat="server"
+                            <asp:LinkButton ID="btnSubmit" CssClass="opac special_link_button" Style="width: 100%; max-width: 600px;" runat="server"
                                 Text="Submit" OnClick="btnSubmit_Click"></asp:LinkButton>
                         </div>
                     </div>

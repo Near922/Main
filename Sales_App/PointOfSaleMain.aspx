@@ -15,32 +15,38 @@
     <br />
     <br />
     <br />
-    <table>
-        <tr>
-            <td>
-                <asp:Button ID="btnNewTable" runat="server" class="special_link_button" Text="New Table" />
-            </td>
-            <td>
-                <asp:Button ID="btnSales" runat="server" class="special_link_button" Text="Sales"
-                    OnClick="btnSales_Click" />
-            </td>
-            <td>
-                <asp:Button ID="btnClockOut" runat="server" class="special_button_red" Text="Sign Out" OnClick="btnClockOut_Click" />
-            </td>
-        </tr>
-    </table>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div style="padding: 15px;">
+                    <asp:Button ID="btnNewTable" runat="server" class="special_button_blue_two table_button" Text="New Table" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div style="padding: 15px;">
+                    <asp:Button ID="btnSales" runat="server" class="special_button_blue_two table_button" Text="Sales"
+                        OnClick="btnSales_Click" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div style="padding: 15px;">
+                    <asp:Button ID="btnClockOut" runat="server" class="special_button_red table_button" Text="Sign Out" OnClick="btnClockOut_Click" />
+                </div>
+            </div>
+        </div>
+
     <table style="min-height: 500px; width: 100%; background-color: #F2F2F2;">
         <tr>
             <td style="height: 100%; vertical-align: top;">
-
-
-                <asp:DataList ID="openTblList" runat="server" CellSpacing="5" RepeatColumns="2" RepeatDirection="Vertical"
+                <asp:ListView ID="openTblList" runat="server"
                     OnItemCommand="openTblList_ItemCommand1" OnItemDataBound="openTblList_ItemDataBound">
                     <ItemTemplate>
-                        <asp:Button ID="tblButton" runat="server" CssClass="special_button_lite_dark table_button" Text='<%# Eval("TableNumber") %>'
-                            CommandName='<%# Eval("TableNumber") %>' />
+                        <div style="padding: 15px;">
+                            <asp:Button ID="tblButton" runat="server" CssClass="special_button_lite_dark table_button" Text='<%# Eval("TableNumber") %>'
+                                CommandName='<%# Eval("TableNumber") %>' />
+                        </div>
                     </ItemTemplate>
-                </asp:DataList>
+                </asp:ListView>
             </td>
         </tr>
     </table>
