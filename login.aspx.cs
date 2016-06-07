@@ -80,9 +80,10 @@ public partial class login : System.Web.UI.Page
 
         if (Validate(txtUserID.Text, txtPassword.Text))
         {
+            var user = (User)Session["User"];
 
             FormsAuthentication.RedirectFromLoginPage(txtUserID.Text, false);
-            var user = (User)Session["User"];
+
             if (user.IsAdmin)
             {
                 Response.Redirect("~/Sales_App/Admin.aspx");

@@ -20,14 +20,14 @@
     </p>
     <asp:UpdatePanel ID="updatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-    <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success!</strong>
-        <asp:Label ID="lblMessage" runat="server" Text="Message was deleted successfully." />
-    </div>
-    <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-        <strong>Error!</strong> An error has occurred.  Please contact the administrator.
-    </div>
+            <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>
+                <asp:Label ID="lblMessage" runat="server" Text="Message was deleted successfully." />
+            </div>
+            <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
+                <strong>Error!</strong> An error has occurred.  Please contact the administrator.
+            </div>
 
             <div>
                 <asp:Label ID="lblhitCounts" runat="server" Text="" Font-Size="X-Large" />
@@ -37,6 +37,7 @@
                 <asp:Label ID="lblMessageCount" runat="server" Text="" Font-Size="X-Large" />
             </div>
             <br />
+            <asp:DropDownList ID="lstMessagePerPage" runat="server" AutoPostBack="True" OnSelectedIndexChanged="lstMessagePerPage_SelectedIndexChanged" />
             <asp:Repeater runat="server" ID="rptMessages">
                 <HeaderTemplate>
                     <asp:Label ID="lblMessageHeader" runat="server" Text="Messages" Font-Size="X-Large" />
@@ -72,8 +73,21 @@
                 <FooterTemplate>
                 </FooterTemplate>
             </asp:Repeater>
+            <div style="float: left; padding: 10px">
+                <asp:LinkButton ID="lnkPrevious" runat="server" Text="Previous" OnClick="lnkPrevious_Click" /></div>
+            <asp:Repeater ID="rptPages" runat="server" OnItemCommand="rptPages_ItemCommand">
+                <ItemTemplate>
+                    <div style="float: left; padding: 10px">
+                        <asp:LinkButton ID="lnkPage" runat="server" Text="<%# Container.DataItem %>"></asp:LinkButton>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <div style="float: left; padding: 10px">
+                <asp:LinkButton ID="lnkNext" runat="server" Text="Next" OnClick="lnkNext_Click" /></div>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <br />
+    <br />
     <div>
         <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" />
     </div>
