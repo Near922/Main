@@ -5,15 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <script src="../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
-    <script src="../Scripts/JScript.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-ui.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
-    <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Styles/bootstrap.css" rel="stylesheet" />
-    <link href="../Styles/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="../Styles/bootstrap-responsive.css" rel="stylesheet" />
     <br />
     <p style="color: #808080; font-size: 50px; padding-bottom: 20px; padding-top: 50px;">
         Admin
@@ -75,7 +66,7 @@
             </asp:Repeater>
             <div style="float: left; padding: 10px">
                 <asp:LinkButton ID="lnkPrevious" runat="server" Text="Previous" OnClick="lnkPrevious_Click" /></div>
-            <asp:Repeater ID="rptPages" runat="server" OnItemCommand="rptPages_ItemCommand">
+            <asp:Repeater ID="rptPages" runat="server" OnItemCommand="rptPages_ItemCommand" OnItemDataBound="rptPages_ItemDataBound">
                 <ItemTemplate>
                     <div style="float: left; padding: 10px">
                         <asp:LinkButton ID="lnkPage" runat="server" Text="<%# Container.DataItem %>"></asp:LinkButton>
@@ -91,5 +82,10 @@
     <div>
         <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" />
     </div>
+    <br />
+    <br />
+    <script src="../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="../Scripts/JScript.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-ui.min.js"></script>
 </asp:Content>
 

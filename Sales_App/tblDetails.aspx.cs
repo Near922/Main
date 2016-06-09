@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 using System.Web.UI.HtmlControls;
@@ -30,7 +27,6 @@ public partial class tblDetails : System.Web.UI.Page
         lblTableNum.Text = String.Format("Table {0}", Request.QueryString["Table"].ToString());
         lblServerName.Text = server.Name;
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-        //BillMain.HeaderText = String.Format("Table {0} / 1", Request.QueryString["Table"].ToString());
         populateBeverageButtons();
         populateSoupButtons();
         populateAppButtons();
@@ -42,9 +38,6 @@ public partial class tblDetails : System.Web.UI.Page
         populateDessertButtons();
         AddTab();
         loadDataTabs();
-
-
-
     }
 
 
@@ -80,7 +73,6 @@ public partial class tblDetails : System.Web.UI.Page
 
     public void populateAppButtons()
     {
-
         DataTable dt = sqC.getApps();
         foreach (DataRow dr in dt.Rows)
         {
@@ -97,7 +89,6 @@ public partial class tblDetails : System.Web.UI.Page
 
     public void populateSandwhichButtons()
     {
-
         DataTable dt = sqC.getSandwichs();
         foreach (DataRow dr in dt.Rows)
         {
@@ -206,9 +197,6 @@ public partial class tblDetails : System.Web.UI.Page
 
     protected void updateValues(string value, int index, int status = 0)
     {
-        //System.Web.UI.HtmlControls.HtmlGenericControl divContainer =
-        //new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
-
         HtmlTable divContainer = new HtmlTable();
         divContainer.Style.Add("width", "100%");
         divContainer.Style.Add("min-height", "500px");
@@ -339,10 +327,6 @@ public partial class tblDetails : System.Web.UI.Page
             finalrow.Cells.Add(finalcell);
             finalrow.Cells.Add(second_finalcell);
             billTotal.Rows.Add(finalrow);
-
-
-
-
         }
 
 
@@ -353,18 +337,9 @@ public partial class tblDetails : System.Web.UI.Page
         containercell.Controls.Add(totalTable);
         containerrow.Cells.Add(containercell);
         divContainer.Rows.Add(containerrow);
-        //divContainer.Controls.Add(httable); 
-        //divContainer.Controls.Add(billTotal);
-        //divContainer.Controls.Add(paymentTable);
-        //divContainer.Controls.Add(totalTable);
         TabContainerBills.Tabs[index].Controls.Add(divContainer);
-
-        //TabContainerBills.Tabs[index].Controls.Add(httable); 
-        //TabContainerBills.Tabs[index].Controls.Add(billTotal);
-        //TabContainerBills.Tabs[index].Controls.Add(paymentTable);
-        //TabContainerBills.Tabs[index].Controls.Add(totalTable);
-
     }
+
     protected void ListViewEntree_ItemCommand(object source, ListViewCommandEventArgs e)
     {
         updateValues(e.CommandName, getActiveTabIndex());
@@ -416,7 +391,6 @@ public partial class tblDetails : System.Web.UI.Page
     }
     protected void addButton_Click(object sender, EventArgs e)
     {
-
         AddTab(true);
         loadDataTabs();
     }
@@ -452,7 +426,6 @@ public partial class tblDetails : System.Web.UI.Page
         TabContainerBills.ActiveTabChanged += tabContainerBills_ActiveTabChanged;
 
         TabContainerBills.CssClass = "MyTabStyle";
-        //TabContainerBills.Style.Add("min-height", "400px");
         TabContainerBills.Style.Add("position", "relative");
         TabContainerBills.Width = 250;
 
@@ -468,9 +441,7 @@ public partial class tblDetails : System.Web.UI.Page
             Dyntab.BackColor = System.Drawing.Color.Cyan;
             Dyntab.HeaderText = String.Format("Table {0} / {1}", Request.QueryString["Table"], i + 1);
             TabContainerBills.Tabs.Add(Dyntab);
-
         }
-
 
         if (buttonClick)
         {
@@ -483,6 +454,7 @@ public partial class tblDetails : System.Web.UI.Page
     {
         Session["TabIndex"] = getActiveTabIndex();
     }
+
     protected void repeatButton_Click(object sender, EventArgs e)
     {
         string value = "";
@@ -495,6 +467,7 @@ public partial class tblDetails : System.Web.UI.Page
 
         }
     }
+
     protected void deleteButton_Click(object sender, EventArgs e)
     {
 
@@ -523,7 +496,6 @@ public partial class tblDetails : System.Web.UI.Page
     {
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
-
             order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
             server.SendOrder(order);
         }

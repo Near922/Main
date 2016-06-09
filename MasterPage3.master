@@ -38,13 +38,15 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height: 100%; text-align: right;">
                         <ul id="ulNav" runat="server" class="nav navbar-nav" style="float: right;">
-                            <li id="hlHome" class="header_cell" runat="server"><asp:HyperLink runat="server" id="homeLink" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
-                            <li id="hlAbout" class="header_cell"  runat="server" style="display: none; "><a>About</a></li>
-                            <li id="hlSkills" class="header_cell"  runat="server" style="display: none;"><a>Skills</a></li>
-                            <li id="hlExperience" class="header_cell"  runat="server" style="display: none;"><a>Experience</a></li>
-                            <li id="hlPortfolio" class="header_cell"  runat="server" style="display: none;"><a>Projects</a></li>
-                            <li id="hlContact" class="header_cell"  runat="server" style="display: none;"><a>Contact</a></li>
-                            <li id="hlAdmin" class="header_cell"  runat="server" style="display: none;"><asp:HyperLink runat="server" ID="adminLink" href="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                            <li id="hlHome" class="header_cell" runat="server">
+                                <asp:HyperLink runat="server" ID="homeLink" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
+                            <li id="hlAbout" class="header_cell" runat="server" style="display: none;"><a>About</a></li>
+                            <li id="hlSkills" class="header_cell" runat="server" style="display: none;"><a>Skills</a></li>
+                            <li id="hlExperience" class="header_cell" runat="server" style="display: none;"><a>Experience</a></li>
+                            <li id="hlPortfolio" class="header_cell" runat="server" style="display: none;"><a>Projects</a></li>
+                            <li id="hlContact" class="header_cell" runat="server" style="display: none;"><a>Contact</a></li>
+                            <li id="hlAdmin" class="header_cell" runat="server" style="display: none;">
+                                <asp:HyperLink runat="server" ID="adminLink" href="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
                         </ul>
                     </div>
                 </div>
@@ -69,16 +71,18 @@
                         <div style="padding: 20px; width: 100%; text-align: center; overflow: hidden;">
                             <div style="margin: 0 auto; width: 150px;">
                                 <div style="padding-right: 10px; float: left;">
-                                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/icons/1444682352_facebook_online_social_media.png"
-                                        Height="35" PostBackUrl="http://www.facebook.com/james.bergen.35" />
+                                    <a href="http://www.facebook.com/james.bergen.35">
+                                        <img src="images/icons/1444682352_facebook_online_social_media.png" alt="facebook profile" style="height: 35px" />
+                                    </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
-                                    <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="images/icons/1444682404_twitter_online_social_media.png"
-                                        Height="35" PostBackUrl="http://twitter.com/jmbergen922" />
+                                    <a href="https://github.com/Near922/Main">
+                                        <img src="images/icons/GitHub-Mark-32px.png" alt="github profile" style="height: 35px" />
+                                    </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
-                                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="images/icons/1444682364_linked_in_online_social_media.png"
-                                        Height="35" PostBackUrl="https://www.linkedin.com/pub/james-bergen/79/235/528" />
+                                    <a href="https://www.linkedin.com/in/james-bergen-52823579">
+                                        <img style="height: 35px" src="images/icons/1444682364_linked_in_online_social_media.png" /></a>
                                 </div>
                             </div>
                         </div>

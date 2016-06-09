@@ -373,7 +373,7 @@
                     <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
                         <asp:Label ID="Label9" runat="server" Text="Tips Form" ForeColor="White" Font-Size="50px"> </asp:Label>
                     </div>
-                    <div class="input_form" style="min-height: 150px;">
+                    <div class="input_form" style="min-height: 180px;">
                         <div>
                             <asp:Label ID="Label40" runat="server" ForeColor="Black" Text="Tips:"></asp:Label>
                         </div>

@@ -214,4 +214,7 @@
         </div>
     </asp:Panel>
     <!-- ModalPopupExtender -->
+    <script src="../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="../Scripts/JScript.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-ui.min.js"></script>
 </asp:Content>

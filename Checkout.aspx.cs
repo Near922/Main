@@ -47,9 +47,7 @@ public partial class Checkout3 : System.Web.UI.Page
         {
             date = DateTime.Parse(txtDatePicker.Text).Date;
         }
-        restaurant = (Restaurant)Session["Restaurant"];
         restaurant.CurrentDate = date;
-        Session["Restaurant"] = restaurant;
         return date;
     }
 
@@ -93,7 +91,6 @@ public partial class Checkout3 : System.Web.UI.Page
 
     public void AddEmployeesToRestaurant(DataTable employeeData)
     {
-        restaurant = (Restaurant)Session["Restaurant"];
         foreach (DataRow row in employeeData.Rows)
         {
             Server server = new Server(row["Name"].ToString());
@@ -104,12 +101,10 @@ public partial class Checkout3 : System.Web.UI.Page
             server.ShiftDate = DateTime.Parse(row["Date"].ToString()).Date;
             restaurant.AddEmployee(server);
         }
-        Session["Restaurant"] = restaurant;
     }
 
     public void AddBackwaitsToRestaurant(DataTable backwaitData)
     {
-        restaurant = (Restaurant)Session["Restaurant"];
         foreach (DataRow row in backwaitData.Rows)
         {
             Backwaiter backwait = new Backwaiter(row["Name"].ToString());
@@ -128,15 +123,13 @@ public partial class Checkout3 : System.Web.UI.Page
             backwait.ShiftDate = DateTime.Parse(row["Date"].ToString()).Date;
             restaurant.AddBackwait(backwait);
         }
-        Session["Restaurant"] = restaurant;
     }
 
     public void AddEmployeeToRestaurant(Server server)
     {
-        restaurant = (Restaurant)Session["Restaurant"];
         restaurant.AddEmployee(server);
-        Session["Restaurant"] = restaurant;
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -147,13 +140,16 @@ public partial class Checkout3 : System.Web.UI.Page
             Session["Restaurant"] = restaurant;
             txtDatePicker.Text = String.Format("{0:MM/dd/yyyy}", DateTime.Today);
         }
+        else
+        {
+            restaurant = (Restaurant)Session["Restaurant"];
+        }
         
         DataTable lunchServers = populateServerGrid(Shift.Lunch.ToString());
         DataTable dinnerServers = populateServerGrid(Shift.Dinner.ToString());
         DataTable lunchBackwaits = populateBWGrid(Shift.Lunch.ToString());
         DataTable dinnerBackwaits = populateBWGrid(Shift.Dinner.ToString());
-        //Label lblHeader = Master.FindControl("lblHeader") as Label;
-        //lblHeader.Text = "Restaurant End of Shift Checkout Assistant";
+
         if (!IsPostBack)
         {
             AddEmployeesToRestaurant(lunchServers);
@@ -171,10 +167,6 @@ public partial class Checkout3 : System.Web.UI.Page
 
             popStaffList();
             popBWList();
-            //txtTips.Enabled = false;
-            //txtTips.BackColor = System.Drawing.Color.Gray;
-            //btnSend.Enabled = false;
-            Session["Restaurant"] = restaurant;
         }
 
         if(!CheckDate(txtDatePicker.Text))
@@ -286,8 +278,6 @@ public partial class Checkout3 : System.Web.UI.Page
 
             if (txtBarTips.Text == "" && serverSections.Contains(cboOptions.Text))
             {
-                // lblMain.Text = "*Please enter a value for bar tipout.";
-                //lblMain.ForeColor = System.Drawing.Color.Red;
                 lblBarEdit.Text = "*Required.";
                 lblBarEdit.ForeColor = System.Drawing.Color.Red;
                 txtBarTips.BorderStyle = BorderStyle.Dotted;
@@ -318,8 +308,7 @@ public partial class Checkout3 : System.Web.UI.Page
 
                 if (dblResult > 0)
                 {
-
-                    lblMain.Text = firstName + messageText; //+ cashOwed + ".";
+                    lblMain.Text = firstName + messageText;
                     lblCash.Text = cashOwed;
                     lblCash.ForeColor = System.Drawing.Color.LimeGreen;
                     lblMain.ForeColor = System.Drawing.Color.Black;
@@ -328,8 +317,7 @@ public partial class Checkout3 : System.Web.UI.Page
                 }
                 else if (dblResult < 0)
                 {
-                    /// MessageBox.Show("You owe " + firstName + " " + String.Format("{0:C}", Math.Abs(dblResult)) + ".", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    lblMain.Text = "You owe " + firstName; //+ " " + String.Format("{0:C}", Math.Abs(dblResult)) + ".";
+                    lblMain.Text = "You owe " + firstName;
                     lblMain.ForeColor = System.Drawing.Color.Black;
                     lblCash.Text = String.Format("{0:C}", Math.Abs(dblResult));
                     lblCash.ForeColor = System.Drawing.Color.Red;
@@ -345,25 +333,7 @@ public partial class Checkout3 : System.Web.UI.Page
                     msgDetails.Show();
                 }
 
-                //txtName.Enabled = false;
-                //txtName.BackColor = System.Drawing.Color.Gray;
-                //txtOwed.Enabled = false;
-                //txtOwed.BackColor = System.Drawing.Color.Gray;
-                //txtSales.Enabled = false;
-                //txtSales.BackColor = System.Drawing.Color.Gray;
-                //txtBarTips.Enabled = false;
-                //txtBarTips.BackColor = System.Drawing.Color.Gray;
-                //cboShiftOptions.Enabled = false;
-                //cboShiftOptions.BackColor = System.Drawing.Color.Gray;
-                //cboOptions.Enabled = false;
-                //cboOptions.BackColor = System.Drawing.Color.Gray;
-                //txtCharge.Enabled = false;
-                //txtCharge.BackColor = System.Drawing.Color.Gray;
-                //txtTips.Enabled = true;
-                //txtTips.BackColor = System.Drawing.Color.White;
-                //btnSend.Enabled = true;
                 mpeServerInput.Hide();         
-                //txtTips.Focus();
             }
         }
     }
@@ -578,7 +548,6 @@ public partial class Checkout3 : System.Web.UI.Page
                     lblCashEdit.ForeColor = System.Drawing.Color.Red;
                     txtOwed.BorderStyle = BorderStyle.Dotted;
                     txtOwed.BorderColor = System.Drawing.Color.Red;
-
                 }
 
                 if (txtCharge.Text == "")
@@ -587,8 +556,6 @@ public partial class Checkout3 : System.Web.UI.Page
                     lblChargeEdit.ForeColor = System.Drawing.Color.Red;
                     txtCharge.BorderStyle = BorderStyle.Dotted;
                     txtCharge.BorderColor = System.Drawing.Color.Red;
-
-
                 }
 
                 if (txtTips.Text == "")
@@ -676,9 +643,8 @@ public partial class Checkout3 : System.Web.UI.Page
 
                     ServerFormReset();
                     mpeTipsInput.Hide();
-                    Session["Restaurant"] = restaurant;
                     this.Page_Load(null, null);
-                    //msgDetails.Visible = false;
+
                 }
             }
         }
@@ -725,7 +691,6 @@ public partial class Checkout3 : System.Web.UI.Page
         else
         {
             decimal dblHours;
-            //  decimal dblBackwaitTips;
             var regex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
             if (regex.IsMatch(txtHours.Text.Replace("$", string.Empty).Replace(",", string.Empty)) == false)
             {
@@ -754,13 +719,11 @@ public partial class Checkout3 : System.Web.UI.Page
                 cboBWShiftOptions.SelectedIndex = 0;
                 txtBackName.SelectedIndex = 0;
                 txtHours.Text = "";
-                //lblBackNameEdit.Text = "";
                 lblHoursEdit.Text = "";
-                Session["Restaurant"] = restaurant;
                 txtHours.BorderStyle = BorderStyle.NotSet;
                 txtBackName.BorderStyle = BorderStyle.NotSet;
-                txtBackName.BorderColor = System.Drawing.Color.Empty;///System.Drawing.ColorTranslator.FromHtml("#4A4A4A");
-                txtHours.BorderColor = System.Drawing.Color.Empty;// System.Drawing.ColorTranslator.FromHtml("#4A4A4A");
+                txtBackName.BorderColor = System.Drawing.Color.Empty;
+                txtHours.BorderColor = System.Drawing.Color.Empty;
                 mpeBWForm.Hide();
                 this.Page_Load(null, null);
             }
@@ -814,17 +777,12 @@ public partial class Checkout3 : System.Web.UI.Page
 
         if (cboOptions.SelectedItem.Text == "Bartender 1" || cboOptions.SelectedItem.Text == "Bartender 2" || cboOptions.SelectedItem.Text == "Bartender 3" || cboOptions.SelectedItem.Text == "ToGo-1" || cboOptions.SelectedItem.Text == "ToGo-2")
         {
-            //txtBarTips.Enabled = false;
-            //cboShiftOptions.BackColor = System.Drawing.Color.Gray;
             barDiv.Visible = false;
         }
         else
         {
-            //txtBarTips.Enabled = true;
-            //cboShiftOptions.BackColor = System.Drawing.Color.White;
             barDiv.Visible = true;
         }
-
     }
 
 
@@ -926,7 +884,6 @@ public partial class Checkout3 : System.Web.UI.Page
         AddBackwaitsToRestaurant(lunchBackwaits);
         AddBackwaitsToRestaurant(dinnerBackwaits);
         SetTotalLabels();
-        Session["Restaurant"] = restaurant;
     }
 
     private bool CheckDate(string date)

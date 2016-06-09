@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 public partial class SigilQuiz : System.Web.UI.Page
 {
@@ -26,7 +23,6 @@ public partial class SigilQuiz : System.Web.UI.Page
 
     private void SetImages()
     {
-        _game = (SigilGame)Session["Game"];
         lblHouse.Text = _game.CurrentSigil.House;
         sigil1.ImageUrl = _game.CurrentSigils[0].Src;
         sigil2.ImageUrl = _game.CurrentSigils[1].Src;
@@ -57,10 +53,10 @@ public partial class SigilQuiz : System.Web.UI.Page
 
     private void SelectSigil(int index)
     {
-        try {
-            _game = (SigilGame)Session["Game"];
+        try
+        {
             bool isCorrect = _game.SelectSigil(_game.CurrentSigils[index]);
-            Session["Game"] = _game;
+
             if (isCorrect)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessMessage", "showSuccessMessage();", true);

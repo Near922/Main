@@ -55,25 +55,28 @@ public partial class login : System.Web.UI.Page
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        txtPassword.BorderStyle = BorderStyle.Solid;
-        txtPassword.BorderColor = System.Drawing.Color.Empty;
-        txtUserID.BorderStyle = BorderStyle.Solid;
-        txtUserID.BorderColor = System.Drawing.Color.Empty;
 
         if (string.IsNullOrEmpty(txtUserID.Text) || string.IsNullOrEmpty(txtPassword.Text))
         {
             if (string.IsNullOrEmpty(txtPassword.Text))
             {
                 txtPassword.BorderStyle = BorderStyle.Dotted;
-
                 txtPassword.BorderColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                txtPassword.BorderStyle = BorderStyle.None;
+                txtPassword.BorderColor = System.Drawing.Color.Empty;
             }
 
             if (string.IsNullOrEmpty(txtUserID.Text))
             {
                 txtUserID.BorderStyle = BorderStyle.Dotted;
-
                 txtUserID.BorderColor = System.Drawing.Color.Red;
+            }
+            {
+                txtUserID.BorderStyle = BorderStyle.None;
+                txtUserID.BorderColor = System.Drawing.Color.Empty;
             }
             return;
         }

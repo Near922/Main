@@ -139,8 +139,6 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             myChildPanel.Controls.Add(gv);
             GridViews.Add(gv);
             ph.Controls.Add(myChildPanel);
-            Session["Table"] = table;
-            Session["Employee"] = server;
         }
         catch (Exception ex)
         {
@@ -167,7 +165,6 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             bill.Update();
         }
         Session["Table"] = table;
-        Session["Employee"] = server;
         Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()));
     }
 
@@ -181,6 +178,7 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             if (HttpContext.Current.Session["UpdatedOrders"] == null)
             {
                 updatedOrders = new List<Order>();
+                HttpContext.Current.Session["UpdatedOrders"] = updatedOrders;
             }
             else
             {
@@ -197,9 +195,6 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             toBill.CalculateTotal();
             toBill.AddOrder(order);
             updatedOrders.Add(order);
-            HttpContext.Current.Session["UpdatedOrders"] = updatedOrders;
-            HttpContext.Current.Session["Table"] = table;
-            HttpContext.Current.Session["Employee"] = server;
         }
         catch (Exception ex)
         {

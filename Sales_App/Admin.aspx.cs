@@ -6,12 +6,12 @@ using System.Web.UI.WebControls;
 
 public partial class Sales_App_Admin : System.Web.UI.Page
 {
-    private MessageManager _messageManger;
+    private MessageManager _messageManager;
     private string[] pageOptions = { "All", "5", "10", "20", "50", "100" };
 
     private int SetMessagesPerPage(MessageManager messageManager)
     {
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
             lstMessagePerPage.SelectedIndex = 0;
             return messageManager.TotalMessages;
@@ -56,19 +56,20 @@ public partial class Sales_App_Admin : System.Web.UI.Page
         }
 
         lblhitCounts.Text = String.Format("Total Hits: {0}", Session["Count"].ToString());
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
             Session["MessageManager"] = null;
         }
 
         if (Session["MessageManager"] == null)
         {
-            _messageManger = new MessageManager();
+            _messageManager = new MessageManager();
+            Session["MessageManager"] = _messageManager;
 
         }
         else
         {
-            _messageManger = (MessageManager)Session["MessageManager"];
+            _messageManager = (MessageManager)Session["MessageManager"];
         }
 
         if (!IsPostBack)
@@ -77,28 +78,21 @@ public partial class Sales_App_Admin : System.Web.UI.Page
             lstMessagePerPage.DataBind();
         }
 
-        //_messageManger.MessagesPerPage = SetMessagesPerPage(_messageManger);
-        lblMessageCount.Text = String.Format("Total Messages: {0}", _messageManger.TotalMessages);
+        lblMessageCount.Text = String.Format("Total Messages: {0}", _messageManager.TotalMessages);
 
         if (!IsPostBack)
         {
-            rptMessages.DataSource = _messageManger.CurrentPage;
+            rptMessages.DataSource = _messageManager.CurrentPage;
             rptMessages.DataBind();
-
-            rptPages.DataSource = _messageManger.PagesArray;
+            rptPages.DataSource = _messageManager.PagesArray;
             rptPages.DataBind();
-
         }
-
-        Session["MessageManager"] = _messageManger;
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        _messageManger = (MessageManager)Session["MessageManager"];
         try
         {
-
             foreach (RepeaterItem item in rptMessages.Items)
             {
                 var checkbox = item.FindControl("chkbox") as CheckBox;
@@ -107,22 +101,20 @@ public partial class Sales_App_Admin : System.Web.UI.Page
                 if (checkbox.Checked)
                 {
 
-                    Message result = _messageManger.CurrentPage.First(x => x.ID == int.Parse(hidden.Value));
+                    Message result = _messageManager.CurrentPage.First(x => x.ID == int.Parse(hidden.Value));
                     result.IsActive = false;
                 }
             }
 
-            _messageManger.DeleteMessages();
-            //_messageManger.Messages.Reverse();
-            rptMessages.DataSource = _messageManger.CurrentPage;
-            rptPages.DataSource = _messageManger.PagesArray;
-            lblMessageCount.Text = String.Format("Total Messages: {0}", _messageManger.TotalMessages);
+            _messageManager.DeleteMessages();
+            rptMessages.DataSource = _messageManager.CurrentPage;
+            rptPages.DataSource = _messageManager.PagesArray;
+            lblMessageCount.Text = String.Format("Total Messages: {0}", _messageManager.TotalMessages);
             rptMessages.DataBind();
             rptPages.DataBind();
-            Session["MessageManager"] = _messageManger;
             ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessMessage", "showSuccessMessage();", true);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Logger.Log(ex);
             ScriptManager.RegisterStartupScript(this, GetType(), "showErrorMessage", "showErrorMessage();", true);
@@ -132,38 +124,28 @@ public partial class Sales_App_Admin : System.Web.UI.Page
 
     protected void rptPages_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        _messageManger = (MessageManager)Session["MessageManager"];
         var button = e.Item.FindControl("lnkPage") as LinkButton;
-        _messageManger.MessagesPerPage = SetMessagesPerPage(_messageManger);
-        _messageManger.ChangePage(int.Parse(button.Text));
-        Session["MessageManager"] = _messageManger;
-        UpdateMessageRepeater(_messageManger);
+        button.Style.Add("text-decoration", "underline");
+        _messageManager.ChangePage(int.Parse(button.Text));
+        UpdateMessageRepeater(_messageManager);
     }
 
     protected void lnkPrevious_Click(object sender, EventArgs e)
     {
-        _messageManger = (MessageManager)Session["MessageManager"];
-        _messageManger.MessagesPerPage = SetMessagesPerPage(_messageManger);
-        _messageManger.TogglePage(TogglePage.Previous);
-        Session["MessageManager"] = _messageManger;
-        UpdateMessageRepeater(_messageManger);
+        _messageManager.TogglePage(TogglePage.Previous);
+        UpdateMessageRepeater(_messageManager);
     }
 
     protected void lnkNext_Click(object sender, EventArgs e)
     {
-        _messageManger = (MessageManager)Session["MessageManager"];
-        _messageManger.MessagesPerPage = SetMessagesPerPage(_messageManger);
-        _messageManger.TogglePage(TogglePage.Next);
-        Session["MessageManager"] = _messageManger;
-        UpdateMessageRepeater(_messageManger);
+        _messageManager.TogglePage(TogglePage.Next);
+        UpdateMessageRepeater(_messageManager);
     }
 
     protected void lstMessagePerPage_SelectedIndexChanged(object sender, EventArgs e)
     {
-        _messageManger = (MessageManager)Session["MessageManager"];
-        _messageManger.MessagesPerPage = SetMessagesPerPage(_messageManger);
-        Session["MessageManager"] = _messageManger;
-        UpdateMessageRepeater(_messageManger);
+        _messageManager.MessagesPerPage = SetMessagesPerPage(_messageManager);
+        UpdateMessageRepeater(_messageManager);
     }
 
     private void UpdateMessageRepeater(MessageManager manager)
@@ -172,5 +154,14 @@ public partial class Sales_App_Admin : System.Web.UI.Page
         rptMessages.DataBind();
         rptPages.DataSource = manager.PagesArray;
         rptPages.DataBind();
+    }
+
+    protected void rptPages_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        var button = e.Item.FindControl("lnkPage") as LinkButton;
+        if (_messageManager.CurrentPageNumber == int.Parse(button.Text))
+        {
+            button.Style.Add("text-decoration", "underline");
+        }
     }
 }

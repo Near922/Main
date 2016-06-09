@@ -162,7 +162,7 @@
                 <br />
                 <br />
                 <div>
-                    <p>Part of a four member team responsible for building and maintaining a test automation framework, including build verification tests, and regression tests.  The framework is built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for Development team to address and assist the manual QA team with regression testing when needed.</p>
+                    <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for Development team to address and assist the manual QA team with regression testing when needed.</p>
                     <br />
                     <br />
                     <span class="skill">C#</span><span class="skill">Selenium WebDriver</span><span class="skill">SQL</span><span class="skill">Visual Studio</span><span class="skill">NUnit</span>

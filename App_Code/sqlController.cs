@@ -651,7 +651,7 @@ public class sqlController : IDisposable
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                da = new SqlDataAdapter("select * from tblMessages where isactive = '1'", conn);
+                da = new SqlDataAdapter("select * from tblMessages where isactive = '1' order by sentdate desc", conn);
                 dt = new DataTable();
                 da.Fill(dt);
             }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 
 /// <summary>
 /// Summary description for Message
@@ -52,7 +51,7 @@ public class MessageManager
             {
                 LoadMessages();
             }
-            return Messages.Count;
+            return Messages.Where(m => m.IsActive == true).ToList().Count;
         }
     }
     private List<List<Message>> _pagedMessages;
@@ -60,6 +59,14 @@ public class MessageManager
     public int[] PagesArray { get; set; }
 
     private int _currentPageIndex = 0;
+
+    public int CurrentPageNumber
+    {
+        get
+        {
+            return _currentPageIndex + 1;
+        }
+    }
 
     public List<Message> CurrentPage
     {
@@ -71,7 +78,7 @@ public class MessageManager
             }
 
             _pagedMessages[_currentPageIndex].Reverse();
-            return _pagedMessages[_currentPageIndex];
+            return _pagedMessages[_currentPageIndex].Where(m => m.IsActive == true).OrderByDescending(m => m.SentDate).ToList();
         }
     }
 
@@ -84,30 +91,24 @@ public class MessageManager
     {
         if (toggle == global::TogglePage.Previous)
         {
-            if ((_currentPageIndex - 1) >= 0)
+            if ((_currentPageIndex - 1) > 0)
             {
                 _currentPageIndex -= 1;
             }
+            else
+            {
+                _currentPageIndex = 0;
+            }
         }
-        else if ((_currentPageIndex + 1) < _pagedMessages.Count)
+        else if ((_currentPageIndex + 1) < _pagedMessages.Count - 1)
         {
             _currentPageIndex += 1;
         }
+        else
+        {
+            _currentPageIndex = _pagedMessages.Count - 1;
+        }
     }
-
-    //public List<List<Message>> PagedMessages
-    //{
-    //    get
-    //    {
-    //        if (Messages.Count == 0)
-    //        {
-    //            LoadMessages();
-    //        }
-    //        SetNumberOfPages();
-    //        LoadPages();
-    //        return _pagedMessages;
-    //    }      
-    //}
 
     public MessageManager()
     {
@@ -143,11 +144,9 @@ public class MessageManager
             {
                 sqc.UpdateMessageToInactive(message);
             }
-
-            CurrentPage.Remove(message);
         }
         sqc = null;
-        LoadMessages();
+        //LoadMessages();
     }
 
     private void SetNumberOfPages()
@@ -187,11 +186,11 @@ public class MessageManager
     {
         int currentMessage = 0;
         _pagedMessages = new List<List<Message>>();
-        for (int i = 0; i <= Pages; i++)
+        for (int i = 0; i < Pages; i++)
         {
             var page = new List<Message>();
 
-            for (int y = 0;  y <= _messagesPerPage - 1; y++)
+            for (int y = 0;  y < _messagesPerPage; y++)
             {
                 if (currentMessage < Messages.Count)
                 {

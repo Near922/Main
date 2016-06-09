@@ -53,7 +53,6 @@ public partial class PointOfSaleMain : System.Web.UI.Page
         try
         {
             EmployeeService.LoadObjects(employee, openTables);
-            Session["Employee"] = employee;
         }
         catch(Exception ex)
         {
@@ -105,7 +104,6 @@ public partial class PointOfSaleMain : System.Web.UI.Page
         else
         {
             employee.EnterNewTable(Int32.Parse(txtTblNum.Text), Int32.Parse(txtNumGuests.Text));
-            Session["Employee"] = employee;
             guestNumError.Text = "";
             tblNumError.Text = "";
             Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(txtTblNum.Text));
