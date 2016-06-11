@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp1C4.tmp.cadir\bin\App_Code.dll">
+   <Modules>
+    <Module Name="app_code.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Order" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Order' because it creates members of the following IDisposable types: 'sqlController'. If 'Order' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="sqlController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'sqlController' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="comm" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.comm' that is of IDisposable type: 'SqlCommand'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
+            </Message>
+            <Message Id="da" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.da' that is of IDisposable type: 'SqlDataAdapter'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
+            </Message>
+            <Message Id="dt" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.dt' that is of IDisposable type: 'DataTable'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
+            </Message>
+            <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+             <Issue Name="NoAllowedExceptions" Certainty="90" Level="Error" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="849">'sqlController.Dispose()' creates an exception of type 'NotImplementedException'. Exceptions should not be raised in this type of method. If this exception instance might be raised, change this method's logic so it no longer raises an exception.</Issue>
+            </Message>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">Modify 'sqlController.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Table" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Table' because it creates members of the following IDisposable types: 'sqlController'. If 'Table' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp1C4.tmp.cadir\bin\App_Web_yc14k443.dll">
+   <Modules>
+    <Module Name="app_web_yc14k443.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="tblDetails" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#updateValues(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\Sales_App" File="tblDetails.aspx.cs" Line="314">Method 'tblDetails.updateValues(string, int, int)' calls 'string.Format(string, object)' and does not provide a format item for argument "1". The provided format string is: '"Tax"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>Disposable fields should be disposed</Name>
+   <Description>If a type that implements IDisposable owns fields that also implement IDisposable, the encapsulating type's Dispose() implementation should call Dispose() on each disposable field.</Description>
+   <Resolution Name="Default">{0} contains field {1} that is of IDisposable type: {2}. Change the Dispose method on {0} to call Dispose or Close on this field.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
+   <Name>Do not raise exceptions in unexpected locations</Name>
+   <Description>Do not explicitly raise exceptions from unexpected locations. There are some methods, such as Equals and GetHashCode, which users do not expect to raise exceptions. Therefore calls to these methods are not commonly wrapped in try catch blocks.</Description>
+   <Resolution Name="NoAllowedExceptions">{0} creates an exception of type {1}. Exceptions should not be raised in this type of method. If this exception instance might be raised, change this method's logic so it no longer raises an exception.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb386039.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error, Warning</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+   <Name>Implement IDisposable correctly</Name>
+   <Description>All IDisposable types should implement the Dispose pattern correctly.</Description>
+   <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
+   <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms244737.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>Provide correct arguments to formatting methods</Name>
+   <Description>Provide the correct number of arguments to String.Format calls.</Description>
+   <Resolution Name="MissingFormatItem">Method {0} calls {1} and does not provide a format item for argument {2}. The provided format string is: '{3}'</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>Types that own disposable fields should be disposable</Name>
+   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
+   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

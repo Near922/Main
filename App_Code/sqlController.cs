@@ -19,10 +19,6 @@ public class sqlController : IDisposable
 
     public sqlController()
 	{
-		//
-		// TODO: Add constructor logic here
-		//
-        //conn = new SqlConnection(@"Data Source=Jim-PC;Initial Catalog=Restaurant;Integrated Security=True");
 	}
 
     public int GetWebSiteCount()
@@ -80,7 +76,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@BillID", order.BillID);
                 conn.Open();
                 modified = (int)comm.ExecuteScalar();
-                conn.Close();
             }
             return modified;
         }
@@ -102,7 +97,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@id", order.ID);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                //conn.Close();
             }
         }
         catch(Exception ex)
@@ -122,7 +116,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@id", order.ID);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -148,7 +141,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@guests", table.Guests);
                 conn.Open();
                 modified = (int)comm.ExecuteScalar();
-                conn.Close();
             }
             return modified;
         }
@@ -167,14 +159,13 @@ public class sqlController : IDisposable
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 comm = new SqlCommand("Insert into Bill OUTPUT INSERTED.ID VALUES(@CheckNum, @OrderID, @TableNumber, @Amount, @Payment)", conn);
-                comm.Parameters.AddWithValue("@CheckNum", bill.CheckNum); //bill.CheckNum
+                comm.Parameters.AddWithValue("@CheckNum", bill.CheckNum);
                 comm.Parameters.AddWithValue("@TableNumber", bill.TableID);
-                comm.Parameters.AddWithValue("@OrderID", 0); //may remove orderid
+                comm.Parameters.AddWithValue("@OrderID", 0);
                 comm.Parameters.AddWithValue("@Amount", bill.FinalTotal);
                 comm.Parameters.AddWithValue("@Payment", bill.Payment);
                 conn.Open();
                 modified = (int)comm.ExecuteScalar();
-                conn.Close();
             }
             return modified;
         }
@@ -250,8 +241,6 @@ public class sqlController : IDisposable
             Logger.Log(ex);
             return false;
         }
-        
-
     }
 
     public DataTable GetCredentials(string userid)
@@ -271,7 +260,6 @@ public class sqlController : IDisposable
             Logger.Log(ex);
         }
         return dt;
-
     }
 
     public void CloseTable(Table table)
@@ -347,7 +335,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@BillID", bill.ID);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -368,7 +355,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@BillID", order.BillID);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -410,7 +396,6 @@ public class sqlController : IDisposable
                 da.SelectCommand.Parameters.AddWithValue("ID", server.ID);
                 dt = new DataTable();
                 da.Fill(dt);
-
             }
         }
         catch (Exception ex)
@@ -431,8 +416,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@Status", order.Status);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
-
             }
         }
         catch (Exception ex)
@@ -617,7 +600,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@SentDate", message.SentDate);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -636,7 +618,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@Id", message.ID);
                 conn.Open();
                 comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -707,7 +688,6 @@ public class sqlController : IDisposable
             Logger.Log(ex);
             return 0;
         }
-
     }
 
     public DataTable GetHours(List<SqlParameter> sqlParams)
@@ -756,7 +736,6 @@ public class sqlController : IDisposable
             Logger.Log(ex);
             return 0;
         }
-
     }
 
     public int InsertShift(Shift shift)
@@ -773,10 +752,8 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@START_TIME", shift.Start);
                 comm.Parameters.AddWithValue("@END_TIME", shift.End);
                 comm.Parameters.AddWithValue("@SHIFT", shift.ShiftName);
-
                 conn.Open();
                 modified = (int)comm.ExecuteNonQuery();
-                conn.Close();
             }
         }
         catch (Exception ex)
@@ -819,7 +796,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@SHIFT", shift.ShiftName);
                 conn.Open();
                 shifts = (int)comm.ExecuteNonQuery();
-                conn.Close();
             }
             return shifts;
         }
@@ -828,7 +804,6 @@ public class sqlController : IDisposable
             Logger.Log(ex);
             return 0;
         }
-
     }
 
     public DataTable GetNamesInJob(string job)
@@ -896,7 +871,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@PostDate", (DateTime.Now));
                 conn.Open();
                 success = comm.ExecuteNonQuery();
-                conn.Close();
             }
 
             return success;
@@ -923,7 +897,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@PostDate", (DateTime.Now));
                 conn.Open();
                 success = comm.ExecuteNonQuery();
-                conn.Close();
             }
 
             return success;
@@ -947,7 +920,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@Date", date);
                 conn.Open();
                 success = (decimal)comm.ExecuteScalar();
-                conn.Close();
             }
 
             return success;
@@ -971,7 +943,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@Date", date);
                 conn.Open();
                 result = Convert.ToDecimal(comm.ExecuteScalar());
-                conn.Close();
             }
 
             return result;
@@ -997,7 +968,6 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@Date", date);
                 conn.Open();
                 result = (int)comm.ExecuteNonQuery();
-                conn.Close();
             }
 
             return result;

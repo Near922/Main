@@ -46,7 +46,7 @@
                             <li id="hlPortfolio" class="header_cell" runat="server" style="display: none;"><a>Projects</a></li>
                             <li id="hlContact" class="header_cell" runat="server" style="display: none;"><a>Contact</a></li>
                             <li id="hlAdmin" class="header_cell" runat="server" style="display: none;">
-                                <asp:HyperLink runat="server" ID="adminLink" href="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                            <asp:HyperLink runat="server" ID="adminLink" NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
                         </ul>
                     </div>
                 </div>
@@ -72,17 +72,17 @@
                             <div style="margin: 0 auto; width: 150px;">
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="http://www.facebook.com/james.bergen.35">
-                                        <img src="images/icons/1444682352_facebook_online_social_media.png" alt="facebook profile" style="height: 35px" />
+                                        <img src="~/images/icons/1444682352_facebook_online_social_media.png" runat="server" alt="facebook profile" style="height: 35px" />
                                     </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="https://github.com/Near922/Main">
-                                        <img src="images/icons/GitHub-Mark-32px.png" alt="github profile" style="height: 35px" />
+                                        <img src="~/images/icons/GitHub-Mark-32px.png" runat="server" alt="github profile" style="height: 35px" />
                                     </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="https://www.linkedin.com/in/james-bergen-52823579">
-                                        <img style="height: 35px" src="images/icons/1444682364_linked_in_online_social_media.png" /></a>
+                                        <img style="height: 35px" runat="server" src="~/images/icons/1444682364_linked_in_online_social_media.png" /></a>
                                 </div>
                             </div>
                         </div>
