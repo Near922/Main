@@ -5,30 +5,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 
-    <div id="divHeader" runat="server" style="background-color: rgba(0, 0, 0, 0.8); background-image: url(/images/pexels-photo.jpg); height: 700px; width: 100%;">
-        <div class="transparent">
-        </div>
+    <div id="divHeader" runat="server" style="background-color: #4baad3; height: 500px; width: 100%;">
         <div class="container">
             <br />
-            <div style="position: absolute; min-width: 400px; width: 30%; max-height: 200px; left: 0; right: 0; margin: 0 auto; top: 25%; z-index: 1000;">
-                <div id="containHeader" class="jumbotron">
+            <div style="min-width: 400px; max-height: 200px; text-align: center;">
+                <div id="containHeader" class="jumbotron" style="border: none; color: white;">
                     <h1 id="header">James Bergen
                     </h1>
-
-                    <p style="color: white;">
-                        Software Developer | QA Engineer
-                    </p>
-
-
+                    <h2>
+                        Software Developer and QA Engineer
+                    </h2>
+                    <div>
+                        <img src="images/icons/1467098942_Html.png" />
+                    </div>
                     <p style="color: rgba(255,255,255,0.6);">
-                        My passion is writing code.
+                        I'm passionate about writing code.
                     </p>
 
                     <!--<p style="color: rgba(255,255,255,0.6); max-width: 600px; font-size: 20px;">
                             I have experience building user friendly web applications using C# and ASP.NET as well as test automation frameworks.
                         </p>-->
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_red opac" Style="width: 300px;" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_link_button opac" Style="width: 300px;" />
                     </div>
                 </div>
                 <!--<div style="text-align: center;">
@@ -40,10 +38,10 @@
         </div>
 
     </div>
-    <div id="divAbout" runat="server" class="contentDiv" clientidmode="static" style="background-color: #E74C3C; color: white; min-height: 500px;"
+    <div id="divAbout" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; color: black; min-height: 500px;"
         text-align="left">
         <div class="container">
-            <p class="section_header" style="color: white;">
+            <p class="section_header" style="color: #FF675B;">
                 About
             </p>
             <div class="row">
@@ -77,7 +75,7 @@
                         <!--<img alt="ruby" src="images/icons/1444682091_ruby.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="75" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="65" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
                                 <span style="font-size: 25px; color: gray;">Ruby</span>
@@ -88,7 +86,7 @@
                         <!-- <img src="images/icons/c-img.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="75" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
                                 <span style="font-size: 25px; color: gray;">C#</span>
@@ -99,7 +97,7 @@
                         <!--<img alt="javascript" src="images/icons/1444682687_javascript.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="40" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
                                 <span style="font-size: 25px; color: gray;">Javascript</span>
@@ -113,7 +111,7 @@
                         <!--<img alt="asp.net" src="images/icons/1444682634_ASP.Net.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="70" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
                                 <span style="font-size: 25px; color: gray;">SQL</span>
@@ -124,7 +122,7 @@
                         <!--<img alt="sql" src="images/icons/1458458079_icon-89-document-file-sql.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="70" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="50" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
                                 <span style="font-size: 25px; color: gray;">ASP.NET</span>
@@ -243,6 +241,9 @@
             <p class="section_header">
                 Projects
             </p>
+            <br />
+            <p>Below you can find projects that I worked on to help strengthen and develop my programming skills.  Each project includes a live demo.  More projects are on the way!</p>
+            <br />
             <!--<div class="row">
                 <div class="col-sm-6">
                     <div style="width: 90%;">
@@ -325,8 +326,8 @@
             <div class="row" style="padding-bottom: 100px;">
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblCashout" runat="server" Text="Cash Out" Font-Bold="True"
-                            Font-Size="X-Large"></asp:Label>
+                        <asp:Label ID="lblCashout" runat="server" Text="Cash Out"
+                            Font-Size="X-Large" ForeColor="#4baad3"></asp:Label>
                         <p>Utility that allows restaurant management to document cash collected from front of house employees at the end of each shift, storing information in a SQL Server database.</p>
                         <p>Also calculates the wages of support staff based on support staff hours and front of house sales.</p>
                         <br />
@@ -354,7 +355,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblScheduler" runat="server" Text="Scheduler" Font-Bold="True"
+                        <asp:Label ID="lblScheduler" runat="server" Text="Scheduler" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
                         <p>Allows restaurant managers to easily add and delete shifts for staff.  Features filtering by role and easily allows management to track the number of shifts and hours per week an employee is scheduled.</p>
                         <br />
@@ -368,7 +369,7 @@
             <div class="row" style="padding-bottom: 100px;">
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" Font-Bold="True"
+                        <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
                         <p>Point of sale system that allows restaurant front of house staff to order menu items for their patrons.  Features login system, sales report, adding and removing items, placing items on hold, splitting checks, and appying payment.</p>
                         <br />
@@ -394,7 +395,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" Font-Bold="True"
+                        <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
 
                         <p>A simple 20 question quiz inspired by the HBO series Game Of Thrones.  Choose the correct sigil for the given house.</p>

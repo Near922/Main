@@ -400,7 +400,7 @@ tr.selected {
 
 #nav_bar {
     /**background-color: #3498db !important;*/
-    background-color: #2C3E50 !important;
+    background-color: #42484d !important;
     background-image: none;
     border: none;
     text-align: right;
@@ -443,10 +443,11 @@ tr.selected {
    cursor: pointer;
    min-height: 60px;
    line-height: 60px;
+   color: white !important;
 }
 
     .header_cell:hover {
-        background-color: #34495E;
+        background-color: #4baad3;
     }
 
 .element {
@@ -621,8 +622,9 @@ td {
 
 .footer {
     width: 100%;
-    background-color: #F4F4F4;
+    background-color: #42484d;
     min-height: 70px;
+    color: white;
 }
 
 .ajax_tab_body {
@@ -630,10 +632,9 @@ td {
 }
 
 .transparent {
-    background-color: black;
-    opacity: 0.6;
+    background-color: #4baad3;
     position: absolute;
-    min-height: 700px;
+    min-height: 500px;
     width: 100%;
     z-index: 999;
 }
@@ -915,7 +916,7 @@ td {
     }
 
 .section_header {
-    color: black;
+    color: #FF675B;
     font-size: 38px;
     padding-bottom: 20px;
     padding-top: 50px;
