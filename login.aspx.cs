@@ -13,11 +13,13 @@ public partial class login : System.Web.UI.Page
             var user = (User)Session["User"];
             if (user.IsAdmin)
             {
-                Response.Redirect("~/Sales_App/Admin.aspx");
+                Response.Redirect("~/Sales_App/Admin.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
             else
             {
-                Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+                Response.Redirect("~/Sales_App/PointOfSaleMain.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
     }
@@ -89,7 +91,8 @@ public partial class login : System.Web.UI.Page
 
             if (user.IsAdmin)
             {
-                Response.Redirect("~/Sales_App/Admin.aspx");
+                Response.Redirect("~/Sales_App/Admin.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
         else

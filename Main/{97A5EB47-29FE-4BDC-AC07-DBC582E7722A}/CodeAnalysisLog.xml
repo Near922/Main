@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="14.0">
  <Targets>
-  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp1C4.tmp.cadir\bin\App_Code.dll">
+  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp64B1.tmp.cadir\bin\App_Code.dll">
    <Modules>
     <Module Name="app_code.dll">
      <Namespaces>
@@ -10,33 +10,33 @@
        <Types>
         <Type Name="Order" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Order' because it creates members of the following IDisposable types: 'sqlController'. If 'Order' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="sqlController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="Breaking">
            <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'sqlController' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="comm" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+            <Message Id="comm" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="NonBreaking">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.comm' that is of IDisposable type: 'SqlCommand'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
             </Message>
-            <Message Id="da" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+            <Message Id="da" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="NonBreaking">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.da' that is of IDisposable type: 'SqlDataAdapter'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
             </Message>
-            <Message Id="dt" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="NonBreaking">
+            <Message Id="dt" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="NonBreaking">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">'sqlController' contains field 'sqlController.dt' that is of IDisposable type: 'DataTable'. Change the Dispose method on 'sqlController' to call Dispose or Close on this field.</Issue>
             </Message>
-            <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+            <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="Breaking">
              <Issue Name="NoAllowedExceptions" Certainty="90" Level="Error" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="849">'sqlController.Dispose()' creates an exception of type 'NotImplementedException'. Exceptions should not be raised in this type of method. If this exception instance might be raised, change this method's logic so it no longer raises an exception.</Issue>
             </Message>
-            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="Breaking">
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="Breaking">
              <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="c:\Users\Jim\Documents\GitHub\Main\App_Code" File="sqlController.cs" Line="848">Modify 'sqlController.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
             </Message>
            </Messages>
@@ -45,7 +45,7 @@
         </Type>
         <Type Name="Table" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Table' because it creates members of the following IDisposable types: 'sqlController'. If 'Table' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
           </Message>
          </Messages>
@@ -56,9 +56,9 @@
     </Module>
    </Modules>
   </Target>
-  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp1C4.tmp.cadir\bin\App_Web_yc14k443.dll">
+  <Target Name="C:\Users\Jim\AppData\Local\Temp\tmp64B1.tmp.cadir\bin\App_Web_x4ikizay.dll">
    <Modules>
-    <Module Name="app_web_yc14k443.dll">
+    <Module Name="app_web_x4ikizay.dll">
      <Namespaces>
       <Namespace Name="">
        <Types>
@@ -66,7 +66,7 @@
          <Members>
           <Member Name="#updateValues(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-06-09 22:21:31Z" FixCategory="DependsOnFix">
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-07-04 14:34:01Z" FixCategory="DependsOnFix">
              <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="c:\Users\Jim\Documents\GitHub\Main\Sales_App" File="tblDetails.aspx.cs" Line="314">Method 'tblDetails.updateValues(string, int, int)' calls 'string.Format(string, object)' and does not provide a format item for argument "1". The provided format string is: '"Tax"'</Issue>
             </Message>
            </Messages>

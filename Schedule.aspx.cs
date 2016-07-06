@@ -32,6 +32,7 @@ public partial class _Default : System.Web.UI.Page
     List<Employee> fullList = new List<Employee>();
     List<Shift> lstShifts = new List<Shift>();
 
+    DateTime previousDate;
 
 
     string[] strSchedule = { DateTime.Today.AddDays(((int)(DateTime.Today.DayOfWeek) * -1) + 1).ToString("dddd MMMM dd"), DateTime.Today.AddDays(((int)(DateTime.Today.DayOfWeek) * -1) + 2).ToString("dddd MMMM dd"),
@@ -46,8 +47,6 @@ public partial class _Default : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-
-
             lstStartHours.DataSource = strtLunchHours;
             lstStartHours.DataBind();
 
@@ -67,6 +66,9 @@ public partial class _Default : System.Web.UI.Page
 
             Calendar1.SelectedDate = DateTime.Today;
 
+            previousDate = Calendar1.SelectedDate;
+            Session["PreviousDate"] = previousDate;
+  
             if ((int)Calendar1.SelectedDate.DayOfWeek == 0)
             {
                 lblMonday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) - 6).ToString("dddd MMMM dd");
@@ -94,8 +96,10 @@ public partial class _Default : System.Web.UI.Page
 
             GetShifts();
         }
-
-
+        else
+        {
+            previousDate = (DateTime)Session["PreviousDate"];
+        }
     }
     protected void lstStaffType_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -151,7 +155,6 @@ public partial class _Default : System.Web.UI.Page
             lblFriday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) - 2).ToString("dddd MMMM dd");
             lblSaturday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) - 1).ToString("dddd MMMM dd");
             lblSunday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1)).ToString("dddd MMMM dd");
-
         }
 
         else
@@ -163,11 +166,16 @@ public partial class _Default : System.Web.UI.Page
             lblFriday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) + 5).ToString("dddd MMMM dd");
             lblSaturday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) + 6).ToString("dddd MMMM dd");
             lblSunday.Text = Calendar1.SelectedDate.AddDays(((int)(Calendar1.SelectedDate.DayOfWeek) * -1) + 7).ToString("dddd MMMM dd");
-
-
         }
 
-        GetShifts();
+        var currentWeek = GetDay(Calendar1.SelectedDate);
+        if ( previousDate < currentWeek[0] || previousDate > currentWeek[1])
+        {
+            GetShifts();
+        }
+
+        previousDate = Calendar1.SelectedDate;
+        Session["PreviousDate"] = previousDate;
     }
 
     public DateTime[] GetDay(DateTime calendarDate)
@@ -709,8 +717,6 @@ public partial class _Default : System.Web.UI.Page
 
     protected void LinkButtonPopUp(object sender, EventArgs e)
     {
-        AjaxControlToolkit.ModalPopupExtender modal = (AjaxControlToolkit.ModalPopupExtender)Page.FindControl("scheduleDetails");
-
         LinkButton btn = (LinkButton)sender;
         if (Session["Shifts"] != null)
         {
@@ -739,7 +745,13 @@ public partial class _Default : System.Web.UI.Page
         string Date = shftDate.Text.Trim();
         string fullStartDate = Date + "," + detailsShift;
 
-        if (detailsShift.Contains("AM"))
+
+
+        string[] strt = fullStartDate.Split('-');
+        DateTime startTime = DateTime.Parse(strt[0]);
+        TimeSpan four = new TimeSpan(16, 0, 0);
+        TimeSpan shiftStart = startTime.TimeOfDay;
+        if (shiftStart < four)
         {
             strShift = "Lunch";
 
@@ -748,9 +760,6 @@ public partial class _Default : System.Web.UI.Page
         {
             strShift = "Dinner";
         }
-
-        string[] strt = fullStartDate.Split('-');
-        DateTime startTime = DateTime.Parse(strt[0]);
         //Begin Delete Values
         Shift shift = new Shift();
         shift.Name = Name;
@@ -763,8 +772,8 @@ public partial class _Default : System.Web.UI.Page
 
             if (sqc.DeleteShift(shift) > 0)
             {
-                lblMessage.Text = "Shift was deleted successfully.";
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessMessage", "showSuccessMessage();", true);
+                lblMessage.Text = "Shift was deleted successfully."; 
                 GetShifts();
             }
         }
@@ -774,6 +783,7 @@ public partial class _Default : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "showErrorMessage", "showErrorMessage();", true);
         }
         sqc = null;
+        scheduleDetails.Hide();
     }
 
 

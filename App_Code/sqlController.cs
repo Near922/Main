@@ -795,7 +795,7 @@ public class sqlController : IDisposable
                 comm.Parameters.AddWithValue("@START_TIME", shift.Start);
                 comm.Parameters.AddWithValue("@SHIFT", shift.ShiftName);
                 conn.Open();
-                shifts = (int)comm.ExecuteNonQuery();
+                shifts = comm.ExecuteNonQuery();
             }
             return shifts;
         }

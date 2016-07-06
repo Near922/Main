@@ -9,9 +9,9 @@
     </asp:ScriptManagerProxy>
     <div style="text-align: center; width: 100%;">
         <div style="margin: 0 auto; padding-bottom: 20px; padding-top: 20px; width:100%; text-align:center; display: table;">
-            <asp:UpdatePanel runat="server" ID="UpdateCalander">
+            <asp:UpdatePanel runat="server" ID="Update">
                 <ContentTemplate>
-                    <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
+                  <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Success!</strong>
                         <asp:Label ID="lblMessage" runat="server" Text="" />
@@ -19,6 +19,10 @@
                     <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
                         <strong>Error!</strong> An error has occurred.  Please contact the administrator.
                     </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <asp:UpdatePanel runat="server" ID="UpdateCalander">
+                <ContentTemplate>
                     <br />
                     <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"
                         Style="margin-bottom: 0px; margin: 0 auto;" SelectedDate="04/14/2014 22:47:07" FirstDayOfWeek="Monday" BorderColor="Silver"></asp:Calendar>
@@ -38,6 +42,9 @@
         <div>
             <asp:Label ID="lblMain" runat="server" Text="" />
         </div>
+
+        <asp:UpdatePanel runat="server" ID="UpdateGrid">
+            <ContentTemplate>
         <div style="width: 100%; margin: 0 auto; display: table;">
                 <div style="float: left; width: 11%;">
                     <asp:CheckBox ID="chkServer" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="chkServer_CheckedChanged"
@@ -78,8 +85,6 @@
             </div>
         <br />
 
-        <asp:UpdatePanel runat="server" ID="UpdateGrid">
-            <ContentTemplate>
                 <div class="table-responsive">
                     <table style="border: thin solid #C0C0C0; width: 100%;; margin-right: auto; margin-left: auto;"
                         cellspacing="0" id="customers">
@@ -186,19 +191,6 @@
                     </table>
                 </div>
             </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger EventName="Click" ControlID="btnSave" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkServer" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkBar" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkToGo" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkManagement" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkHost" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkBackwait" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkPrep" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkDish" />
-                <asp:AsyncPostBackTrigger EventName="CheckedChanged" ControlID="chkCook" />
-                <asp:AsyncPostBackTrigger ControlID="Calendar1" EventName="SelectionChanged" />
-            </Triggers>
         </asp:UpdatePanel>
     </div>
 
@@ -208,13 +200,15 @@
         TargetControlID="btnShow" CancelControlID="btnClose" BackgroundCssClass="modalBackground grid">
     </asp:ModalPopupExtender>
     <asp:Panel ID="deletePanel" runat="server" Style="display: none;">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
         <div style="background-color: White;">
             <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
                 <asp:Label ID="Label8" runat="server" Text="Shift Details" ForeColor="White" Font-Size="50px"> </asp:Label>
             </div>
             <div style="padding: 20px 20px 20px 20px;">
                 <div style="padding-bottom: 20px;">
-                    <asp:Label ID="Label10" runat="server" Text="Shift:"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text="Shift Date:"></asp:Label>
                     <asp:Label ID="shftDate" runat="server" Text=""></asp:Label>
                 </div>
                 <div style="padding-bottom: 20px;">
@@ -226,13 +220,15 @@
                     <asp:Label ID="lblShiftDetailsJob" runat="server" Text=""></asp:Label>
                 </div>
                 <div style="padding-bottom: 20px;">
-                    <asp:Label ID="Label5" runat="server" Text="Shift:"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="Shift Hours:"></asp:Label>
                     <asp:Label ID="lblShiftDetailsShift" runat="server" Text=""></asp:Label>
                 </div>
                 <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" />
                 <asp:Button ID="btnClose" runat="server" CssClass="special_button_red" Text="Close" />
             </div>
         </div>
+        </ContentTemplate>
+      </asp:UpdatePanel>
     </asp:Panel>
     <!-- ModalPopupExtender -->
     <asp:ModalPopupExtender ID="mpeScheduleInput" runat="server" PopupControlID="schedulePanel"
@@ -307,7 +303,6 @@
                         <asp:Button ID="btnReset" runat="server" CssClass="special_button_red" Text="Close" 
                           OnClick="btnReset_Click" />
                     </div>
-                </div>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

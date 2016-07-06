@@ -47,6 +47,8 @@
                             <li id="hlContact" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">Contact</a></li>
                             <li id="hlAdmin" class="header_cell" runat="server" style="display: none; color: white  !important;">
                             <asp:HyperLink runat="server" ID="adminLink" style="color: white  !important;" NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                            <li id="LiLogout" class="header_cell" runat="server">
+                                <asp:LinkButton runat="server" ID="hlLogout" style="color: white  !important;" NavigateUrl="" OnClick="hlLogout_Click">Log Out</asp:LinkButton></li>
                         </ul>
                     </div>
                 </div>
@@ -72,17 +74,18 @@
                             <div style="margin: 0 auto; width: 150px;">
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="http://www.facebook.com/james.bergen.35">
-                                        <img src="~/images/icons/1444682352_facebook_online_social_media.png" runat="server" alt="facebook profile" style="height: 35px" />
+                                        <img runat="server" alt="facebook profile" style="height: 35px"  src="~/images/icons/social_media_icons_flat_shadow_set_64x64_0000_facebook.png" />
                                     </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="https://github.com/Near922/Main">
-                                        <img src="~/images/icons/GitHub-Mark-32px.png" runat="server" alt="github profile" style="height: 35px" />
+                                        <img src="~/images/icons/GitHub-Mark-Light-32px.png" runat="server" alt="github profile" style="height: 35px" />
                                     </a>
                                 </div>
                                 <div style="padding-right: 10px; float: left;">
                                     <a href="https://www.linkedin.com/in/james-bergen-52823579">
-                                        <img style="height: 35px" runat="server" src="~/images/icons/1444682364_linked_in_online_social_media.png" /></a>
+                                        <img style="height: 35px" runat="server" src="images/icons/social_media_icons_flat_shadow_set_48x48_0010_linkedin.png"  alt="linkedin"/>
+                                    </a>
                                 </div>
                             </div>
                         </div>

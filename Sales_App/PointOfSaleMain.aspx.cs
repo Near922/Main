@@ -17,11 +17,11 @@ public partial class PointOfSaleMain : System.Web.UI.Page
         {
             Response.Redirect("~/login.aspx");
         }
-        Response.Cache.SetExpires(DateTime.Now);
-        Response.Cache.SetValidUntilExpires(false);
-        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        Response.Cache.SetNoStore();
+        //Response.Cache.SetExpires(DateTime.Now);
+        //Response.Cache.SetValidUntilExpires(false);
+        //Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //Response.Cache.SetNoStore();
 
         var user = (User)Session["User"];
         lblGreeting.Text = String.Format("Welcome {0}!", user.Name.ToUpper());
@@ -106,7 +106,8 @@ public partial class PointOfSaleMain : System.Web.UI.Page
             employee.EnterNewTable(Int32.Parse(txtTblNum.Text), Int32.Parse(txtNumGuests.Text));
             guestNumError.Text = "";
             tblNumError.Text = "";
-            Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(txtTblNum.Text));
+            Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(txtTblNum.Text), false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 
@@ -259,7 +260,8 @@ public partial class PointOfSaleMain : System.Web.UI.Page
 
     protected void openTblList_ItemCommand1(object source, ListViewCommandEventArgs e)
     {
-      Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + e.CommandName);
+      Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + e.CommandName, false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 
     protected void btnClockOut_Click(object sender, EventArgs e)
@@ -271,12 +273,14 @@ public partial class PointOfSaleMain : System.Web.UI.Page
         Session["user_pass"] = null;
         Session["user_name"] = null;
         Session["login_status"] = "no";
-        Response.Redirect("~/login.aspx");
+        Response.Redirect("~/login.aspx", false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 
     protected void btnSales_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Sales_App/Sales.aspx");
+        Response.Redirect("~/Sales_App/Sales.aspx", false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 
     protected void openTblList_ItemDataBound(object sender, ListViewItemEventArgs e)

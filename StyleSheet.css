@@ -532,6 +532,35 @@ tr.selected {
         text-decoration: none !important;
     }
 
+    .special_button_blue_reverse {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 200px;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    /*background-color: #42729B;*/
+    background-color: #4baad3;
+    font-size: large !important;
+    font-weight: 200;
+    border-style: solid;
+    border-color: white;
+    border-width: thin;
+    text-decoration: none;
+    font-family: Roboto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+    .special_button_blue_reverse:hover {
+        color: #4baad3;
+        background-color: white;
+        text-decoration: none !important;
+    }
+
 .special_button_lite_dark {
     text-align: center;
     vertical-align: middle;
@@ -750,7 +779,7 @@ td {
     width: 100%;
 }
 
-.skill {
+.skillTag {
     border: 1px solid #50a9d1;
     margin-right: 10px;
     text-transform: uppercase;

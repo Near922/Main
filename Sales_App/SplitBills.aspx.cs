@@ -15,7 +15,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
     {
         if (Session["User"] == null)
         {
-            Response.Redirect("~/login.aspx");
+            Response.Redirect("~/login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
         Response.Cache.SetExpires(DateTime.Now);
         Response.Cache.SetValidUntilExpires(false);
@@ -108,7 +109,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
     protected void btnBack_Click(object sender, EventArgs e)
     {
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-        Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()));
+        Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -165,7 +167,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             bill.Update();
         }
         Session["Table"] = table;
-        Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()));
+        Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 
     [WebMethod(EnableSession = true)]

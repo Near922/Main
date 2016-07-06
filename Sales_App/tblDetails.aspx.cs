@@ -656,7 +656,8 @@ public partial class tblDetails : System.Web.UI.Page
                 bill.Update();
             }
             server.CloseTable(table);
-            Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+            Response.Redirect("~/Sales_App/PointOfSaleMain.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
     }
@@ -669,7 +670,8 @@ public partial class tblDetails : System.Web.UI.Page
     protected void btnSplit_Click(object sender, EventArgs e)
     {
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-        Response.Redirect("~/Sales_App/SplitBills.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()));
+        Response.Redirect("~/Sales_App/SplitBills.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
+        Context.ApplicationInstance.CompleteRequest();
 
     }
 }

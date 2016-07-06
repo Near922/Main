@@ -12,8 +12,7 @@
                 <div id="containHeader" class="jumbotron" style="border: none; color: white;">
                     <h1 id="header">James Bergen
                     </h1>
-                    <h2>
-                        Software Developer and QA Engineer
+                    <h2>Software Developer and QA Engineer
                     </h2>
                     <div>
                         <img src="images/icons/1467098942_Html.png" />
@@ -26,7 +25,7 @@
                             I have experience building user friendly web applications using C# and ASP.NET as well as test automation frameworks.
                         </p>-->
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_link_button opac" Style="width: 300px;" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" />
                     </div>
                 </div>
                 <!--<div style="text-align: center;">
@@ -38,7 +37,7 @@
         </div>
 
     </div>
-    <div id="divAbout" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; color: black; min-height: 500px;"
+    <div id="divAbout" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; color: #808080; min-height: 500px;"
         text-align="left">
         <div class="container">
             <p class="section_header" style="color: #FF675B;">
@@ -50,7 +49,7 @@
                         Hi, my name is James Bergen.  I'm a Software Developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
                     </p>
                     <p>
-                        I studied Management Information System at University of South Florida and I've spent the last few years working in test automation.  Most of my programming experience is with C# and Ruby but
+                        I studied Management Information Systems at University of South Florida and I've spent the last few years working in test automation.  Most of my programming experience is with C# and Ruby but
                         I'm always interested in learning something new and always looking for ways to improve myself.
                     </p>
                     <p>In my free time when I'm not writing code I like to practice my guitar, play video games, spend time with my dogs, and watch movies / tv shows (Game of Thrones!).</p>
@@ -60,7 +59,6 @@
                     <img src="images/my_profile_pic.png" height="250" width="250" style="vertical-align: middle;" />
                 </div>
             </div>
-
         </div>
     </div>
     <div id="divSkills" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 350px;"
@@ -69,66 +67,85 @@
             <p class="section_header">
                 Technical Skills
             </p>
-            <div style="padding-top: 20px; float: left; height: 100%; text-align: center;">
-                <div style="text-align: center; margin: 0 auto;">
-                    <div style="width: 200px; height: 200px; float: left;">
+            <div style="padding-top: 20px; height: 100%; width: 100%; padding-bottom: 20px; text-align: center;">
+                <div style="text-align: center; width: 100%; margin: 0 auto;">
+                    <div style="width: 20%; min-width: 200px; height: 200px; float: left;">
                         <!--<img alt="ruby" src="images/icons/1444682091_ruby.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
                                 <input type="text" value="65" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
-                                <span style="font-size: 25px; color: gray;">Ruby</span>
+                                <span style="font-size: 25px; color: #808080;">Ruby</span>
                             </div>
                         </div>
                     </div>
-                    <div style="width: 200px; height: 200px; float: left;">
+                    <div style="width: 20%; min-width: 200px; height: 200px; float: left;">
                         <!-- <img src="images/icons/c-img.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
                                 <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
-                                <span style="font-size: 25px; color: gray;">C#</span>
+                                <span style="font-size: 25px; color: #808080;">C#</span>
                             </div>
                         </div>
                     </div>
-                    <div style="width: 200px; height: 200px; float: left;">
+                    <div style="width: 20%; min-width: 200px; height: 200px; float: left;">
                         <!--<img alt="javascript" src="images/icons/1444682687_javascript.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
                                 <input type="text" value="40" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
-                                <span style="font-size: 25px; color: gray;">Javascript</span>
+                                <span style="font-size: 25px; color: #808080;">Javascript</span>
                             </div>
                         </div>
                     </div>
                     <!-- <div style="width: 200px; height: 150px; float: left;">
                         <img alt="visual studio" src="images/icons/1444682242_visualstudio-microsoft-webdesign-html-css-javascript-develop.png" />
                     </div>-->
-                    <div style="width: 200px; height: 200px; float: left;">
+                    <div style="width: 20%; min-width: 200px; height: 200px; float: left;">
                         <!--<img alt="asp.net" src="images/icons/1444682634_ASP.Net.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
-                                <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
+                                <input type="text" value="55" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
-                                <span style="font-size: 25px; color: gray;">SQL</span>
+                                <span style="font-size: 25px; color: #808080;">SQL</span>
                             </div>
                         </div>
                     </div>
-                    <div style="width: 200px; height: 200px; float: left;">
+                    <div style="width: 20%; min-width: 200px; height: 200px; float: left;">
                         <!--<img alt="sql" src="images/icons/1458458079_icon-89-document-file-sql.png" style="height: 100px; width: 100px;" />-->
                         <div style="width: 160px;">
                             <div>
                                 <input type="text" value="50" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
                             </div>
                             <div style="text-align: center;">
-                                <span style="font-size: 25px; color: gray;">ASP.NET</span>
+                                <span style="font-size: 25px; color: #808080;">ASP.NET</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
+        text-align="left">
+        <div class="container">
+                        <div style="width: 100%; padding-top: 20px; text-align: left; color: #808080;">
+                <div>
+                    <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
+                    <p>Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
+                </div>
+                <div>
+                    <span style="font-weight: bold; font-size: 19px;">Database/DBMS: </span>
+                    <p>SQL, MS SQL Server 2012</p>
+                </div>
+                <div>
+                    <span style="font-weight: bold; font-size: 19px;">Tools: </span>
+                    <p>Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
                 </div>
             </div>
         </div>
@@ -160,10 +177,10 @@
                 <br />
                 <br />
                 <div>
-                    <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for Development team to address and assist the manual QA team with regression testing when needed.</p>
+                    <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the Development team to address and assist the manual QA team with regression testing when needed.</p>
                     <br />
                     <br />
-                    <span class="skill">C#</span><span class="skill">Selenium WebDriver</span><span class="skill">SQL</span><span class="skill">Visual Studio</span><span class="skill">NUnit</span>
+                    <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
                 </div>
             </div>
             <div class="experience">
@@ -193,11 +210,11 @@
                     </p>
                     <br />
                     <p>
-                        Trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  Created documention for tools and led IT department "Lunch n' Learns" with team mate to review QA Automation process and tools.  Provided support and training to the manual QA Team when necessary.
+                        Trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  Created documentation for tools and led IT department "Lunch n' Learns" with team mate to review QA Automation process and tools.  Provided support and training to the manual QA Team when necessary.
                     </p>
                     <br />
                     <br />
-                    <span class="skill">Ruby</span><span class="skill">WATIR</span><span class="skill">Cucumber</span><span class="skill">Sinatra</span><span class="skill">SQL</span><span class="skill">JQuery</span><span class="skill">VB.NET</span><span class="skill">Visual Studio</span>
+                    <span class="skillTag">Ruby</span><span class="skillTag">WATIR</span><span class="skillTag">Cucumber</span><span class="skillTag">Sinatra</span><span class="skillTag">SQL</span><span class="skillTag">JQuery</span><span class="skillTag">VB.NET</span><span class="skillTag">Visual Studio</span>
                 </div>
             </div>
             <div class="experience">
@@ -230,12 +247,12 @@
                     </ul>
                     <br />
                     <br />
-                    <span class="skill">C#</span><span class="skill">SQL</span><span class="skill">Visual Studio</span>
+                    <span class="skillTag">C#</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span>
                 </div>
             </div>
         </div>
     </div>
-    <div id="divPortfolio" runat="server" clientidmode="static" class="contentDiv" style="background-color: #F4F4F4;"
+    <div id="divPortfolio" runat="server" clientidmode="static" class="contentDiv" style="background-color: #F4F4F4; color: #808080;"
         text-align="center">
         <div class="container">
             <p class="section_header">
@@ -326,7 +343,7 @@
             <div class="row" style="padding-bottom: 100px;">
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblCashout" runat="server" Text="Cash Out"
+                        <asp:Label ID="lblCashout" runat="server" Text="Cash Out Utility"
                             Font-Size="X-Large" ForeColor="#4baad3"></asp:Label>
                         <p>Utility that allows restaurant management to document cash collected from front of house employees at the end of each shift, storing information in a SQL Server database.</p>
                         <p>Also calculates the wages of support staff based on support staff hours and front of house sales.</p>
@@ -355,7 +372,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <asp:Label ID="lblScheduler" runat="server" Text="Scheduler" ForeColor="#4baad3"
+                        <asp:Label ID="lblScheduler" runat="server" Text="Employee Schedule Management System" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
                         <p>Allows restaurant managers to easily add and delete shifts for staff.  Features filtering by role and easily allows management to track the number of shifts and hours per week an employee is scheduled.</p>
                         <br />

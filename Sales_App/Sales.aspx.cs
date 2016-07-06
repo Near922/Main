@@ -30,7 +30,8 @@ public partial class Sales_App_Sales : System.Web.UI.Page
     {
         if (Session["User"] == null)
         {
-            Response.Redirect("~/login.aspx");
+            Response.Redirect("~/login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
         Response.Cache.SetExpires(DateTime.Now);
         Response.Cache.SetValidUntilExpires(false);
