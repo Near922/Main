@@ -67,7 +67,7 @@ public partial class login : System.Web.UI.Page
             }
             else
             {
-                txtPassword.BorderStyle = BorderStyle.None;
+                txtPassword.BorderStyle = BorderStyle.NotSet;
                 txtPassword.BorderColor = System.Drawing.Color.Empty;
             }
 
@@ -76,8 +76,9 @@ public partial class login : System.Web.UI.Page
                 txtUserID.BorderStyle = BorderStyle.Dotted;
                 txtUserID.BorderColor = System.Drawing.Color.Red;
             }
+            else
             {
-                txtUserID.BorderStyle = BorderStyle.None;
+                txtUserID.BorderStyle = BorderStyle.NotSet;
                 txtUserID.BorderColor = System.Drawing.Color.Empty;
             }
             return;
