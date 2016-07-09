@@ -22,7 +22,7 @@ public partial class tblDetails : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ClientScript.RegisterClientScriptInclude(this.GetType(), "myScript", "Scripts/JScript.js");
+        //ClientScript.RegisterClientScriptInclude(this.GetType(), "myScript", "../Scripts/JScript.js");
         server = (Server)Session["Employee"];
         lblTableNum.Text = String.Format("Table {0}", Request.QueryString["Table"].ToString());
         lblServerName.Text = server.Name;
@@ -198,11 +198,16 @@ public partial class tblDetails : System.Web.UI.Page
     protected void updateValues(string value, int index, int status = 0)
     {
         HtmlTable divContainer = new HtmlTable();
+        HtmlTable spacer = new HtmlTable();
+        spacer.Style.Add("height", "150px");
+        HtmlTable spacerTwo = new HtmlTable();
+        spacerTwo.Style.Add("height", "50px");
         divContainer.Style.Add("width", "100%");
         divContainer.Style.Add("min-height", "500px");
         divContainer.BgColor = "cyan";
         divContainer.Style.Add("position", "relative");
         HtmlTableRow containerrow = new HtmlTableRow();
+ 
         HtmlTableCell containercell = new HtmlTableCell();
         containercell.VAlign = "top";
 
@@ -268,8 +273,8 @@ public partial class tblDetails : System.Web.UI.Page
 
                 row.Cells.Add(first_cell);
                 row.Cells.Add(second_cell);
+                row.Style.Add("height", "50px");
                 httable.Rows.Add(row);
-
             }
             if (table.tableBill(index).Payment > 0.00M)
             {
@@ -332,11 +337,13 @@ public partial class tblDetails : System.Web.UI.Page
 
         TabContainerBills.Tabs[index].Controls.Clear();
         containercell.Controls.Add(httable);
+        containercell.Controls.Add(spacer);
         containercell.Controls.Add(billTotal);
         containercell.Controls.Add(paymentTable);
         containercell.Controls.Add(totalTable);
         containerrow.Cells.Add(containercell);
         divContainer.Rows.Add(containerrow);
+        containercell.Controls.Add(spacerTwo);
         TabContainerBills.Tabs[index].Controls.Add(divContainer);
     }
 

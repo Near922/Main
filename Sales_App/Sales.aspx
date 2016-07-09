@@ -5,10 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    <div style="width: 100%;" align="center">
+    <div style="width: 100%;">
                     <asp:Button ID="btnBack" runat="server" class="special_button_red" Text="Exit"
                     PostBackUrl="PointOfSaleMain.aspx" />
-        <table cellpadding="10px" style="width: 70%;  margin: 0 auto; ">
+        <h2>Today's Sales</h2>
+        <br />
+        <table style="width: 70%;  margin: 0 auto;">
             <tr>
                 <td>
                     <asp:Label ID="lblBeverage" runat="server" Text="Beverages:" />

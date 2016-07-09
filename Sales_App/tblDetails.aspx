@@ -255,61 +255,61 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button1" runat="server" class="special_button_dark" Text="1" OnClick="Button1_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button2" runat="server" class="special_button_dark" Text="2" OnClick="Button2_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button3" runat="server" class="special_button_dark" Text="3" OnClick="Button3_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button4" runat="server" class="special_button_dark" Text="4" OnClick="Button4_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button5" runat="server" class="special_button_dark" Text="5" OnClick="Button5_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button6" runat="server" class="special_button_dark" Text="6" OnClick="Button6_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button7" runat="server" class="special_button_dark" Text="7" OnClick="Button7_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;"> 
                                                 <asp:Button ID="Button8" runat="server" class="special_button_dark" Text="8" OnClick="Button8_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button9" runat="server" class="special_button_dark" Text="9" OnClick="Button9_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonClear" runat="server" class="special_button_dark" Text="Clear" OnClick="ButtonClear_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonZero" runat="server" class="special_button_dark" Text="0" OnClick="ButtonZero_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonpaymentAmountBack" runat="server" class="special_button_dark" Text="Back"
                                                     OnClick="ButtonpaymentAmountBack_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none">
+                                            <td align="center" style="border-top-style: none; border-bottom-style: none; padding: 10px;">
                                                 <asp:Button ID="btnEnter" runat="server" CssClass="special_button_dark"
                                                     Text="Enter" OnClick="btnEnter_Click" />
                                             </td>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none">
+                                            <td align="center" style="border-top-style: none; border-bottom-style: none; padding: 10px;">
                                                 <asp:Button ID="btnClose" runat="server" CssClass="special_button_red"
                                                     Text="Close"
                                                     OnClick="btnClose_Click" />
                                             </td>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none">
+                                            <td align="center" style="border-top-style: none; border-bottom-style: none ; padding: 10px;">
                                                 <asp:Button ID="btnDecimal" runat="server" CssClass="special_button_dark" Text="." OnClick="btnDecimal_Click" />
                                             </td>
                                         </tr>

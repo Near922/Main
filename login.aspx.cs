@@ -88,11 +88,11 @@ public partial class login : System.Web.UI.Page
         {
             var user = (User)Session["User"];
 
-            FormsAuthentication.RedirectFromLoginPage(txtUserID.Text, false);
+            FormsAuthentication.RedirectFromLoginPage(txtUserID.Text, true);
 
             if (user.IsAdmin)
             {
-                Response.Redirect("~/Sales_App/Admin.aspx", false);
+                Response.Redirect("~/Sales_App/Admin.aspx", true);
                 Context.ApplicationInstance.CompleteRequest();
             }
         }

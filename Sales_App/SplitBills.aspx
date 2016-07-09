@@ -23,11 +23,11 @@
             </td>
         </tr>
     </table>
+    <br />
+    <br />
+    <br />
     <asp:Button ID="btnAdd" runat="server" class="special_button_dark" Text='Add' OnClick="btnAdd_Click" />
     <asp:Button ID="btnSave" runat="server" class="special_button_dark" Text='Save' OnClick="btnSave_Click" />
     <asp:Button ID="btnBack" runat="server" class="special_button_dark" Text='Back' OnClick="btnBack_Click" />
-    <script src="../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
-    <script src="../Scripts/JScript.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-ui.min.js"></script>
 </asp:Content>
 

@@ -29,14 +29,14 @@ public partial class Sales_App_Admin : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetExpires(DateTime.Now);
-        Response.Cache.SetValidUntilExpires(false);
-        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        Response.Cache.SetNoStore();
+        //Response.Cache.SetExpires(DateTime.Now);
+        //Response.Cache.SetValidUntilExpires(false);
+        //Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //Response.Cache.SetNoStore();
         if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
         {
-            Response.Redirect("Home.aspx");
+            Response.Redirect("~/Home.aspx");
         }
 
         if (Session["User"] != null && Page.User.Identity.IsAuthenticated)
@@ -44,7 +44,7 @@ public partial class Sales_App_Admin : System.Web.UI.Page
             User user = (User)Session["User"];
             if (!user.IsAdmin)
             {
-                Response.Redirect("Home.aspx");
+                Response.Redirect("~/Home.aspx");
             }
         }
 

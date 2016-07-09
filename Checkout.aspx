@@ -344,19 +344,25 @@
 
                         <div class="form-group" style="overflow: hidden;">
 
+                            <div style="float: left;">
+                                <asp:Button ID="btnNext" runat="server" CssClass="special_button_dark" Text="Next" OnClick="btnNext_Click" />
+                            </div>
 
-                            <asp:Button ID="btnNext" runat="server" Style="float: left;" CssClass="special_button_dark" Text="Next" OnClick="btnNext_Click" />
-
-
-                            <asp:Button ID="btnBack" runat="server" Style="float: left;" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" />
-
-                            <asp:Button ID="btnCalculate" runat="server" Style="float: right;" Text="Calculate" CssClass="special_button_dark"
-                                OnClick="btnCalculate_Click"
-                                ToolTip="Calculate money owed." Visible="False" />
-
-
-                            <asp:Button ID="btnServerClose" runat="server" Style="float: right;" CssClass="special_button_red" Text="Cancel" OnClick="btnServerClose_Click" />
-
+                            <div style="float: left;">
+                                <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" />
+                            </div>
+                            <div style="float: right;">
+                                <asp:Button ID="btnCalculate" runat="server" Text="Calculate" CssClass="special_button_dark"
+                                    OnClick="btnCalculate_Click"
+                                    ToolTip="Calculate money owed." Visible="False" />
+                            </div>
+                            <div id="buttonbreak" runat="server" style="height: 20px; width: 100% !important; float: right;" visible="false">
+                                <br />
+                                <br />
+                            </div>
+                            <div style="float: right;">
+                                <asp:Button ID="btnServerClose" runat="server" CssClass="special_button_red" Text="Cancel" OnClick="btnServerClose_Click" />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -80,52 +80,52 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button1" runat="server" class="special_button_dark" Text="1" OnClick="Button1_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button2" runat="server" class="special_button_dark" Text="2" OnClick="Button2_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button3" runat="server" class="special_button_dark" Text="3" OnClick="Button3_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button4" runat="server" class="special_button_dark" Text="4" OnClick="Button4_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button5" runat="server" class="special_button_dark" Text="5" OnClick="Button5_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button6" runat="server" class="special_button_dark" Text="6" OnClick="Button6_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button7" runat="server" class="special_button_dark" Text="7" OnClick="Button7_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button8" runat="server" class="special_button_dark" Text="8" OnClick="Button8_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button9" runat="server" class="special_button_dark" Text="9" OnClick="Button9_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonClear" runat="server" class="special_button_dark" Text="Clear" OnClick="ButtonClear_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonZero" runat="server" class="special_button_dark" Text="0" OnClick="ButtonZero_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonTableNumBack" runat="server" class="special_button_dark" Text="Back"
                                                     OnClick="ButtonTableNumBack_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" align="center" style="border-top-style: none; border-bottom-style: none">
+                                            <td colspan="3" style="border-top-style: none; border-bottom-style: none; text-align: center; padding: 10px;">
                                                 <asp:Button ID="btnEnter" runat="server" CssClass="special_button_dark"
                                                     Text="Enter" OnClick="btnEnter_Click" />
                                             </td>
@@ -144,52 +144,52 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button10" runat="server" class="special_button_dark" Text="1" OnClick="Button10_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button11" runat="server" class="special_button_dark" Text="2" OnClick="Button11_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button12" runat="server" class="special_button_dark" Text="3" OnClick="Button12_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button13" runat="server" class="special_button_dark" Text="4" OnClick="Button13_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button14" runat="server" class="special_button_dark" Text="5" OnClick="Button14_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button15" runat="server" class="special_button_dark" Text="6" OnClick="Button15_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button16" runat="server" class="special_button_dark" Text="7" OnClick="Button16_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button17" runat="server" class="special_button_dark" Text="8" OnClick="Button17_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="Button18" runat="server" class="special_button_dark" Text="9" OnClick="Button18_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonGuestClear" runat="server" class="special_button_dark" Text="Clear"
                                                     OnClick="ButtonGuestClear_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonGuestZero" runat="server" class="special_button_dark" Text="0" OnClick="ButtonGuestZero_Click" />
                                             </td>
-                                            <td>
+                                            <td style="padding: 10px;">
                                                 <asp:Button ID="ButtonBack" runat="server" class="special_button_dark" Text="Back" OnClick="ButtonBack_Click" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" align="center" style="border-top-style: none; border-bottom-style: none">
+                                            <td colspan="3" style="border-top-style: none; border-bottom-style: none; text-align: center; padding: 10px;">
                                                 <asp:Button ID="btnGuestEnter" runat="server" CssClass="special_button_dark"
                                                     Text="Enter" OnClick="btnGuestEnter_Click" />
                                             </td>
@@ -200,7 +200,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td style="text-align: center; padding: 10px;">
                             <asp:UpdatePanel ID="closeBtnUpdate" runat="server">
                                 <ContentTemplate>
                                     <asp:Button ID="btnClose" runat="server" CssClass="special_button_red"
@@ -214,7 +214,4 @@
         </div>
     </asp:Panel>
     <!-- ModalPopupExtender -->
-    <script src="../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
-    <script src="../Scripts/JScript.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-ui.min.js"></script>
 </asp:Content>

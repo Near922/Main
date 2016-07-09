@@ -961,10 +961,10 @@ td {
 
 }
 
-@media screen and (min-device-width: 320px) 
-  and (max-device-width: 480px) {
+
+@media (max-width: 768px) {
     .table_button {
-        width: 100% !important;
+        width:100%;
     }
 }
 

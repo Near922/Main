@@ -815,6 +815,7 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = false;
         btnBack.Visible = true;
         page_two.Visible = true;
+        buttonbreak.Visible = true;
         btnCalculate.Visible = true;
     }
 
@@ -849,6 +850,7 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = true;
         btnBack.Visible = false;
         page_two.Visible = false;
+        buttonbreak.Visible = false;
         btnCalculate.Visible = false;
         txtBarTips.Visible = true;
     }
@@ -859,6 +861,7 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = true;
         btnBack.Visible = false;
         page_two.Visible = false;
+        buttonbreak.Visible = false;
         btnCalculate.Visible = false;
     }
 

@@ -33,11 +33,11 @@ public partial class Sales_App_Sales : System.Web.UI.Page
             Response.Redirect("~/login.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
-        Response.Cache.SetExpires(DateTime.Now);
-        Response.Cache.SetValidUntilExpires(false);
-        Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        Response.Cache.SetNoStore();
+        //Response.Cache.SetExpires(DateTime.Now);
+        //Response.Cache.SetValidUntilExpires(false);
+        //Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //Response.Cache.SetNoStore();
         server = (Server)Session["Employee"];
         SQC = new sqlController();
         DataTable dt = SQC.GetTotals(server);
