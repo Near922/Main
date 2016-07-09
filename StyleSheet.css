@@ -654,6 +654,7 @@ td {
     background-color: #42484d;
     min-height: 70px;
     color: white;
+    bottom: 0;
 }
 
 .ajax_tab_body {

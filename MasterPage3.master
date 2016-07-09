@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div id="contentWrapper" runat="server" style="height: 100%; min-height: 900px; margin-top: 60px;">
+        <div id="contentWrapper" runat="server" style="min-height: 100vh !important; height: 100%; margin-top: 60px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
             </asp:ContentPlaceHolder>
             <div class="container">

@@ -134,18 +134,18 @@
     <div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
         text-align="left">
         <div class="container">
-                        <div style="width: 100%; padding-top: 20px; text-align: left; color: #808080;">
+            <div style="width: 100%; padding-top: 20px; text-align: left; color: #808080;">
                 <div>
                     <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
-                    <p>Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
+                    <p style=" margin-bottom: 0 !important;">Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
                 </div>
                 <div>
                     <span style="font-weight: bold; font-size: 19px;">Database/DBMS: </span>
-                    <p>SQL, MS SQL Server 2012</p>
+                    <p style=" margin-bottom: 0 !important;">SQL, MS SQL Server 2012</p>
                 </div>
                 <div>
                     <span style="font-weight: bold; font-size: 19px;">Tools: </span>
-                    <p>Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
+                    <p style=" margin-bottom: 0 !important;">Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
                 </div>
             </div>
         </div>
@@ -465,7 +465,6 @@
                         </div>
                     </div>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
         </div>
     </div>
