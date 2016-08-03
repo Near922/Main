@@ -503,6 +503,30 @@ tr.selected {
         opacity: 0.8;
     }
 
+    .special_button_dark_panel {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    /*background-color: #42729B;*/
+    background-color: #34495E;
+    font-size: large !important;
+    font-weight: 200;
+    border-style: none;
+    text-decoration: none;
+    font-family: Roboto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+    .special_button_dark_panel:hover {
+        opacity: 0.8;
+    }
+
 .special_button_blue {
     text-align: center;
     vertical-align: middle;
@@ -961,6 +985,34 @@ td {
 
 }
 
+.money_button{
+
+}
+
+.money_back_button{
+
+}
+
+.modal_span{
+
+}
+.clear_button{
+
+}
+
+.close_new_table{
+
+}
+
+  .modal-header, h4, .close {
+      background-color: #4baad3;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
 
 @media (max-width: 768px) {
     .table_button {

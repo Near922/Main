@@ -9,11 +9,15 @@ using System.Data;
 /// <summary>
 /// Summary description for sqlController
 /// </summary>
+/// 
+[Serializable]
 public class sqlController : IDisposable
 {
     //private SqlConnection conn;
+    [NonSerialized]
     private SqlDataAdapter da;
     private DataTable dt;
+    [NonSerialized]
     private SqlCommand comm;
     private string connString = ConfigurationManager.ConnectionStrings["RestaurantConnectionString"].ConnectionString;
 

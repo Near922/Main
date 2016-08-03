@@ -325,7 +325,8 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             insert_schedule(staffName, strJob, strtTime, endTime, lstShift.SelectedItem.Text);
-            mpeScheduleInput.Hide();
+            //mpeScheduleInput.Hide();
+            ScriptManager.RegisterStartupScript(this, GetType(), "Close", "$('#scheduleClose').click();", true);
 
         }
     }
@@ -733,7 +734,7 @@ public partial class _Default : System.Web.UI.Page
     }
     public void showScheduleDetailsPopUp()
     {
-        scheduleDetails.Show();
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open", "openDeleteModal();", true);
     }
 
     public void DeleteShift()
@@ -783,11 +784,11 @@ public partial class _Default : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "showErrorMessage", "showErrorMessage();", true);
         }
         sqc = null;
-        scheduleDetails.Hide();
+        //scheduleDetails.Hide();
+        ScriptManager.RegisterStartupScript(this, GetType(), "Close", "$('#deleteClose').click();", true);
     }
 
-
-    protected void btnReset_Click(object sender, EventArgs e)
+    private void Clear()
     {
         lstStaffType.Text = " ";
         lstStartMinutes.Text = " ";
@@ -817,9 +818,8 @@ public partial class _Default : System.Web.UI.Page
         lstStartHours.DataBind();
         lstEndHours.DataSource = strtLunchHours;
         lstEndHours.DataBind();
-
-        mpeScheduleInput.Hide();
     }
+
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         DeleteShift();
@@ -854,5 +854,16 @@ public partial class _Default : System.Web.UI.Page
             lstEndHours.DataBind();
 
         }
+    }
+
+    protected void Repeater3_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+
+    }
+
+    protected void btnAddShift_Click(object sender, EventArgs e)
+    {
+        Clear();
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open Shift", "openShiftModal();", true);
     }
 }

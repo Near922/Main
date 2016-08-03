@@ -5,6 +5,8 @@ using System.Linq;
 /// <summary>
 /// Summary description for Table
 /// </summary>
+
+[Serializable]
 public class Table
 {
     private int id;

@@ -514,118 +514,25 @@ public partial class tblDetails : System.Web.UI.Page
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "1";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "2";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "3";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "4";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button5_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "5";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button6_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "6";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button7_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "7";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button8_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "8";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void Button9_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "9";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void ButtonZero_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += "0";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void btnDecimal_Click(object sender, EventArgs e)
-    {
-        paymentAmount = txtTblPayment.Text;
-        paymentAmount += ".";
-        txtTblPayment.Text = paymentAmount;
-        modalPopup.Show();
-    }
-    protected void ButtonClear_Click(object sender, EventArgs e)
-    {
-        paymentAmount = "";
-        txtTblPayment.Text = "";
-        modalPopup.Show();
-    }
-    protected void ButtonpaymentAmountBack_Click(object sender, EventArgs e)
-    {
-        if (txtTblPayment.Text.Length > 0)
-        {
-            paymentAmount = txtTblPayment.Text.Substring(0, txtTblPayment.Text.Length - 1);
-            txtTblPayment.Text = paymentAmount;
-        }
-        modalPopup.Show();
-    }
 
     protected void btnEnter_Click(object sender, EventArgs e)
     {
-        if ((txtTblPayment.Text == ""))
+        if ((tableNumber.Value.ToString() == ""))
         {
-            if (txtTblPayment.Text == "")
+            if (tableNumber.Value.ToString() == "")
             {
                 tblNumError.Text = "*Required.";
             }
-            modalPopup.Show();
 
         }
         else
         {
 
-            modalPopup.Hide();
             bill = table.GetBills()[getActiveTabIndex()];
-            server.ApplyPayment(bill, Decimal.Parse(txtTblPayment.Text));
-            txtTblPayment.Text = "";
+            server.ApplyPayment(bill, Decimal.Parse(tableNumber.Value.ToString()));
+            tableNumber.Value = "";
             updateValues("", getActiveTabIndex());
+            ScriptManager.RegisterStartupScript(this, GetType(), "Closepopup", "Closepopup();", true);
         }
 
     }
@@ -670,8 +577,9 @@ public partial class tblDetails : System.Web.UI.Page
     }
     protected void btnClose_Click(object sender, EventArgs e)
     {
-        txtTblPayment.Text = "";
-        modalPopup.Hide();
+        tblNumError.Text = "";
+        txtPaymentSpan.Text = "";
+        tableNumber.Value = "";
     }
 
     protected void btnSplit_Click(object sender, EventArgs e)
@@ -680,5 +588,13 @@ public partial class tblDetails : System.Web.UI.Page
         Response.Redirect("~/Sales_App/SplitBills.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
 
+    }
+
+    protected void paymentButton_Click(object sender, EventArgs e)
+    {
+        tblNumError.Text = "";
+        txtPaymentSpan.Text = "";
+        tableNumber.Value = "";
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open Modal", "openModal();", true);
     }
 }

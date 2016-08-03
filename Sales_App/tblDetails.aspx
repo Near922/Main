@@ -3,6 +3,14 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="../Scripts/jquery-3.0.0.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function openModal() {
+            $('#numberPanel').modal('show');
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
@@ -24,15 +32,15 @@
                         ForeColor="Black" Width="100%" Height="300">
                         <cc1:TabPanel runat="server" ID="TabPanelBev" HeaderText="Beverages" Style="position: relative;">
                             <ContentTemplate>
-                                    <asp:ListView ID="ListViewBeverage" runat="server" RepeatColumns="4"
-                                        RepeatDirection="Horizontal" OnItemCommand="ListViewBeverage_ItemCommand1">
-                                        <ItemTemplate>
-                                            <div style="padding: 15px; float: left;" class="table_button">
-                                                <asp:Button ID="bvgButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                    CommandName='<%# Eval("Name") %>' />
-                                            </div>
-                                        </ItemTemplate>
-                                    </asp:ListView>
+                                <asp:ListView ID="ListViewBeverage" runat="server" RepeatColumns="4"
+                                    RepeatDirection="Horizontal" OnItemCommand="ListViewBeverage_ItemCommand1">
+                                    <ItemTemplate>
+                                        <div style="padding: 15px; float: left;" class="table_button">
+                                            <asp:Button ID="bvgButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                                CommandName='<%# Eval("Name") %>' />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:ListView>
                             </ContentTemplate>
                         </cc1:TabPanel>
                         <cc1:TabPanel runat="server" ID="TabPanelSoup" HeaderText="Soup" Width="100%">
@@ -151,20 +159,12 @@
             <asp:AsyncPostBackTrigger ControlID="deleteButton" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
-    <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" Style="display: none;" />
 
     <!-- ModalPopupExtender -->
 
 
     <asp:UpdatePanel ID="controlUpdates" runat="server">
         <ContentTemplate>
-            <asp:Button ID="btnShow2" runat="server" Text="Show Modal Popup" Style="display: none;" />
-            <cc1:ModalPopupExtender ID="modalPopup" runat="server" PopupControlID="numberPanel"
-                TargetControlID="paymentButton" BackgroundCssClass="modalBackground grid">
-            </cc1:ModalPopupExtender>
-            <cc1:ModalPopupExtender ID="mpeSplitChecks" runat="server" PopupControlID="pnlSplit"
-                TargetControlID="btnShow2" BackgroundCssClass="modalBackground grid">
-            </cc1:ModalPopupExtender>
             <br />
             <br />
             <div class="row">
@@ -212,7 +212,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div style="padding: 10px;">
-                        <asp:Button ID="paymentButton" runat="server" class="special_button_dark table_button" Text='Apply Payment' />
+                        <asp:Button ID="paymentButton" runat="server" class="special_button_dark table_button" Text='Payment' OnClick="paymentButton_Click" />
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -231,129 +231,134 @@
                 </div>
             </div>
 
-            <asp:Panel ID="numberPanel" runat="server" CssClass="modalPopup Panel1" align="center"
-                Style="display: none;">
-                <div style="background-color: White;">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label7" runat="server" Text="Make Payment" ForeColor="White" Font-Size="50px"> </asp:Label>
-                    </div>
-                    <div style="padding: 20px 20px 20px 20px;">
-                        <table id="msgDetails">
-                            <tr>
-                                <td>
-                                    <table id="tblPaymentButtons" runat="server" visible="true">
-                                        <tr>
-                                            <td colspan="3" style="border-top-style: none; border-bottom-style: none">
-                                                <asp:UpdatePanel ID="TBLPaymentupdate" runat="server">
-                                                    <ContentTemplate>
+            <div class="modal fade" id="numberPanel" role="dialog">
+                <div class="modal-dialog">
+                    <asp:UpdatePanel ID="lblErrorUpdate" runat="server">
+                        <ContentTemplate>
+                            <!-- Modal content-->
+                            <div class="modal-content" style="text-align: center;">
 
-                                                        <asp:Label ID="txtTblPayment" runat="server" BorderStyle="Solid" BorderWidth="1px" Width="100%" BackColor="#F4F4F4" Height="50px" Font-Size="X-Large"></asp:Label>
-                                                        <asp:Label
-                                                            ID="tblNumError" runat="server" Text="" ForeColor="Red" />
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button1" runat="server" class="special_button_dark" Text="1" OnClick="Button1_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button2" runat="server" class="special_button_dark" Text="2" OnClick="Button2_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button3" runat="server" class="special_button_dark" Text="3" OnClick="Button3_Click" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button4" runat="server" class="special_button_dark" Text="4" OnClick="Button4_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button5" runat="server" class="special_button_dark" Text="5" OnClick="Button5_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button6" runat="server" class="special_button_dark" Text="6" OnClick="Button6_Click" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button7" runat="server" class="special_button_dark" Text="7" OnClick="Button7_Click" />
-                                            </td>
-                                            <td style="padding: 10px;"> 
-                                                <asp:Button ID="Button8" runat="server" class="special_button_dark" Text="8" OnClick="Button8_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="Button9" runat="server" class="special_button_dark" Text="9" OnClick="Button9_Click" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="ButtonClear" runat="server" class="special_button_dark" Text="Clear" OnClick="ButtonClear_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="ButtonZero" runat="server" class="special_button_dark" Text="0" OnClick="ButtonZero_Click" />
-                                            </td>
-                                            <td style="padding: 10px;">
-                                                <asp:Button ID="ButtonpaymentAmountBack" runat="server" class="special_button_dark" Text="Back"
-                                                    OnClick="ButtonpaymentAmountBack_Click" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none; padding: 10px;">
-                                                <asp:Button ID="btnEnter" runat="server" CssClass="special_button_dark"
+                                <div class="modal-header" style="padding: 35px 50px;">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Payment</h4>
+                                </div>
+                                <div class="modal-body" style="padding: 40px 50px; text-align: center;">
+                                    <div style="padding: 20px;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <asp:Label ID="txtPaymentSpan" runat="server" BorderStyle="Solid" BorderWidth="1px" Width="100%" BackColor="#F4F4F4" Height="50px" Font-Size="X-Large" ClientIDMode="Static" CssClass="table_button modal_span"></asp:Label>
+                                                <asp:Label ID="tblNumError" runat="server" ForeColor="Red" ClientIDMode="Static" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top: 20px;">
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button1" runat="server" class="special_button_dark_panel money_button table_button">1</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button2" runat="server" class="special_button_dark_panel money_button table_button">2</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button3" runat="server" class="special_button_dark_panel money_button table_button">3</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button4" runat="server" class="special_button_dark_panel money_button table_button">4</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button5" runat="server" class="special_button_dark_panel money_button table_button">5</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button6" runat="server" class="special_button_dark_panel money_button table_button">6</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button7" runat="server" class="special_button_dark_panel money_button table_button">7</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button8" runat="server" class="special_button_dark_panel money_button table_button">8</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="Button9" runat="server" class="special_button_dark_panel money_button table_button">9</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <asp:Button ID="ButtonClear" runat="server" class="special_button_dark_panel clear_button table_button" Text="Clear" ClientIDMode="Static" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="ButtonZero" runat="server" class="special_button_dark_panel money_button table_button">0</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <asp:Button ID="ButtonTableNumBack" runat="server" class="special_button_dark_panel money_back_button table_button" Text="Back"
+                                                        ClientIDMode="Static" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div style="padding-bottom: 10px !important;"> 
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div style="padding-bottom: 10px !important;">
+                                                        <button type="button" id="btnDecimal" runat="server" class="special_button_dark_panel money_button table_button">.</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div style="padding-bottom: 10px !important;">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row" style="padding-top: 50px;">
+                                            <div class="col-sm-12">
+                                                <asp:Button ID="btnEnter" runat="server" CssClass="special_button_dark_panel" Style="width: 100%; background-color: #4baad3;"
                                                     Text="Enter" OnClick="btnEnter_Click" />
-                                            </td>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none; padding: 10px;">
-                                                <asp:Button ID="btnClose" runat="server" CssClass="special_button_red"
-                                                    Text="Close"
-                                                    OnClick="btnClose_Click" />
-                                            </td>
-                                            <td align="center" style="border-top-style: none; border-bottom-style: none ; padding: 10px;">
-                                                <asp:Button ID="btnDecimal" runat="server" CssClass="special_button_dark" Text="." OnClick="btnDecimal_Click" />
-                                            </td>
-                                        </tr>
-                                    </table>
 
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <asp:HiddenField ID="tableNumber" runat="server" ClientIDMode="Static" />
+
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="btnClose" runat="server" CssClass="btn btn-default"
+                                        Text="Close" data-dismiss="modal" OnClick="btnClose_Click" UseSubmitBehavior="False" />
+
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
-            </asp:Panel>
-
-
-            <asp:Panel ID="pnlSplit" runat="server" CssClass="modalPopup Panel1" align="center"
-                Style="display: none;">
-                <div style="background-color: White;">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label2" runat="server" Text="Split Checks" ForeColor="White" Font-Size="50px"> </asp:Label>
-                    </div>
-                    <div style="padding: 20px 20px 20px 20px;">
-                        <table id="tblSplitChecks">
-                            <tr>
-                                <td>
-
-                                    <table id="Table2" runat="server" visible="true">
-                                        <tr>
-                                            <td>
-                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                    <ContentTemplate>
-                                                        <asp:PlaceHolder ID="ph" runat="server" />
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </td>
-                                        </tr>
-
-                                    </table>
-
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-            </asp:Panel>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <asp:HiddenField runat="server" ID='lblSelectedRow' Value='' ClientIDMode="Static" />

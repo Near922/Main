@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Bill
 /// </summary>
+/// 
+[Serializable]
 public class Bill
 {
         private decimal subTotal = 0;

@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Shift
 /// </summary>
+/// 
+[Serializable]
 public class Shift
 {
     public DateTime Start { get; set; }

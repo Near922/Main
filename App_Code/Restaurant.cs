@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Restaurant
 /// </summary>
+/// 
+[Serializable]
 public class Restaurant
 {
     private List<Server> _employees;

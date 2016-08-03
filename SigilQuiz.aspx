@@ -10,12 +10,12 @@
     <asp:UpdatePanel ID="updatePanel1" runat="server">
         <ContentTemplate>
             <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                 <strong>Correct!</strong>
                 <asp:Label ID="lblMessage" runat="server" Text="You chose the correct answer." />
             </div>
             <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                 <strong>Incorrect!</strong>You chose the incorrect answer.
             </div>
             <br />
@@ -26,13 +26,13 @@
                 <table style="margin: auto;">
                     <tr>
                         <td style="vertical-align: middle; height: 200px; width: 200px;">
-                            <asp:ImageButton ID="sigil1" CssClass="opac" runat="server" OnClick="sigil1_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset"  /></td>
+                            <asp:ImageButton ID="sigil1" CssClass="opac" runat="server" OnClick="sigil1_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset" /></td>
                         <td style="vertical-align: middle; height: 200px; width: 200px;">
-                            <asp:ImageButton ID="sigil2" CssClass="opac"  runat="server" OnClick="sigil2_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset"  /></td>
+                            <asp:ImageButton ID="sigil2" CssClass="opac" runat="server" OnClick="sigil2_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset" /></td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle; height: 200px; width: 200px;">
-                            <asp:ImageButton ID="sigil3" CssClass="opac"  runat="server" OnClick="sigil3_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset"  /></td>
+                            <asp:ImageButton ID="sigil3" CssClass="opac" runat="server" OnClick="sigil3_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset" /></td>
                         <td style="vertical-align: middle; height: 200px; width: 200px;">
                             <asp:ImageButton ID="sigil4" CssClass="opac" runat="server" OnClick="sigil4_Click" BorderWidth="3" BorderColor="#FFCC00" BorderStyle="Inset" /></td>
                     </tr>
@@ -40,29 +40,42 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" Style="display: none;" />
-    <!-- ModalPopupExtender -->
-    <asp:ModalPopupExtender ID="mpe" runat="server" PopupControlID="gameOverPanel"
-        TargetControlID="btnShow" CancelControlID="btnClose" BackgroundCssClass="modalBackground grid">
-    </asp:ModalPopupExtender>
-    <asp:Panel ID="gameOverPanel" runat="server" Style="display: none; height: 200px;">
-        <asp:UpdatePanel ID="updateGameOver" runat="server">
-            <ContentTemplate>
-                <div style="background-color: White;">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label8" runat="server" Text="Game Over" ForeColor="White" Font-Size="50px"> </asp:Label>
-                    </div>
-                    <div style="padding: 20px 20px 20px 20px;">
-                        <div style="height: 100px;">
-                            <asp:Label ID="Label5" runat="server" Font-Size="X-Large" Text="Your Score:"></asp:Label>
-                            <asp:Label ID="lblScore" runat="server" Text="" Font-Size="X-Large"></asp:Label>
+    <div class="modal fade" id="numberPanel" role="dialog">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="lblErrorUpdate" runat="server">
+                <ContentTemplate>
+                    <!-- Modal content-->
+                    <div class="modal-content" style="text-align: center;">
+
+                        <div class="modal-header" style="padding: 35px 50px;">
+                            <asp:LinkButton ID="bntX" runat="server" CssClass="close" PostBackUrl="~/Home.aspx" >&times;</asp:LinkButton>
+                            <h4 class="modal-title">Game Over</h4>
                         </div>
-                        <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_dark" OnClick="btnRestart_Click" />
-                        <asp:Button ID="btnClose" runat="server" CssClass="special_button_dark" Text="Exit" OnClick="btnClose_Click" />
+                        <div class="modal-body" style="padding: 40px 50px; text-align: center;">
+                            <div class="row" style="padding-bottom: 20px;">
+                                <div class="col-sm-12">
+                                    <asp:Label ID="Label5" runat="server" Font-Size="X-Large" Text="Your Score:"></asp:Label>
+                                    <asp:Label ID="lblScore" runat="server" Text="" Font-Size="X-Large"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6" style="padding: 10px;">
+                                    <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_dark" OnClick="btnRestart_Click" />
+                                </div>
+                                <div class="col-sm-6" style="padding: 10px;">
+                                    <asp:LinkButton ID="btnClose" runat="server" CssClass="special_button_dark" Text="Exit" UseSubmitBehavior="False" PostBackUrl="~/Home.aspx" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:LinkButton ID="Button10" runat="server" CssClass="btn btn-default"
+                                Text="Close"  PostBackUrl="~/Home.aspx" />
+
+                        </div>
                     </div>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
 </asp:Content>
 

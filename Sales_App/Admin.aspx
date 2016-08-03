@@ -12,11 +12,12 @@
     <asp:UpdatePanel ID="updatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                 <strong>Success!</strong>
                 <asp:Label ID="lblMessage" runat="server" Text="Message was deleted successfully." />
             </div>
             <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
+                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                 <strong>Error!</strong> An error has occurred.  Please contact the administrator.
             </div>
 
@@ -65,7 +66,8 @@
                 </FooterTemplate>
             </asp:Repeater>
             <div style="float: left; padding: 10px">
-                <asp:LinkButton ID="lnkPrevious" runat="server" Text="Previous" OnClick="lnkPrevious_Click" /></div>
+                <asp:LinkButton ID="lnkPrevious" runat="server" Text="Previous" OnClick="lnkPrevious_Click" />
+            </div>
             <asp:Repeater ID="rptPages" runat="server" OnItemCommand="rptPages_ItemCommand" OnItemDataBound="rptPages_ItemDataBound">
                 <ItemTemplate>
                     <div style="float: left; padding: 10px">
@@ -74,7 +76,8 @@
                 </ItemTemplate>
             </asp:Repeater>
             <div style="float: left; padding: 10px">
-                <asp:LinkButton ID="lnkNext" runat="server" Text="Next" OnClick="lnkNext_Click" /></div>
+                <asp:LinkButton ID="lnkNext" runat="server" Text="Next" OnClick="lnkNext_Click" />
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <br />

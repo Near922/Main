@@ -35,7 +35,7 @@
         </div>
     </div>
     <div>
-        <table>
+        <table style="min-width: 300px;">
             <tr>
                 <th>UserID
                 </th>

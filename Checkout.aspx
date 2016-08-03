@@ -3,6 +3,18 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function openServerModal() {
+            $('#serverPanel').modal('show');
+        }
+
+        function openBWModal() {
+            $('#bwPanel').modal('show');
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManagerProxy ID="ScriptManager10" runat="server">
@@ -13,12 +25,12 @@
             <ContentTemplate>
 
                 <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                     <strong>Success!</strong>
                     <asp:Label ID="lblMessage" runat="server" Text="Data was saved successfully." />
                 </div>
                 <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                     <strong>Error!</strong>
                     <asp:Label ID="lblErrorMessage" runat="server" Text="An error has occurred.  Please contact the administrator." />
                 </div>
@@ -34,9 +46,9 @@
         <br />
         <br />
         <cc1:CalendarExtender ID="calExtend" runat="server" TargetControlID="txtDatePicker" />
-        <asp:Button runat="server" ID="btnAddServer" Width="135px" CssClass="special_button_dark" Text="Add Server" ForeColor="White" />
+        <asp:Button runat="server" ID="btnAddServer" Width="135px" CssClass="special_button_dark" Text="Add Server" ForeColor="White" OnClick="btnAddServer_Click" />
         <asp:Button runat="server" ID="btnAddSA" CssClass="special_button_dark"
-            Text="Add SA" ForeColor="White" />
+            Text="Add SA" ForeColor="White" OnClick="btnAddSA_Click" />
         <br />
         <br />
         <asp:UpdatePanel ID="upPanelGrids" runat="server">
@@ -237,221 +249,235 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" Style="display: none;" />
-    <asp:Button ID="btnShowTips" runat="server" Text="Show Modal Popup" Style="display: none;" />
-    <!-- ModalPopupExtender -->
-    <cc1:ModalPopupExtender ID="msgDetails" runat="server" PopupControlID="msgPanel"
-        TargetControlID="btnShow" CancelControlID="btnClose" BackgroundCssClass="modalBackground grid">
-    </cc1:ModalPopupExtender>
-    <asp:Panel ID="msgPanel" runat="server" align="center" Style="display: none;">
-        <div style="background-color: White; width: 400px;">
-            <div style="background-color: #3498db; padding: 20px 20px 20px 20px; text-align: left;">
-                <asp:Label ID="Label10" runat="server" Text="Message" ForeColor="White" Font-Size="50px"> </asp:Label>
-            </div>
-            <div class="input_form">
-                <asp:UpdatePanel ID="upMessage" runat="server">
-                    <ContentTemplate>
-                        <div style="padding-bottom: 20px;">
-                            <asp:Label ID="lblMain" runat="server" Style="font-size: medium"></asp:Label>
-                            <asp:Label ID="lblCash" runat="server" Style="font-size: medium; font-weight: 700"></asp:Label>
+
+
+    <div class="modal fade" id="serverPanel" role="dialog">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="modal-content" style="text-align: center;">
+
+                        <div class="modal-header" style="padding: 35px 50px;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Server</h4>
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                <asp:Button ID="btnClose" runat="server" CssClass="special_button_red" Text="Close" />
-            </div>
-            <br />
-        </div>
-    </asp:Panel>
-    <cc1:ModalPopupExtender ID="mpeServerInput" runat="server" PopupControlID="serverInputPanel"
-        TargetControlID="btnAddServer" BackgroundCssClass="modalBackground grid">
-    </cc1:ModalPopupExtender>
-    <asp:Panel ID="serverInputPanel" runat="server" class="modal_panel">
-        <asp:UpdatePanel ID="upPanelserverInput" runat="server">
-            <ContentTemplate>
-                <div style="max-height: 600px; overflow: auto;" class="outer_input_div">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label7" runat="server" Text="Server Form" ForeColor="White" Font-Size="50px"> </asp:Label>
-                    </div>
-                    <div class="input_form">
-                        <div id="page_one" runat="server">
-                            <div>
-                                <asp:Label ID="Label8" runat="server" ForeColor="Black" Text="Shift:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList ID="cboShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
-                                    ForeColor="Black" CssClass="textbox">
-                                </asp:DropDownList>
-                                <asp:Label ID="lblShiftEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                            <div>
-                                <asp:Label ID="Label34" runat="server" ForeColor="Black" Text="Name:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList ID="txtName" runat="server" BToolTip="Enter Server/Bartender name."
-                                    ForeColor="Black" CssClass="textbox">
-                                </asp:DropDownList>
-                                <asp:Label ID="lblNameEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                            <div>
-                                <asp:Label ID="Label35" runat="server" ForeColor="Black" Text="Section:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList ID="cboOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cboOptions_SelectedIndexChanged"
-                                    ToolTip="Select serving section." ForeColor="Black" CssClass="textbox">
-                                </asp:DropDownList>
-
-                                <asp:Label ID="lblSectionEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                        </div>
-                        <div id="page_two" runat="server" visible="false">
-                            <div>
-                                <asp:Label ID="Label36" runat="server" ForeColor="Black" Text="Sales:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:TextBox ID="txtSales" runat="server" ToolTip="Enter Sales." ForeColor="Black"
-                                    CssClass="textbox"></asp:TextBox>
-
-                                <asp:Label ID="lblSalesEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                            <div>
-                                <asp:Label ID="Label37" runat="server" ForeColor="Black" Text="Cash:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:TextBox ID="txtOwed" runat="server" ToolTip="Enter cash owed to the house or server."
-                                    ForeColor="Black" CssClass="textbox"></asp:TextBox>
-
-                                <asp:Label ID="lblCashEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                            <div>
-                                <asp:Label ID="Label38" runat="server" ForeColor="Black" Text="Charge Tips:"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:TextBox ID="txtCharge" runat="server" ToolTip="Enter charge tips." ForeColor="Black"
-                                    CssClass="textbox"></asp:TextBox>
-
-                                <asp:Label ID="lblChargeEdit" runat="server" Style="text-align: center"></asp:Label>
-                            </div>
-                            <div id="barDiv" runat="server" class="form-group">
-                                <div>
-                                    <asp:Label ID="Label39" runat="server" ForeColor="Black" Text="Bar:"></asp:Label>
+                        <div class="modal-body" style="padding: 40px 50px; text-align: center;">
+                            <div id="page_one" runat="server">
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label8" runat="server" ForeColor="Black" Text="Shift:"></asp:Label>
+                                        </div>
+                                        <asp:DropDownList ID="cboShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
+                                            ForeColor="Black" CssClass="textbox">
+                                        </asp:DropDownList>
+                                        <asp:Label ID="lblShiftEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
                                 </div>
-                                <asp:TextBox ID="txtBarTips" runat="server" ToolTip="Enter bar tips unless a bartender or ToGo server."
-                                    ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label34" runat="server" ForeColor="Black" Text="Name:"></asp:Label>
+                                        </div>
 
-                                <asp:Label ID="lblBarEdit" runat="server" Style="text-align: center"></asp:Label>
+                                        <asp:DropDownList ID="txtName" runat="server" BToolTip="Enter Server/Bartender name."
+                                            ForeColor="Black" CssClass="textbox">
+                                        </asp:DropDownList>
+                                        <asp:Label ID="lblNameEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label35" runat="server" ForeColor="Black" Text="Section:"></asp:Label>
+                                        </div>
+
+                                        <asp:DropDownList ID="cboOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cboOptions_SelectedIndexChanged"
+                                            ToolTip="Select serving section." ForeColor="Black" CssClass="textbox">
+                                        </asp:DropDownList>
+
+                                        <asp:Label ID="lblSectionEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                     <div class="col-sm-12">
+                                        <asp:Button ID="btnNext" runat="server" CssClass="special_button_dark" Text="Next" OnClick="btnNext_Click" Style="width: 100%; background-color: #4baad3;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="page_two" runat="server" visible="false">
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label36" runat="server" ForeColor="Black" Text="Sales:"></asp:Label>
+                                        </div>
+
+                                        <asp:TextBox ID="txtSales" runat="server" ToolTip="Enter Sales." ForeColor="Black"
+                                            CssClass="textbox"></asp:TextBox>
+
+                                        <asp:Label ID="lblSalesEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+
+                                        <div>
+                                            <asp:Label ID="Label37" runat="server" ForeColor="Black" Text="Cash:"></asp:Label>
+                                        </div>
+
+                                        <asp:TextBox ID="txtOwed" runat="server" ToolTip="Enter cash owed to the house or server."
+                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+
+                                        <asp:Label ID="lblCashEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label38" runat="server" ForeColor="Black" Text="Charge Tips:"></asp:Label>
+                                        </div>
+
+                                        <asp:TextBox ID="txtCharge" runat="server" ToolTip="Enter charge tips." ForeColor="Black"
+                                            CssClass="textbox"></asp:TextBox>
+
+                                        <asp:Label ID="lblChargeEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div id="barDiv" runat="server" class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label39" runat="server" ForeColor="Black" Text="Bar:"></asp:Label>
+                                        </div>
+                                        <asp:TextBox ID="txtBarTips" runat="server" ToolTip="Enter bar tips unless a bartender or ToGo server."
+                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+
+                                        <asp:Label ID="lblBarEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="msgDiv" runat="server" visible="false">
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <asp:Label ID="lblMain" runat="server" Style="font-size: medium"></asp:Label>
+                                        <asp:Label ID="lblCash" runat="server" Style="font-size: medium; font-weight: 700"></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+
+                                    <div class="col-sm-12">
+                                        <asp:Button ID="btnClose" runat="server" Style="width: 100%; background-color: #4baad3;" CssClass="special_button_dark" Text="Next" OnClick="btnClose_Click" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="tipsDiv" runat="server" visible="false">
+                                <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <asp:Label ID="Label40" runat="server" ForeColor="Black" Text="Tips:"></asp:Label>
+                                        </div>
+
+                                        <asp:TextBox ID="txtTips" runat="server" ToolTip="Must claim at least 15% of sales."
+                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+
+                                        <asp:Label ID="lblTipsEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <asp:Button ID="btnSend" runat="server" CssClass="special_button_dark" OnClick="btnSend_Click" Text="Send" Style="width: 100%; background-color: #4baad3;"
+                                            ToolTip="Send results to the grid." />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="mainButtons" runat="server" class="row" style="padding-bottom: 20px;">
+                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+                                    <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" Style="width: 100%; background-color: #4baad3;" />
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+                                    <asp:Button ID="btnCalculate" runat="server" CssClass="special_button_dark_panel" Visible="false" OnClick="btnCalculate_Click" Text="Calculate"
+                                        ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group" style="overflow: hidden;">
-
-                            <div style="float: left;">
-                                <asp:Button ID="btnNext" runat="server" CssClass="special_button_dark" Text="Next" OnClick="btnNext_Click" />
-                            </div>
-
-                            <div style="float: left;">
-                                <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" />
-                            </div>
-                            <div style="float: right;">
-                                <asp:Button ID="btnCalculate" runat="server" Text="Calculate" CssClass="special_button_dark"
-                                    OnClick="btnCalculate_Click"
-                                    ToolTip="Calculate money owed." Visible="False" />
-                            </div>
-                            <div id="buttonbreak" runat="server" style="height: 20px; width: 100% !important; float: right;" visible="false">
-                                <br />
-                                <br />
-                            </div>
-                            <div style="float: right;">
-                                <asp:Button ID="btnServerClose" runat="server" CssClass="special_button_red" Text="Cancel" OnClick="btnServerClose_Click" />
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" id="serverClose" class="btn btn-default"
+                                data-dismiss="modal">
+                                Close</button>
                         </div>
                     </div>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
-    <cc1:ModalPopupExtender ID="mpeTipsInput" runat="server" PopupControlID="tipsPanel"
-        BackgroundCssClass="modalBackground grid" TargetControlID="btnClose">
-    </cc1:ModalPopupExtender>
-    <asp:Panel ID="tipsPanel" runat="server" Style="display: none;" CssClass="modal_panel">
-        <asp:UpdatePanel ID="updateTips" runat="server">
-            <ContentTemplate>
-                <div class="outer_input_div">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label9" runat="server" Text="Tips Form" ForeColor="White" Font-Size="50px"> </asp:Label>
                     </div>
-                    <div class="input_form" style="min-height: 180px;">
-                        <div>
-                            <asp:Label ID="Label40" runat="server" ForeColor="Black" Text="Tips:"></asp:Label>
-                        </div>
-                        <div class="form-group">
-                            <asp:TextBox ID="txtTips" runat="server" ToolTip="Must claim at least 15% of sales."
-                                ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
 
-                            <asp:Label ID="lblTipsEdit" runat="server" Style="text-align: center"></asp:Label>
-                        </div>
-                        <div class="form-group">
+    <div class="modal fade" id="bwPanel" role="dialog">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="lblErrorUpdate" runat="server">
+                <ContentTemplate>
+                    <div class="modal-content" style="text-align: center;">
 
-                            <asp:Button ID="btnSend" runat="server" Style="float: left;" CssClass="special_button_dark" OnClick="btnSend_Click" Text="Send"
-                                ToolTip="Send results to the grid." />
+                        <div class="modal-header" style="padding: 35px 50px;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Server Assistant</h4>
+                        </div>
+                        <div class="modal-body" style="padding: 40px 50px; text-align: center;">
+                            <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                <div class="col-sm-12">
+                                    <div>
+                                        <asp:Label ID="Label1" runat="server" ForeColor="Black" Text="Shift:"></asp:Label>
+                                    </div>
 
-                            <asp:Button ID="btnTipsClose" runat="server" Style="float: right;" CssClass="special_button_dark" Text="Cancel" OnClick="btnTipsClose_Click" />
+                                    <asp:DropDownList ID="cboBWShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
+                                        ForeColor="Black" CssClass="textbox">
+                                    </asp:DropDownList>
+                                    <asp:Label ID="lblBWShiftEdit" runat="server" Style="text-align: center"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                <div class="col-sm-12">
+                                    <div>
+                                        <asp:Label ID="Label41" runat="server" ForeColor="Black" Text="Name:"></asp:Label>
+                                    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
-    <cc1:ModalPopupExtender ID="mpeBWForm" runat="server" PopupControlID="bwInputPanel"
-        BackgroundCssClass="modalBackground grid" TargetControlID="btnAddSA">
-    </cc1:ModalPopupExtender>
-    <asp:Panel ID="bwInputPanel" runat="server" Style="display: none;" CssClass="modal_panel">
-        <asp:UpdatePanel ID="upPanelBW" runat="server">
-            <ContentTemplate>
-                <div class="outer_input_div">
-                    <div style="background-color: #3498db; padding: 20px 20px 20px 20px;">
-                        <asp:Label ID="Label11" runat="server" Text="Server Assistant Form" ForeColor="White"
-                            Font-Size="50px"> </asp:Label>
-                    </div>
-                    <div class="input_form" style="min-height: 200px;">
-                        <div>
-                            <asp:Label ID="Label1" runat="server" ForeColor="Black" Text="Shift:"></asp:Label>
-                        </div>
-                        <div class="form-group">
-                            <asp:DropDownList ID="cboBWShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
-                                ForeColor="Black" CssClass="textbox">
-                            </asp:DropDownList>
-                            <asp:Label ID="lblBWShiftEdit" runat="server" Style="text-align: center"></asp:Label>
-                        </div>
-                        <div>
-                            <asp:Label ID="Label41" runat="server" ForeColor="Black" Text="Name:"></asp:Label>
-                        </div>
-                        <div class="form-group">
-                            <asp:DropDownList ID="txtBackName" runat="server" ToolTip="Enter Backwaiter name."
-                                ForeColor="Black" CssClass="textbox">
-                            </asp:DropDownList>
-                            <asp:Label ID="lblBackNameEdit" runat="server" Style="text-align: center"></asp:Label>
-                        </div>
-                        <div>
-                            <asp:Label ID="Label42" runat="server" ForeColor="Black" Text="Hours:"></asp:Label>
-                        </div>
-                        <div class="form-group">
-                            <asp:TextBox ID="txtHours" runat="server" ToolTip="Enter hours backwaiter worked."
-                                ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                    <asp:DropDownList ID="txtBackName" runat="server" ToolTip="Enter Backwaiter name."
+                                        ForeColor="Black" CssClass="textbox">
+                                    </asp:DropDownList>
+                                    <asp:Label ID="lblBackNameEdit" runat="server" Style="text-align: center"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-bottom: 20px; text-align: left;">
+                                <div class="col-sm-12">
+                                    <div>
+                                        <asp:Label ID="Label42" runat="server" ForeColor="Black" Text="Hours:"></asp:Label>
+                                    </div>
+                                    <div>
+                                        <asp:TextBox ID="txtHours" runat="server" ToolTip="Enter hours backwaiter worked."
+                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
 
-                            <asp:Label ID="lblHoursEdit" runat="server" Style="text-align: center"></asp:Label>
+                                        <asp:Label ID="lblHoursEdit" runat="server" Style="text-align: center"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-bottom: 20px;">
+                                <div class="col-sm-12">
+                                    <asp:Button ID="button1" runat="server" CssClass="special_button_dark_panel" OnClick="button1_Click" Text="Send"
+                                        ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group" style="overflow: hidden">
-
-                            <asp:Button ID="button1" runat="server" CssClass="special_button_dark" Style="float: left;" OnClick="button1_Click" Text="Send"
-                                ToolTip="Send results to the grid." />
-
-                            <asp:Button ID="btnBWClose" runat="server" CssClass="special_button_red" Style="float: right;" Text="Cancel" OnClick="btnBWClose_Click" />
-
+                        <div class="modal-footer">
+                            <button type="button" id="bwClose" class="btn btn-default"
+                                data-dismiss="modal">
+                                Close</button>
                         </div>
                     </div>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
 </asp:Content>

@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Manager
 /// </summary>
+/// 
+[Serializable]
 public class Manager : Employee
 {
     public Manager(string name) : base (name)

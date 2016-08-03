@@ -10,6 +10,8 @@ using System.Xml.Linq;
 /// <summary>
 /// Summary description for SigilGame
 /// </summary>
+
+[Serializable]
 public class SigilGame
 {
     public SigilGame()

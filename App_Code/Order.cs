@@ -1,4 +1,7 @@
-﻿public class Order
+﻿using System;
+
+[Serializable]
+public class Order
 {
     private int id;
     private string name;

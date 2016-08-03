@@ -82,7 +82,8 @@ public partial class SigilQuiz : System.Web.UI.Page
                 {
                     lblScore.ForeColor = System.Drawing.Color.Red;
                 }
-                mpe.Show();
+                //mpe.Show();
+                ScriptManager.RegisterStartupScript(this, GetType(), "Openpopup", "Openpopup();", true);
             }
         }
         catch(Exception ex)
@@ -94,11 +95,5 @@ public partial class SigilQuiz : System.Web.UI.Page
     protected void btnRestart_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/SigilQuiz.aspx");
-    }
-
-
-    protected void btnClose_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("~/Home.aspx");
     }
 }

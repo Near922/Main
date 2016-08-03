@@ -435,12 +435,12 @@
             <asp:UpdatePanel ID="upPanel1" runat="server">
                 <ContentTemplate>
                     <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                         <strong>Success!</strong>
                         <asp:Label ID="lblMessage" runat="server" Text="" />
                     </div>
                     <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
                         <strong>Error!</strong> An error has occurred.  Please contact the administrator.
                     </div>
                     <p class="section_header">

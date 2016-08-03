@@ -7,6 +7,8 @@ using System.Web;
 /// <summary>
 /// Summary description for EmployeeService
 /// </summary>
+/// 
+[Serializable]
 public class EmployeeService
 {
 

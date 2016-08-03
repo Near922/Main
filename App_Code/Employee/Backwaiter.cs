@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Backwaiter
 /// </summary>
+/// 
+[Serializable]
 public class Backwaiter : Employee
 {
     public decimal Tips { get; set; }

@@ -6,6 +6,8 @@ using System.Linq;
 /// <summary>
 /// Summary description for Message
 /// </summary>
+/// 
+[Serializable]
 public class Message
 {
     public int ID { get; set; }

@@ -62,200 +62,47 @@ public partial class PointOfSaleMain : System.Web.UI.Page
     }
     protected void btnEnter_Click(object sender, EventArgs e)
     {
-        if ((txtTblNum.Text == ""))
+        if (txtTblNum.Visible)
+            {
+            if ((tableNumber.Value.ToString() == ""))
+            {
+                if (tableNumber.Value.ToString() == "")
+                {
+                    tblNumError.Text = "*Required.";
+                }
+            }
+            else if (!sqC.IsTableAvailable(tableNumber.Value.ToString()))
+            {
+                tblNumError.Text = "That table number is in use.  Please choose another.";
+            }
+            else
+            {
+                //tblGuestButtons.Visible = true;
+                //tblTableButtons.Visible = false;
+                lblNumGuests.Visible = true;
+                txtTblNum.Visible = false;
+                lblTblNumber.Text = "Number Of Guests";
+                return;
+            }
+        }
+
+        if (lblNumGuests.Visible)
         {
-            if (txtTblNum.Text == "")
+            if (numberGuests.Value.ToString() == "")
             {
                 tblNumError.Text = "*Required.";
             }
-        }
-        else if (!sqC.IsTableAvailable(txtTblNum.Text))
-        {
-            tblNumError.Text = "That table number is in use.  Please choose another.";
-        }
-        else
-        {
-            tblGuestButtons.Visible = true;
-            tblTableButtons.Visible = false;
-        }
-    }
-
-    protected void btnClose_Click(object sender, EventArgs e)
-    {
-        tblGuestButtons.Visible = false;
-        tblTableButtons.Visible = true;
-        modalPopup.Hide();
-        guestNumError.Text = "";
-        tblNumError.Text = "";
-        txtNumGuests.Text = "";
-        txtTblNum.Text = "";
-    }
-
-    protected void btnGuestEnter_Click(object sender, EventArgs e)
-    {
-        var employee = (Server)Session["Employee"];
-        if ((txtNumGuests.Text == ""))
-        {
-            if (txtNumGuests.Text == "")
+            else
             {
-                guestNumError.Text = "*Required.";
+                var employee = (Server)Session["Employee"];
+                employee.EnterNewTable(Int32.Parse(tableNumber.Value.ToString()), Int32.Parse(numberGuests.Value.ToString()));
+                lblNumGuests.Text = "";
+                txtTblNum.Text = "";
+
+                Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(tableNumber.Value.ToString()), false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
-        else
-        {
-            employee.EnterNewTable(Int32.Parse(txtTblNum.Text), Int32.Parse(txtNumGuests.Text));
-            guestNumError.Text = "";
-            tblNumError.Text = "";
-            Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(txtTblNum.Text), false);
-            Context.ApplicationInstance.CompleteRequest();
-        }
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "1";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "2";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "3";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "4";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button5_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "5";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button6_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "6";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button7_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "7";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button8_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "8";
-        txtTblNum.Text = tableNum;
-    }
-    protected void Button9_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "9";
-        txtTblNum.Text = tableNum;
-    }
-    protected void ButtonZero_Click(object sender, EventArgs e)
-    {
-        tableNum = txtTblNum.Text;
-        tableNum += "0";
-        txtTblNum.Text = tableNum;
-    }
-    protected void ButtonClear_Click(object sender, EventArgs e)
-    {
-        tableNum = "";
-        txtTblNum.Text = "";
-    }
-    protected void ButtonTableNumBack_Click(object sender, EventArgs e)
-    {
-        if (txtTblNum.Text.Length > 0)
-        {
-            tableNum = txtTblNum.Text.Substring(0, txtTblNum.Text.Length - 1);
-            txtTblNum.Text = tableNum;
-        }
-    }
-    protected void ButtonBack_Click(object sender, EventArgs e)
-    {
-        if (txtNumGuests.Text.Length > 0)
-        {
-            guestsNum = txtNumGuests.Text.Substring(0, txtNumGuests.Text.Length - 1);
-            txtNumGuests.Text = guestsNum;
-        }
-    }
-    protected void Button10_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "1";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button11_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "2";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button12_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "3";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button13_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "4";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button14_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "5";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button15_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "6";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button16_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "7";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button17_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "8";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void Button18_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "9";
-        txtNumGuests.Text = guestsNum;
-    }
-    protected void ButtonGuestClear_Click(object sender, EventArgs e)
-    {
-        guestsNum = "";
-        txtNumGuests.Text = "";
-    }
-    protected void ButtonGuestZero_Click(object sender, EventArgs e)
-    {
-        guestsNum = txtNumGuests.Text;
-        guestsNum += "0";
-        txtNumGuests.Text = guestsNum;
     }
 
     protected void openTblList_ItemCommand1(object source, ListViewCommandEventArgs e)
@@ -301,5 +148,28 @@ public partial class PointOfSaleMain : System.Web.UI.Page
                 }
             }
         }
+    }
+
+    protected void btnClose_Click1(object sender, EventArgs e)
+    {
+        tblNumError.Text = "";
+        txtTblNum.Text = "";
+        numberGuests.Value = "";
+        tableNumber.Value = "";
+        lblNumGuests.Visible = false;
+        txtTblNum.Visible = true;
+        lblTblNumber.Text = "Table Number";
+    }
+
+    protected void btnNewTable_Click(object sender, EventArgs e)
+    {
+        tblNumError.Text = "";
+        txtTblNum.Text = "";
+        numberGuests.Value = "";
+        tableNumber.Value = "";
+        lblNumGuests.Visible = false;
+        txtTblNum.Visible = true;
+        lblTblNumber.Text = "Table Number";
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open Modal", "openModal();", true);
     }
 }

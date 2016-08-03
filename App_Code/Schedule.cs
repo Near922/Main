@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Schedule
 /// </summary>
+/// 
+[Serializable]
 public class Schedule
 {
     public List<Shift> Shifts { get; set; }

@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Employee
 /// </summary>
+/// 
+[Serializable]
 public abstract class BaseEmployee
 {
     public string ID { get; set; }

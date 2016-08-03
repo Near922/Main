@@ -6,6 +6,8 @@ using System.Web;
 /// <summary>
 /// Summary description for Sigil
 /// </summary>
+/// 
+[Serializable]
 public class Sigil
 {
     public Sigil()

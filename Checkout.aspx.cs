@@ -312,7 +312,8 @@ public partial class Checkout3 : System.Web.UI.Page
                     lblCash.Text = cashOwed;
                     lblCash.ForeColor = System.Drawing.Color.LimeGreen;
                     lblMain.ForeColor = System.Drawing.Color.Black;
-                    msgDetails.Show();
+                    //msgDetails.Show();
+                    msgDiv.Visible = true;
 
                 }
                 else if (dblResult < 0)
@@ -321,7 +322,8 @@ public partial class Checkout3 : System.Web.UI.Page
                     lblMain.ForeColor = System.Drawing.Color.Black;
                     lblCash.Text = String.Format("{0:C}", Math.Abs(dblResult));
                     lblCash.ForeColor = System.Drawing.Color.Red;
-                    msgDetails.Show();
+                    //msgDetails.Show();
+                    msgDiv.Visible = true;
                 }
 
                 else if (dblResult == 0)
@@ -330,10 +332,13 @@ public partial class Checkout3 : System.Web.UI.Page
                     lblMain.ForeColor = System.Drawing.Color.Black;
                     lblMain.Font.Size = 16;
                     lblMain.Font.Bold = true;
-                    msgDetails.Show();
+                    //msgDetails.Show();
+                    msgDiv.Visible = true;
                 }
 
-                mpeServerInput.Hide();         
+                //mpeServerInput.Hide();
+                page_two.Visible = false;
+                mainButtons.Visible = false;         
             }
         }
     }
@@ -642,7 +647,8 @@ public partial class Checkout3 : System.Web.UI.Page
                     }
 
                     ServerFormReset();
-                    mpeTipsInput.Hide();
+                    //mpeTipsInput.Hide();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Close", "$('#serverClose').click();", true);
                     this.Page_Load(null, null);
 
                 }
@@ -715,16 +721,8 @@ public partial class Checkout3 : System.Web.UI.Page
                     updateBackWaitTips(Shift.Lunch.ToString(), restaurant.LunchBackWaitHours);
 
                 }
-                //clear backwait text boxes
-                cboBWShiftOptions.SelectedIndex = 0;
-                txtBackName.SelectedIndex = 0;
-                txtHours.Text = "";
-                lblHoursEdit.Text = "";
-                txtHours.BorderStyle = BorderStyle.NotSet;
-                txtBackName.BorderStyle = BorderStyle.NotSet;
-                txtBackName.BorderColor = System.Drawing.Color.Empty;
-                txtHours.BorderColor = System.Drawing.Color.Empty;
-                mpeBWForm.Hide();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "Close", "$('#bwClose').click();", true);
                 this.Page_Load(null, null);
             }
         }
@@ -788,25 +786,17 @@ public partial class Checkout3 : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        msgDetails.Visible = false;
+        //msgDetails.Visible = false;
     }
     protected void tblServerDataGridView_Sorting(object sender, GridViewSortEventArgs e)
     {
         tblServerDataGridView.DataBind();
     }
-    protected void btnBWClose_Click(object sender, EventArgs e)
-    {
-        txtBackName.SelectedIndex = 0;
-        cboBWShiftOptions.SelectedIndex = 0;
-        txtHours.Text = "";
-        lblBackNameEdit.Text = "";
-        lblHoursEdit.Text = "";
-        mpeBWForm.Hide();
-    }
+
     protected void btnServerClose_Click(object sender, EventArgs e)
     {
         ServerFormReset();
-        mpeServerInput.Hide();
+        //mpeServerInput.Hide();
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
@@ -815,7 +805,7 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = false;
         btnBack.Visible = true;
         page_two.Visible = true;
-        buttonbreak.Visible = true;
+        //buttonbreak.Visible = true;
         btnCalculate.Visible = true;
     }
 
@@ -850,7 +840,10 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = true;
         btnBack.Visible = false;
         page_two.Visible = false;
-        buttonbreak.Visible = false;
+        msgDiv.Visible = false;
+        tipsDiv.Visible = false;
+        mainButtons.Visible = true;
+        //buttonbreak.Visible = false;
         btnCalculate.Visible = false;
         txtBarTips.Visible = true;
     }
@@ -861,7 +854,7 @@ public partial class Checkout3 : System.Web.UI.Page
         btnNext.Visible = true;
         btnBack.Visible = false;
         page_two.Visible = false;
-        buttonbreak.Visible = false;
+        //buttonbreak.Visible = false;
         btnCalculate.Visible = false;
     }
 
@@ -908,6 +901,28 @@ public partial class Checkout3 : System.Web.UI.Page
     protected void btnTipsClose_Click(object sender, EventArgs e)
     {
         ServerFormReset();
-        mpeTipsInput.Hide();
+        //mpeTipsInput.Hide();
+    }
+
+    protected void btnAddSA_Click(object sender, EventArgs e)
+    {
+        txtBackName.SelectedIndex = 0;
+        cboBWShiftOptions.SelectedIndex = 0;
+        txtHours.Text = "";
+        lblBackNameEdit.Text = "";
+        lblHoursEdit.Text = "";
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open BW Modal", "openBWModal();", true);
+    }
+
+    protected void btnClose_Click(object sender, EventArgs e)
+    {
+        msgDiv.Visible = false;
+        tipsDiv.Visible = true;
+    }
+
+    protected void btnAddServer_Click(object sender, EventArgs e)
+    {
+        ServerFormReset();
+        ScriptManager.RegisterStartupScript(this, GetType(), "Open Server Modal", "openServerModal();", true);
     }
 }

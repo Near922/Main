@@ -56,11 +56,11 @@ public partial class Home : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        txtMessage.BorderStyle = BorderStyle.Solid;
+        txtMessage.BorderStyle = BorderStyle.NotSet;
         txtMessage.BorderColor = System.Drawing.Color.Empty;
-        txtName.BorderStyle = BorderStyle.Solid;
+        txtName.BorderStyle = BorderStyle.NotSet;
         txtName.BorderColor = System.Drawing.Color.Empty;
-        txtEmail.BorderStyle = BorderStyle.Solid;
+        txtEmail.BorderStyle = BorderStyle.NotSet;
         txtEmail.BorderColor = System.Drawing.Color.Empty;
         lblEmail.Text = "";
 

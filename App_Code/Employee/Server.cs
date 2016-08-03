@@ -3,6 +3,8 @@ using System.Collections.Generic;
 /// <summary>
 /// Summary description for Server
 /// </summary>
+/// 
+[Serializable]
 public class Server : Employee
 {
     public decimal Sales { get; set; }
