@@ -28,10 +28,9 @@ public partial class Sales_App_Sales : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null)
+        if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
         {
-            Response.Redirect("~/login.aspx", false);
-            Context.ApplicationInstance.CompleteRequest();
+            Response.Redirect("~/login.aspx");
         }
         //Response.Cache.SetExpires(DateTime.Now);
         //Response.Cache.SetValidUntilExpires(false);

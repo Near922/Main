@@ -74,6 +74,14 @@ function Openpopup() {
     $('.modal-backdrop').add();
 }
 
+function OpenGameOverpopup() {
+    $('.modal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+    $('.modal').modal('show');
+}
+
 function showSuccessMessage() {
     $('.alert-danger').hide();
     $('.alert-success').show();

@@ -6,27 +6,34 @@
     <br />
     <br />
     <div style="width: 100%;">
-                    <asp:Button ID="btnBack" runat="server" class="special_button_red" Text="Exit"
-                    PostBackUrl="PointOfSaleMain.aspx" />
-        <h2>Today's Sales</h2>
+        <div style="width: 100%; text-align: center;">
+            <asp:Button ID="btnBack" runat="server" class="special_button_red" Text="Exit"
+                PostBackUrl="PointOfSaleMain.aspx" />
+        </div>
+
         <br />
-        <table style="width: 70%;  margin: 0 auto;">
+        <table style="width: 70%; margin: 0 auto;">
+            <tr>
+                <td colspan="2" style="padding-bottom: 20px;">
+                    <h2>Sales</h2>
+                </td>
+            </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblBeverage" runat="server" Text="Beverages:" />
+                    <asp:Label ID="lblBeverage" runat="server" Style="font-size: 16px;" Text="Beverages:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblBeverageTotal" runat="server" Text="$0.00" ForeColor="Black" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="2" style="padding-bottom: 20px;">
                     <asp:Label ID="Label1" runat="server" Text="Starters:" Font-Size="X-Large" Font-Bold="True" Font-Italic="True" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblSoup" runat="server" Text="Soups:" />
+                    <asp:Label ID="lblSoup" runat="server" Style="font-size: 16px;" Text="Soups:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblSoupTotal" runat="server" Text="$0.00" Font-Italic="False" ForeColor="Black" />
@@ -34,7 +41,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblApp" runat="server" Text="Appetizers:" />
+                    <asp:Label ID="lblApp" runat="server" Style="font-size: 16px;" Text="Appetizers:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblAppTotal" runat="server" Text="$0.00" ForeColor="Black" />
@@ -43,20 +50,20 @@
             <tr>
 
                 <td>
-                    <asp:Label ID="lblSalad" runat="server" Text="Salads:" />
+                    <asp:Label ID="lblSalad" runat="server" Style="font-size: 16px;" Text="Salads:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblSaladTotal" runat="server" Text="$0.00" ForeColor="Black" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="2" style="padding-bottom: 20px;">
                     <asp:Label ID="Label2" runat="server" Text="Meals:" Font-Size="X-Large" Font-Bold="True" Font-Italic="True" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblSandwich" runat="server" Text="Sandwiches:" />
+                    <asp:Label ID="lblSandwich" runat="server" Style="font-size: 16px;" Text="Sandwiches:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblSandwichTotal" runat="server" Text="$0.00" ForeColor="Black" />
@@ -64,7 +71,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblEntree" runat="server" Text="Entrees:" />
+                    <asp:Label ID="lblEntree" runat="server" Style="font-size: 16px;" Text="Entrees:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblEntreeTotal" runat="server" Text="$0.00" ForeColor="Black" />
@@ -72,20 +79,20 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblDessert" runat="server" Text="Desserts:" />
+                    <asp:Label ID="lblDessert" runat="server" Style="font-size: 16px;" Text="Desserts:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblDessertTotal" runat="server" Text="$0.00" ForeColor="Black" />
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="2" style="padding-bottom: 20px;">
                     <asp:Label ID="Label3" runat="server" Text="Alcohol:" Font-Size="X-Large" Font-Bold="True" Font-Italic="True" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblWine" runat="server" Text="Wines:" />
+                    <asp:Label ID="lblWine" runat="server" Style="font-size: 16px;" Text="Wines:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblWineTotal" runat="server" Text="$0.00" ForeColor="Black" />
@@ -93,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblBeer" runat="server" Text="Beers:" />
+                    <asp:Label ID="lblBeer" runat="server" Style="font-size: 16px;" Text="Beers:" />
                 </td>
                 <td style="text-align: right;">
                     <asp:Label ID="lblBeerTotal" runat="server" Text="$0.00" ForeColor="Black" />

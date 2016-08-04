@@ -534,13 +534,13 @@ tr.selected {
     height: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #3498db;
+    color: #4baad3;
     /*background-color: #42729B;*/
     background-color: white;
     font-size: large !important;
     font-weight: 200;
     border-style: solid;
-    border-color: #3498db;
+    border-color: #4baad3;
     border-width: thin;
     text-decoration: none;
     font-family: Roboto;
@@ -552,7 +552,7 @@ tr.selected {
 
     .special_button_blue:hover {
         color: white;
-        background-color: #3498db;
+        background-color: #4baad3;
         text-decoration: none !important;
     }
 
@@ -707,7 +707,7 @@ td {
     min-height: 500px;
     min-width: 200px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
     .checkGridView tr {

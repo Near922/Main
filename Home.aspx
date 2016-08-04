@@ -463,7 +463,7 @@
                                 ForeColor="black" Style="margin-left: 0px; height: 200px !important;" placeholder="Message" CssClass="textbox"></asp:TextBox>
                         </div>
                         <div>
-                            <asp:LinkButton ID="btnSubmit" CssClass="opac special_link_button" Style="width: 100%; max-width: 600px;" runat="server"
+                            <asp:LinkButton ID="btnSubmit" CssClass="opac special_link_button" Style="width: 100%; max-width: 600px; background-color: #4baad3" runat="server"
                                 Text="Submit" OnClick="btnSubmit_Click"></asp:LinkButton>
                         </div>
                     </div>

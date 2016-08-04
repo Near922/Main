@@ -41,7 +41,7 @@ public enum TogglePage
 }
 
 
-
+[Serializable]
 public class MessageManager
 {
     private List<Message> Messages { get; set; }

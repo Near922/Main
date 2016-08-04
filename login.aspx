@@ -8,27 +8,39 @@
 
         <div style="display: table-cell; vertical-align: middle;">
             <asp:Panel ID="loginPanel" runat="server" DefaultButton="btnLogin">
-                <div style="width: 500px; min-height: 300px; border: solid; border-color: gray; border-width: 1px; background-color: #F2F2F2; text-align: center; margin: auto;">
-                    <div style="width: 100%; background-color: #1ABC9C;">
-                        <p style="color: white; font-size: 50px; padding: 10px; text-align: left !important;">
-                            Login Form
-                        </p>
+                <div style="min-width: 300px; max-width: 500px; min-height: 300px; border: solid; border-color: lightgray; border-width: 1px; background-color: #F2F2F2; text-align: center; margin: auto;">
+                    <div  style="background-color: #4baad3; width: 100%;">
+                        <div>
+                            <p style="color: white; font-size: 50px; padding: 10px; text-align: left !important;">
+                                Login Form
+                            </p>
+                        </div>
                     </div>
-                    <br />
-                    <br />
-                    <div class="form-group">
-                        <asp:TextBox ID="txtUserID" runat="server"
-                            placeholder="User ID" CssClass="textbox" Style="width: 400px;" />
-                    </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="textbox" Style="width: 400px;" />
-                    </div>
-                    <div class="form-group">
-                        <asp:LinkButton ID="btnLogin" runat="server" OnClick="btnLogin_Click" CssClass="opac special_link_button" Style="width: 400px;"
-                            Text="Login" />
-                    </div>
-                    <div>
-                        <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red" />
+                    <div style="padding: 20px;">
+                        <br />
+                        <br />
+                        <div class="row" style="padding-bottom: 20px;">
+                            <div class="col-sm-12">
+                                <asp:TextBox ID="txtUserID" runat="server"
+                                    placeholder="User ID" CssClass="textbox" />
+                            </div>
+                        </div>
+                        <div class="row"  style="padding-bottom: 30px;">
+                            <div class="col-sm-12">
+                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="textbox" />
+                            </div>
+                        </div>
+                        <div class="row"  style="padding-bottom: 20px;">
+                            <div class="col-sm-12">
+                                <asp:LinkButton ID="btnLogin" runat="server" OnClick="btnLogin_Click" CssClass="opac special_link_button" Style="width: 100%; background-color: #4baad3;"
+                                    Text="Login" />
+                            </div>
+                        </div>
+                        <div class="row"  style="padding-bottom: 10px;">
+                            <div class="col-sm-12">
+                                <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </asp:Panel>

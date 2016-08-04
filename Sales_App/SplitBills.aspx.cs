@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.Services;
@@ -18,12 +19,9 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             Response.Redirect("~/login.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
-        //Response.Cache.SetExpires(DateTime.Now);
-        //Response.Cache.SetValidUntilExpires(false);
-        //Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        //Response.Cache.SetNoStore();
+
         PopulateBills();
+
     }
 
     private enum GridViewColumns
@@ -43,7 +41,7 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
         {
             server = (Server)Session["Employee"];
             table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-            Session["Table"] = table;
+            Session["TableNum"] = Int32.Parse(Request.QueryString["Table"]);
             int i = 0;
             foreach (Bill bill in table.GetBills())
             {
@@ -53,7 +51,7 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
                 if (bill.Orders.Count == 0)
                 {
                     DataTable dt = new DataTable();
-                    dt.Columns.Add("Col1", typeof( string));
+                    dt.Columns.Add("Col1", typeof(string));
                     dt.Columns.Add("Col2", typeof(string));
                     dt.Rows.Add("", "");
                     gv.DataSource = dt;
@@ -108,7 +106,6 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
         Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
     }
@@ -157,8 +154,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             sqC.updateOrderBillID(order);
         }
         sqC = null;
-        server = (Server)Session["Employee"];
-        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+        server = (Server)HttpContext.Current.Session["Employee"];
+        table = server.getTable(Int32.Parse(HttpContext.Current.Session["TableNum"].ToString()));
         List<Bill> bills = table.GetBills();
 
         foreach (Bill bill in bills)
@@ -166,7 +163,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             bill.CalculateTotal();
             bill.Update();
         }
-        Session["Table"] = table;
+
+        Session["Employee"] = server;
         Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
     }
@@ -187,9 +185,8 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             {
                 updatedOrders = (List<Order>)HttpContext.Current.Session["UpdatedOrders"];
             }
-            Table table;
             Server server = (Server)HttpContext.Current.Session["Employee"];
-            table = (Table)HttpContext.Current.Session["Table"];
+            Table table = server.getTable(Int32.Parse(HttpContext.Current.Session["TableNum"].ToString()));
             Bill fromBill = table.tableBill(fromBillIndex);
             Order order = fromBill.Orders[orderIndex];
             fromBill.RemoveOrder(order);
@@ -198,6 +195,7 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             toBill.CalculateTotal();
             toBill.AddOrder(order);
             updatedOrders.Add(order);
+            HttpContext.Current.Session["Employee"] = server;
         }
         catch (Exception ex)
         {

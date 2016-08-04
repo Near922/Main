@@ -82,8 +82,7 @@ public partial class SigilQuiz : System.Web.UI.Page
                 {
                     lblScore.ForeColor = System.Drawing.Color.Red;
                 }
-                //mpe.Show();
-                ScriptManager.RegisterStartupScript(this, GetType(), "Openpopup", "Openpopup();", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "Openpopup", "OpenGameOverpopup();", true);
             }
         }
         catch(Exception ex)
