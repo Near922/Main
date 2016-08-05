@@ -48,7 +48,7 @@
                     <div class="modal-content" style="text-align: center;">
 
                         <div class="modal-header" style="padding: 35px 50px;">
-                            <asp:LinkButton ID="bntX" runat="server" CssClass="close" PostBackUrl="~/Home.aspx" >&times;</asp:LinkButton>
+                            <asp:LinkButton ID="bntX" runat="server" CssClass="close" PostBackUrl="~/Home.aspx">&times;</asp:LinkButton>
                             <h4 class="modal-title">Game Over</h4>
                         </div>
                         <div class="modal-body" style="padding: 40px 50px; text-align: center;">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="modal-footer">
                             <asp:LinkButton ID="Button10" runat="server" CssClass="btn btn-default"
-                                Text="Close"  PostBackUrl="~/Home.aspx" />
+                                Text="Close" PostBackUrl="~/Home.aspx" />
 
                         </div>
                     </div>

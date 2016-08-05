@@ -23,7 +23,29 @@
     <form id="form1" runat="server">
         <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </cc1:ToolkitScriptManager>
-
+        <asp:UpdateProgress ID="updateProgress" runat="server">
+            <ProgressTemplate>
+                <div class="updateProgressBackground">
+                    <div style="position: relative; top: 30%;">
+                        <div style="padding-bottom: 20px;">
+                            <div id="circularG">
+                                <div id="circularG_1" class="circularG"></div>
+                                <div id="circularG_2" class="circularG"></div>
+                                <div id="circularG_3" class="circularG"></div>
+                                <div id="circularG_4" class="circularG"></div>
+                                <div id="circularG_5" class="circularG"></div>
+                                <div id="circularG_6" class="circularG"></div>
+                                <div id="circularG_7" class="circularG"></div>
+                                <div id="circularG_8" class="circularG"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span style="color: white; font-size: 16px;">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
         <div id="nav_bar" class="navbar navbar-inverse navbar-fixed-top" style="color: white !important;">
             <div class="container">
                 <div class="container">
@@ -38,16 +60,16 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height: 100%; text-align: right; color: white !important;">
                         <ul id="ulNav" runat="server" class="nav navbar-nav" style="float: right; color: white  !important;">
                             <li id="hlHome" class="header_cell" runat="server">
-                                <asp:HyperLink runat="server" ID="homeLink" style="color: white  !important;" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
+                                <asp:HyperLink runat="server" ID="homeLink" Style="color: white  !important;" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
                             <li id="hlAbout" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">About</a></li>
                             <li id="hlSkills" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">Skills</a></li>
                             <li id="hlExperience" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">Experience</a></li>
                             <li id="hlPortfolio" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">Projects</a></li>
                             <li id="hlContact" class="header_cell" runat="server" style="display: none; color: white  !important;"><a style="color: white  !important;">Contact</a></li>
                             <li id="hlAdmin" class="header_cell" runat="server" style="display: none; color: white  !important;">
-                            <asp:HyperLink runat="server" ID="adminLink" style="color: white  !important;" NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                                <asp:HyperLink runat="server" ID="adminLink" Style="color: white  !important;" NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
                             <li id="LiLogout" class="header_cell" runat="server">
-                                <asp:LinkButton runat="server" ID="hlLogout" style="color: white  !important;" NavigateUrl="" OnClick="hlLogout_Click">Log Out</asp:LinkButton></li>
+                                <asp:LinkButton runat="server" ID="hlLogout" Style="color: white  !important;" NavigateUrl="" OnClick="hlLogout_Click">Log Out</asp:LinkButton></li>
                         </ul>
                     </div>
                 </div>
@@ -70,20 +92,20 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div style="padding: 20px; width: 100%; text-align: center; overflow: hidden;">
-                            <div style="margin: 0 auto; width: 150px;">
-                                <div style="padding-right: 10px; float: left;">
+                            <div style="display: inline-block; text-align: center;">
+                                <div style="padding: 5px; float: left; text-align: center;">
                                     <a href="http://www.facebook.com/james.bergen.35">
-                                        <img runat="server" alt="facebook profile" style="height: 35px"  src="~/images/icons/social_media_icons_flat_shadow_set_64x64_0000_facebook.png" />
+                                        <img runat="server" alt="facebook profile" style="height: 35px" src="~/images/icons/social_media_icons_flat_shadow_set_64x64_0000_facebook.png" />
                                     </a>
                                 </div>
-                                <div style="padding-right: 10px; float: left;">
+                                <div style="padding: 5px; float: left; text-align: center;">
                                     <a href="https://github.com/Near922/Main">
                                         <img src="~/images/icons/GitHub-Mark-Light-32px.png" runat="server" alt="github profile" style="height: 35px" />
                                     </a>
                                 </div>
-                                <div style="padding-right: 10px; float: left;">
+                                <div style="padding: 5px; float: left; text-align: center;">
                                     <a href="https://www.linkedin.com/in/james-bergen-52823579">
-                                        <img style="height: 35px" runat="server" src="images/icons/social_media_icons_flat_shadow_set_48x48_0010_linkedin.png"  alt="linkedin"/>
+                                        <img style="height: 35px" runat="server" src="images/icons/social_media_icons_flat_shadow_set_48x48_0010_linkedin.png" alt="linkedin" />
                                     </a>
                                 </div>
                             </div>
