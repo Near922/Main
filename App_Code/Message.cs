@@ -148,13 +148,12 @@ public class MessageManager
             }
         }
         sqc = null;
-        //LoadMessages();
     }
 
     private void SetNumberOfPages()
     {
         _currentPageIndex = 0;
-        if (Messages.Count < _messagesPerPage)
+        if (Messages.Count <= _messagesPerPage)
         {
             Pages = 1;
         }
