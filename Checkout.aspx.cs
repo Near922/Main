@@ -176,6 +176,8 @@ public partial class Checkout3 : System.Web.UI.Page
 
         tblServerDataGridView.DataSource = lunchServers;
         tblServerDataGridView.DataBind();
+
+
         tblServerDataGridView1.DataSource = dinnerServers;
         tblServerDataGridView1.DataBind();
         tblBackwaitDataGridView.DataSource = lunchBackwaits;
@@ -184,6 +186,36 @@ public partial class Checkout3 : System.Web.UI.Page
         tblBackwaitDataGridView1.DataBind();
         SetTotalLabels();
         ColorNegativeRows();
+        MakeMobileFriendly();
+    }
+
+    public void MakeMobileFriendly()
+    {
+        if (tblServerDataGridView.HeaderRow != null)
+        {
+            tblServerDataGridView.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
+            tblServerDataGridView.HeaderRow.Cells[1].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[6].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[7].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.Cells[8].Attributes["data-hide"] = "phone";
+            tblServerDataGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
+        }
+
+        if (tblServerDataGridView1.HeaderRow != null)
+        {
+            tblServerDataGridView1.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
+            tblServerDataGridView1.HeaderRow.Cells[1].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[6].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[7].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.Cells[8].Attributes["data-hide"] = "phone";
+            tblServerDataGridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+        }
     }
 
     public void SetTotalLabels()

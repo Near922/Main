@@ -536,7 +536,7 @@ public partial class tblDetails : System.Web.UI.Page
             server.ApplyPayment(bill, Decimal.Parse(tableNumber.Value.ToString()));
             tableNumber.Value = "";
             updateValues("", getActiveTabIndex());
-            ScriptManager.RegisterStartupScript(this, GetType(), "Closepopup", "Closepopup();", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Close Popup", "Closepopup();", true);
         }
 
     }
@@ -578,12 +578,6 @@ public partial class tblDetails : System.Web.UI.Page
             Context.ApplicationInstance.CompleteRequest();
         }
 
-    }
-    protected void btnClose_Click(object sender, EventArgs e)
-    {
-        tblNumError.Text = "";
-        txtPaymentSpan.Text = "";
-        tableNumber.Value = "";
     }
 
     protected void btnSplit_Click(object sender, EventArgs e)

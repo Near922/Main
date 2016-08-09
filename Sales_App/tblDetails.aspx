@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <cc1:TabContainer ID="TabContainer1" CssClass="MyTabStyle" runat="server" ActiveTabIndex="4" Style="text-align: left; position: relative;"
+                    <cc1:TabContainer ID="TabContainer1" CssClass="MyTabStyle" runat="server" ActiveTabIndex="0" Style="text-align: left; position: relative;"
                         ForeColor="Black" Width="100%" Height="300">
                         <cc1:TabPanel runat="server" ID="TabPanelBev" HeaderText="Beverages" Style="position: relative;">
                             <ContentTemplate>
@@ -350,8 +350,9 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnClose" runat="server" CssClass="btn btn-default"
-                                        Text="Close" data-dismiss="modal" OnClick="btnClose_Click" UseSubmitBehavior="False" />
+                            <button type="button" id="btnClose" class="btn btn-default"
+                                data-dismiss="modal">
+                                Close</button>
 
                                 </div>
                             </div>

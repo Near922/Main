@@ -140,6 +140,7 @@ public class Bill
         public void ApplyPayment(decimal payment)
         {
             this.payment += payment;
+            Update();
         }
 
         public void Update()

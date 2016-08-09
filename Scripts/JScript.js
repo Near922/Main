@@ -8,6 +8,10 @@ function pageLoad() {
         $("#lblSelectedRowIndex").val(row_index.toString());
     });
 
+    $(function () {
+        $('.footable').footable();
+    });
+
     $(".money_button").click(function () {
         if ($('.modal_span').is(':visible')) {
             var txt = $('.modal_span').text() + $(this).text();
@@ -62,6 +66,8 @@ function pageLoad() {
         return false;
     });
 }
+
+
 function Closepopup() {
     $('.modal').modal('hide');
     $('body').removeClass('modal-open');

@@ -19,7 +19,6 @@
                 <strong>Incorrect!</strong>You chose the incorrect answer.
             </div>
             <br />
-            <br />
             <asp:Label ID="lblQuestion" runat="server" Font-Size="X-Large" Text="Please choose the sigil that belongs to " />
             <asp:Label ID="lblHouse" runat="server" Font-Size="X-Large" Text="" Font-Bold="True" />
             <div style="width: 100%; text-align: center;">
@@ -60,10 +59,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6" style="padding: 10px;">
-                                    <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_dark" OnClick="btnRestart_Click" />
+                                    <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_dark" Style="background-color: #4baad3;" OnClick="btnRestart_Click" />
                                 </div>
                                 <div class="col-sm-6" style="padding: 10px;">
-                                    <asp:LinkButton ID="btnClose" runat="server" CssClass="special_button_dark" Text="Exit" UseSubmitBehavior="False" PostBackUrl="~/Home.aspx" />
+                                    <asp:LinkButton ID="btnClose" runat="server" CssClass="special_button_dark" Style="background-color: #4baad3;" Text="Exit" UseSubmitBehavior="False" PostBackUrl="~/Home.aspx" />
                                 </div>
                             </div>
                         </div>

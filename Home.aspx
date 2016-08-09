@@ -57,7 +57,7 @@
             </p>
 
             <div class="row">
-                <div class="col-sm-3" style=" padding-bottom: 30px;">
+                <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
                             <input type="text" value="65" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3" style=" padding-bottom: 30px;">
+                <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
                             <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3" style=" padding-bottom: 30px;">
+                <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
                             <input type="text" value="40" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3" style=" padding-bottom: 30px;">
+                <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
                             <input type="text" value="55" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
@@ -123,23 +123,24 @@
             </div>
         </div>
     </div>
-    <div id="divExperience" clientidmode="static" runat="server" class="contentDiv" style="background-color: White;"
+    <div id="divExperience" clientidmode="static" runat="server" class="contentDiv" style="background-color: White; color: #808080;"
         text-align="left">
         <div class="container">
             <p class="section_header">
                 Experience
             </p>
-            <div class="experience">
-                <div style="overflow: hidden;">
-                    <div style="width: 50%; float: left;">
+            <div style="padding-bottom: 50px;">
+                <div class="row">
+                    <div class="col-sm-12">
                         <span class="sub_header">Bisk Education
                         </span>
-
                         <br />
                         <span class="sub_header">QA Engineer
                         </span>
                     </div>
-                    <div style="float: right;">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" style="font-size: 16px;">
                         <span>2016 - Present
                         </span>
                         <br />
@@ -148,26 +149,26 @@
                     </div>
                 </div>
                 <br />
-                <br />
-                <div>
-                    <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the Development team to address and assist the manual QA team with regression testing when needed.</p>
-                    <br />
-                    <br />
-                    <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the Development team to address and assist the manual QA team with regression testing when needed.</p>
+                        <br />
+                        <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
+                    </div>
                 </div>
             </div>
-            <div class="experience">
-                <div style="overflow: hidden;">
-                    <div style="width: 50%; float: left;">
+            <div style="padding-bottom: 50px;">
+                <div class="row">
+                    <div class="col-sm-12">
                         <span class="sub_header">West Point Underwriters
                         </span>
-
                         <br />
                         <span class="sub_header">Software Development Engineer in Test
                         </span>
-
                     </div>
-                    <div style="float: right;">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" style="font-size: 16px;">
                         <span>2012 - 2016
                         </span>
                         <br />
@@ -175,52 +176,54 @@
                     </div>
                 </div>
                 <br />
-                <br />
-                <div>
-                    <p>
-                        Part of a two member team responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  Also created and maintained utilities to automate QA Testing tasks and dashboards to track test results and metrics. These utilities were
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>
+                            Part of a two member team responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  Also created and maintained utilities to automate QA Testing tasks and dashboards to track test results and metrics. These utilities were
                                 built using Ruby and Sinatra although there were some projects that required the work be done in VB.NET and ASP.NET.
-                    </p>
-                    <br />
-                    <p>
-                        Trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  Created documentation for tools and led IT department "Lunch n' Learns" with team mate to review QA Automation process and tools.  Provided support and training to the manual QA Team when necessary.
-                    </p>
-                    <br />
-                    <br />
-                    <span class="skillTag">Ruby</span><span class="skillTag">WATIR</span><span class="skillTag">Cucumber</span><span class="skillTag">Sinatra</span><span class="skillTag">SQL</span><span class="skillTag">JQuery</span><span class="skillTag">VB.NET</span><span class="skillTag">Visual Studio</span>
+                        </p>
+                        <br />
+                        <p>
+                            Trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  Created documentation for tools and led IT department "Lunch n' Learns" with team mate to review QA Automation process and tools.  Provided support and training to the manual QA Team when necessary.
+                        </p>
+                        <br />
+                        <span class="skillTag">Ruby</span><span class="skillTag">WATIR</span><span class="skillTag">Cucumber</span><span class="skillTag">Sinatra</span><span class="skillTag">SQL</span><span class="skillTag">JQuery</span><span class="skillTag">VB.NET</span><span class="skillTag">Visual Studio</span>
+                    </div>
                 </div>
             </div>
-            <div class="experience">
-                <div style="overflow: hidden;">
-                    <div style="width: 50%; float: left;">
+            <div style="padding-bottom: 50px;">
+                <div class="row">
+                    <div class="col-sm-12">
                         <span class="sub_header">University of South Florida
                         </span>
                         <br />
                         <span class="sub_header">Management Information Systems, B.S.
                         </span>
                     </div>
-                    <div style="float: right;">
-                        <span>2008 - 2012
-                        </span>
-                        <br />
-                        <span>Tampa, FL
-                        </span>
+                    <div>
+                        <div class="col-sm-12" style="font-size: 16px;">
+                            <span>2008 - 2012
+                            </span>
+                            <br />
+                            <span>Tampa, FL
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <br />
-                <br />
-                <div>
-                    <p>Relevant course work:</p>
-                    <ul style="line-height: 1.4em;">
-                        <li>Systems Analysis and Design</li>
-                        <li>Database Design</li>
-                        <li>Business Application Development</li>
-                        <li>Global Information Systems</li>
-                        <li>E-Commerce</li>
-                    </ul>
-                    <br />
-                    <br />
-                    <span class="skillTag">C#</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span>
+                <div class="row">
+                    <div class="col-sm-12" style="font-size: 16px;">
+                        <p>Relevant course work:</p>
+                        <ul style="line-height: 1.4em;">
+                            <li>Systems Analysis and Design</li>
+                            <li>Database Design</li>
+                            <li>Business Application Development</li>
+                            <li>Global Information Systems</li>
+                            <li>E-Commerce</li>
+                        </ul>
+                        <br />
+                        <span class="skillTag">C#</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -256,15 +259,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 100px;">
-                <div class="col-sm-6">
+            <div class="row swap" style="padding-bottom: 100px;">
+                <div class="col-sm-6 second">
                     <div>
                         <img src="images/schedule_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                         <br />
                         <br />
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 first">
                     <div>
                         <asp:Label ID="lblScheduler" runat="server" Text="Employee Schedule Management System" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
@@ -296,15 +299,15 @@
                     <br />
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 100px;">
-                <div class="col-sm-6">
+            <div class="row swap" style="padding-bottom: 100px;">
+                <div class="col-sm-6 second">
                     <div>
                         <img src="images/sigil_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                         <br />
                         <br />
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 first">
                     <div>
                         <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" ForeColor="#4baad3"
                             Font-Size="X-Large"></asp:Label>
@@ -337,6 +340,13 @@
                     <p class="section_header">
                         Contact
                     </p>
+                    <div class="row">
+                        <div class="col-sm-12" style="padding-bottom: 50px; color: #808080; font-size: 16px;">
+                            <span>If you would like to get in touch with you can email me at </span>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="mailto:jmbergen922@gmail.com" Font-Size="16px" Text="jmbergen922@gmail.com"></asp:HyperLink>
+                            <span>or complete the below form:</span>
+                        </div>
+                    </div>
                     <div class="email">
                         <div class="form-group">
                             <asp:TextBox ID="txtName" runat="server" BackColor="white" ForeColor="black" placeholder="Name"

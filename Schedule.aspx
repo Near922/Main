@@ -48,8 +48,12 @@
             </asp:UpdatePanel>
             <br />
             <br />
-            <asp:Button runat="server" ID="btnAddShift" CssClass="special_button_dark"
-                Text="Add Shift" OnClick="btnAddShift_Click" />
+            <div class="row">
+                <div class="col-sm-12">
+                    <asp:Button runat="server" ID="btnAddShift" CssClass="special_button_dark table_button"
+                        Text="Add Shift" OnClick="btnAddShift_Click" />
+                </div>
+            </div>
         </div>
         <div>
             <asp:Label ID="lblMain" runat="server" Text="" />
@@ -98,102 +102,106 @@
                 <br />
 
                 <div class="table-responsive">
-                    <table style="border: thin solid #C0C0C0; width: 100%; margin-right: auto; margin-left: auto;"
-                        id="customers">
-                        <tr>
-                            <th style="border: thin solid #C0C0C0" class="style33"></th>
-                            <th style="border: thin solid #C0C0C0" class="style33"></th>
-                            <th style="border: thin solid #C0C0C0" class="style33"></th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblMonday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblTuesday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblWednesday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblThursday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblFriday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblSaturday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                            <th style="border: thin solid #C0C0C0; font-size: small;" class="style33">
-                                <asp:Label ID="lblSunday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
-                            </th>
-                        </tr>
+                    <table class="footable toggle-medium" style="border: thin solid; width: 100%; margin-right: auto; margin-left: auto;"
+                        id="schedule">
+                        <thead>
+                            <tr>
+                                <th data-class="expand"></th>
+                                <th></th>
+                                <th data-hide="phone"></th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblMonday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblTuesday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblWednesday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblThursday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblFriday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblSaturday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                                <th data-hide="phone">
+                                    <asp:Label ID="lblSunday" runat="server" Text="Label" Font-Bold="True"></asp:Label>
+                                </th>
+                            </tr>
+                        </thead>
                         <asp:Repeater ID="Repeater3" runat="server" OnItemDataBound="Repeater3_ItemDataBound">
                             <ItemTemplate>
                                 <tr>
-                                    <td rowspan="2" style="border: thin solid #C0C0C0">
+                                    <td style="border-bottom: none;">
                                         <asp:Label ID="lblTestName" runat="server" Text='<%# Eval("NAME") %>' Font-Bold="True"
                                             Font-Size="Small">
            
                                         </asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblJob" runat="server" Text='<%# GetJobs((string)Eval("NAME")) %>' />
-                                        <br />
-                                        <asp:Label ID="lblTotalHours" runat="server" ForeColor='<%# TotalHoursColor((Schedule)Eval("Schedule")) %>' Text='<%# Eval("Schedule.TotalHours" )%>'></asp:Label>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small; font-weight: bold;">AM
+                                    <td style="font-weight: bold;">AM
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small; font-weight: bold;">
-                                        <asp:Label ID="lblLunchCount" runat="server" Text='<%# Eval("Schedule.LunchShifts" )%>'></asp:Label>
+                                    <td>
+                                        <asp:Label ID="lblLunchCount" runat="server" Text='<%# Eval("Schedule.LunchShifts" ) + " Shifts"%>'></asp:Label>
                                         <br />
                                         <asp:Label ID="lblLunchHours" runat="server" ForeColor='<%# LunchHoursColor((Schedule)Eval("Schedule")) %>' Text='<%# Eval("Schedule.LunchHours" )%>'></asp:Label>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblMondayLunch" runat="server" Text='<%# Eval("Schedule.MondayLunch.ShiftString" )%>' CustomParameter='<%# Eval("Schedule.MondayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.MondayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.MondayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblTuesdayLunch" runat="server" Text='<%# Eval("Schedule.TuesdayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.TuesdayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.TuesdayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.TuesdayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblWednesdayLunch" runat="server" Text='<%# Eval("Schedule.WednesdayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.WednesdayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.WednesdayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.WednesdayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblThursdayLunch" runat="server" Text='<%# Eval("Schedule.ThursdayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.ThursdayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.ThursdayLunch")) %>' ForeColor='<%#GetColor((Shift) Eval("Schedule.ThursdayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblFridayLunch" runat="server" Text='<%# Eval("Schedule.FridayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.FridayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.FridayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.FridayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td>
                                         <asp:LinkButton ID="lblSaturdayLunch" runat="server" Text='<%# Eval("Schedule.SaturdayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.SaturdayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.SaturdayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SaturdayLunch") )%>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td style="border: thin solid #C0C0C0; font-size: small;">
+                                    <td >
                                         <asp:LinkButton ID="lblSundayLunch" runat="server" Text='<%# Eval("Schedule.SundayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.SundayLunch.ID") %>' Enabled='<%#GetState((Shift) Eval("Schedule.SundayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SundayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
                                     <tr class="alt">
-                                        <td style="border: thin solid #C0C0C0; font-size: small; font-weight: bold;">PM
+                                        <td style="background-color: white; border-top: none;">
+
+                                            <asp:Label ID="lblJob" runat="server" Text='<%# GetJobs((string)Eval("NAME")) %>' />
+                                            <br />
+                                            <asp:Label ID="lblTotalHours" runat="server" ForeColor='<%# TotalHoursColor((Schedule)Eval("Schedule")) %>' Text='<%# Eval("Schedule.TotalHours" )%>'></asp:Label>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small; font-weight: bold;">
-                                            <asp:Label ID="lblDinnerCount" runat="server" Text='<%# Eval("Schedule.DinnerShifts" )%>'></asp:Label>
+                                        <td style="font-weight: bold;">PM
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblDinnerCount" runat="server" Text='<%# Eval("Schedule.DinnerShifts" ) +  " Shifts"%>'></asp:Label>
                                             <br />
                                             <asp:Label ID="lblDinnerHours" runat="server" ForeColor='<%# DinnerHoursColor((Schedule)Eval("Schedule")) %>' Text='<%# Eval("Schedule.DinnerHours" )%>'></asp:Label>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblMondayDinner" runat="server" Text='<%# Eval("Schedule.MondayDinner.ShiftString" )%>' Enabled='<%#GetState((Shift) Eval("Schedule.MondayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.MondayDinner")) %>' CustomParameter='<%# Eval("Schedule.MondayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblTuesdayDinner" runat="server" Text='<%# Eval("Schedule.TuesdayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.TuesdayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.TuesdayDinner")) %>' CustomParameter='<%#  Eval("Schedule.TuesdayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblWednesdayDinner" runat="server" Text='<%# Eval("Schedule.WednesdayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.WednesdayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.WednesdayDinner")) %>' CustomParameter='<%# Eval("Schedule.WednesdayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblThursdayDinner" runat="server" Text='<%# Eval("Schedule.ThursdayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.ThursdayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.ThursdayDinner")) %>' CustomParameter='<%# Eval("Schedule.ThursdayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblFridayDinner" runat="server" Text='<%# Eval("Schedule.FridayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.FridayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.FridayDinner")) %>' CustomParameter='<%# Eval("Schedule.FridayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblSaturdayDinner" runat="server" Text='<%# Eval("Schedule.SaturdayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.SaturdayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SaturdayDinner")) %>' CustomParameter='<%# Eval("Schedule.SaturdayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
-                                        <td style="border: thin solid #C0C0C0; font-size: small;">
+                                        <td>
                                             <asp:LinkButton ID="lblSundayDinner" runat="server" Text='<%# Eval("Schedule.SundayDinner.ShiftString" )%>' Enabled='<%# GetState((Shift)Eval("Schedule.SundayDinner")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SundayDinner")) %>' CustomParameter='<%# Eval("Schedule.SundayDinner.ID") %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                         </td>
                                     </tr>
@@ -243,15 +251,15 @@
                                     <asp:Label ID="lblShiftDetailsShift" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
-      
-                        <div class="row" style="padding-bottom: 20px;">
-                            <div class="col-sm-12">
 
-                                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" Style="width: 100%; background-color: #4baad3;" UseSubmitBehavior="False" />
+                            <div class="row" style="padding-bottom: 20px;">
+                                <div class="col-sm-12">
 
+                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" Style="width: 100%; background-color: #4baad3;" UseSubmitBehavior="False" />
+
+                                </div>
                             </div>
                         </div>
-                  </div>
                         <div class="modal-footer">
                             <button type="button" id="deleteClose" class="btn btn-default"
                                 data-dismiss="modal">
