@@ -172,7 +172,7 @@
                         <span>2012 - 2016
                         </span>
                         <br />
-                        <span>Tampa, FL</span>
+                        <span>Pinellas Park, FL</span>
                     </div>
                 </div>
                 <br />
