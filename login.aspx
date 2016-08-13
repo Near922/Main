@@ -46,8 +46,8 @@
             </asp:Panel>
         </div>
     </div>
-    <div>
-        <table style="min-width: 300px;">
+    <div style="width: 100%;">
+        <table style="min-width: 300px; margin: 0 auto;">
             <tr>
                 <th>UserID
                 </th>

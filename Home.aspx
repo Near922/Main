@@ -20,7 +20,7 @@
                     I'm passionate about writing code.
                 </p>
                 <div>
-                    <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" />
+                    <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" Target="_blank" />
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
             <div style="padding-bottom: 50px;">
                 <div class="row">
                     <div class="col-sm-12">
-                        <span class="sub_header">Bisk Education
+                        <span class="sub_header">Bisk
                         </span>
                         <br />
                         <span class="sub_header">QA Engineer
@@ -151,7 +151,7 @@
                 <br />
                 <div class="row">
                     <div class="col-sm-12">
-                        <p>Part of a team responsible for building and maintaining a test automation framework.  I am responsible for designing and implementing build verification tests and regression tests.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the Development team to address and assist the manual QA team with regression testing when needed.</p>
+                        <p>Part of a team responsible for building and maintaining a test automation framework, build verification tests and regression tests for the Learning Management System and marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
                         <br />
                         <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
                     </div>
@@ -342,7 +342,7 @@
                     </p>
                     <div class="row">
                         <div class="col-sm-12" style="padding-bottom: 50px; color: #808080; font-size: 16px;">
-                            <span>If you would like to get in touch with you can email me at </span>
+                            <span>If you would like to get in touch you can email me at </span>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="mailto:jmbergen922@gmail.com" Font-Size="16px" Text="jmbergen922@gmail.com"></asp:HyperLink>
                             <span>or complete the below form:</span>
                         </div>

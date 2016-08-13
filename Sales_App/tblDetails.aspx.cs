@@ -206,10 +206,7 @@ public partial class tblDetails : System.Web.UI.Page
         spacer.Style.Add("height", "150px");
         HtmlTable spacerTwo = new HtmlTable();
         spacerTwo.Style.Add("height", "50px");
-        divContainer.Style.Add("width", "100%");
-        divContainer.Style.Add("min-height", "500px");
-        divContainer.BgColor = "cyan";
-        divContainer.Style.Add("position", "relative");
+       divContainer.Attributes.Add("class", "checkGridView");
         HtmlTableRow containerrow = new HtmlTableRow();
  
         HtmlTableCell containercell = new HtmlTableCell();
@@ -430,7 +427,7 @@ public partial class tblDetails : System.Web.UI.Page
             tabCount += 1;
         }
 
-        billContainter.Controls.Remove(TabContainerBills);
+        billContainer.Controls.Remove(TabContainerBills);
 
         TabContainerBills = new AjaxControlToolkit.TabContainer();
         TabContainerBills.ID = "tabContainerBills";
@@ -458,7 +455,7 @@ public partial class tblDetails : System.Web.UI.Page
         {
             table.AddNewList(false);
         }
-        billContainter.Controls.Add(TabContainerBills);
+        billContainer.Controls.Add(TabContainerBills);
 
     }
     protected void tabContainerBills_ActiveTabChanged(object sender, EventArgs e)

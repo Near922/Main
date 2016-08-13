@@ -705,21 +705,23 @@ td {
     background-color: cyan;
     border: none;
     min-height: 500px;
-    min-width: 200px;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
+    position: relative;
+    min-width: 200px;
 }
 
     .checkGridView tr {
         border: none;
     }
 
-        .checkGridView tr td:last-child {
-            text-align: right;
+        .checkGridView tr td:first-child {
+            text-align: left;
         }
 
-        .checkGridView tr:hover {
-            background-color: pink;
+        .checkGridView tr td:last-child {
+            text-align: right;
         }
 
     .checkGridView td {
@@ -730,6 +732,13 @@ td {
     .checkGridView tr:last-child {
         height: 100%;
         vertical-align: top;
+    }
+
+.drag_drop_grid {
+}
+
+    .drag_drop_grid tr:hover {
+        background-color: pink;
     }
 
 .contentDiv {
@@ -951,7 +960,7 @@ td {
 
     #schedule td, #schedule th {
         font-size: 1em;
-        border: 1px solid  #C0C0C0;
+        border: 1px solid #C0C0C0;
         padding: 3px 7px 2px 7px;
     }
 
@@ -1198,18 +1207,50 @@ td {
     }
 }
 
+@media (max-width: 768px) {
+    .money_button {
+        min-width: 45px !important;
+        font-size: small !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .money_back_button {
+        min-width: 45px !important;
+        font-size: small !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkGridView {
+        min-height: 200px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .clear_button {
+        min-width: 45px !important;
+        font-size: small !important;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .header_button {
         width: 100% !important;
     }
 }
 
-    @media (max-width:400px){
-        .swap{
-          display:flex;
-          flex-flow: column;
-        }
+@media (max-width:400px) {
+    .swap {
+        display: flex;
+        flex-flow: column;
+    }
 
-        .second{order:2;}
-        .first{order:1;}
-      }
+    .second {
+        order: 2;
+    }
+
+    .first {
+        order: 1;
+    }
+}

@@ -25,9 +25,24 @@
     </table>
     <br />
     <br />
-    <br />
-    <asp:Button ID="btnAdd" runat="server" class="special_button_dark" Text='Add' OnClick="btnAdd_Click" />
-    <asp:Button ID="btnSave" runat="server" class="special_button_dark" Text='Save' OnClick="btnSave_Click" />
-    <asp:Button ID="btnBack" runat="server" class="special_button_dark" Text='Back' OnClick="btnBack_Click" />
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div style="padding: 10px;">
+                <asp:Button ID="btnAdd" runat="server" class="special_button_dark table_button" Text='Add' OnClick="btnAdd_Click" />
+            </div>
+        </div>
+        <div class="col-sm-3">
+
+            <div style="padding: 10px;">
+                <asp:Button ID="btnSave" runat="server" class="special_button_dark table_button" Text='Save' OnClick="btnSave_Click" />
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div style="padding: 10px;">
+                <asp:Button ID="btnBack" runat="server" class="special_button_dark table_button" Text='Back' OnClick="btnBack_Click" />
+            </div>
+        </div>
+    </div>
 </asp:Content>
 

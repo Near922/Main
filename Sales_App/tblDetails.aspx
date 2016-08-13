@@ -11,6 +11,11 @@
         }
 
     </script>
+    <style>
+       .checkGridView tr:hover {
+   
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
@@ -24,7 +29,7 @@
 
             <div class="row">
                 <div class="col-sm-3">
-                    <div id="billContainter" runat="server" style="min-height: 300px">
+                    <div id="billContainer" runat="server" style="min-height: 300px; padding: 10px;">
                     </div>
                 </div>
                 <div class="col-sm-9">
@@ -251,85 +256,85 @@
                                             </div>
                                         </div>
                                         <div class="row" style="padding-top: 20px;">
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button1" runat="server" class="special_button_dark_panel money_button table_button">1</button>
+                                                    <button type="button" id="Button1" runat="server" class="special_button_dark_panel money_button">1</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button2" runat="server" class="special_button_dark_panel money_button table_button">2</button>
+                                                    <button type="button" id="Button2" runat="server" class="special_button_dark_panel money_button">2</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button3" runat="server" class="special_button_dark_panel money_button table_button">3</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button4" runat="server" class="special_button_dark_panel money_button table_button">4</button>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button5" runat="server" class="special_button_dark_panel money_button table_button">5</button>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button6" runat="server" class="special_button_dark_panel money_button table_button">6</button>
+                                                    <button type="button" id="Button3" runat="server" class="special_button_dark_panel money_button">3</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button7" runat="server" class="special_button_dark_panel money_button table_button">7</button>
+                                                    <button type="button" id="Button4" runat="server" class="special_button_dark_panel money_button">4</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button8" runat="server" class="special_button_dark_panel money_button table_button">8</button>
+                                                    <button type="button" id="Button5" runat="server" class="special_button_dark_panel money_button">5</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="Button9" runat="server" class="special_button_dark_panel money_button table_button">9</button>
+                                                    <button type="button" id="Button6" runat="server" class="special_button_dark_panel money_button">6</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <asp:Button ID="ButtonClear" runat="server" class="special_button_dark_panel clear_button table_button" Text="Clear" ClientIDMode="Static" />
+                                                    <button type="button" id="Button7" runat="server" class="special_button_dark_panel money_button">7</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <button type="button" id="ButtonZero" runat="server" class="special_button_dark_panel money_button table_button">0</button>
+                                                    <button type="button" id="Button8" runat="server" class="special_button_dark_panel money_button">8</button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-xs-4">
                                                 <div style="padding-bottom: 10px !important;">
-                                                    <asp:Button ID="ButtonTableNumBack" runat="server" class="special_button_dark_panel money_back_button table_button" Text="Back"
+                                                    <button type="button" id="Button9" runat="server" class="special_button_dark_panel money_button">9</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <asp:Button ID="ButtonClear" runat="server" class="special_button_dark_panel clear_button" Text="Clear" ClientIDMode="Static" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <button type="button" id="ButtonZero" runat="server" class="special_button_dark_panel money_button">0</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div style="padding-bottom: 10px !important;">
+                                                    <asp:Button ID="ButtonTableNumBack" runat="server" class="special_button_dark_panel money_back_button" Text="Back"
                                                         ClientIDMode="Static" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-4">
+                                                <div class="col-xs-4">
                                                     <div style="padding-bottom: 10px !important;"> 
 
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-xs-4">
                                                     <div style="padding-bottom: 10px !important;">
-                                                        <button type="button" id="btnDecimal" runat="server" class="special_button_dark_panel money_button table_button">.</button>
+                                                        <button type="button" id="btnDecimal" runat="server" class="special_button_dark_panel money_button">.</button>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-xs-4">
                                                     <div style="padding-bottom: 10px !important;">
                                                     </div>
                                                 </div>
@@ -338,7 +343,7 @@
 
                                         </div>
                                         <div class="row" style="padding-top: 50px;">
-                                            <div class="col-sm-12">
+                                            <div class="col-xs-12">
                                                 <asp:Button ID="btnEnter" runat="server" CssClass="special_button_dark_panel" Style="width: 100%; background-color: #4baad3;"
                                                     Text="Enter" OnClick="btnEnter_Click" />
 
