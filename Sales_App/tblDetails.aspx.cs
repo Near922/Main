@@ -9,8 +9,8 @@ using System.Web.UI.HtmlControls;
 
 public partial class tblDetails : System.Web.UI.Page
 {
-    Dictionary<string, decimal> menuOrder = new Dictionary<string, decimal>();
-    Dictionary<string, int> menuIDs = new Dictionary<string, int>();
+    static Dictionary<string, decimal> menuOrder;
+    static Dictionary<string, int> menuIDs;
     sqlController sqC = new sqlController();
     AjaxControlToolkit.TabContainer TabContainerBills;
     Server server;
@@ -26,170 +26,148 @@ public partial class tblDetails : System.Web.UI.Page
         {
             Response.Redirect("~/login.aspx");
         }
-        //ClientScript.RegisterClientScriptInclude(this.GetType(), "myScript", "../Scripts/JScript.js");
         server = (Server)Session["Employee"];
         lblTableNum.Text = String.Format("Table {0}", Request.QueryString["Table"].ToString());
         lblServerName.Text = server.Name;
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-        populateBeverageButtons();
-        populateSoupButtons();
-        populateAppButtons();
-        populateSaladButtons();
-        populateSandwhichButtons();
-        populateEntreeButtons();
-        populateWineButtons();
-        populateBeerButtons();
-        populateDessertButtons();
+        if (Cache["MenuOrder"] != null)
+        {
+            menuOrder = (Dictionary<string, decimal>)Cache["MenuOrder"];
+        }
+        else
+        {
+            menuOrder = new Dictionary<string, decimal>();
+        }
+
+        if (Cache["MenuIDs"] != null)
+        {
+            menuIDs = (Dictionary<string, int>)Cache["MenuIDs"];
+        }
+        else
+        {
+            menuIDs = new Dictionary<string, int>();
+        }
+
+        if (!IsPostBack)
+        {
+            PopulateButtons(MenuItems.Beverages, ListViewBeverage);
+            PopulateButtons(MenuItems.Soup, ListViewSoup);
+            PopulateButtons(MenuItems.Appetizers, ListViewApps);
+            PopulateButtons(MenuItems.Salads, ListViewSalad);
+            PopulateButtons(MenuItems.Sandwiches, ListViewSandwichs);
+            PopulateButtons(MenuItems.Entrees, ListViewEntree);
+            PopulateButtons(MenuItems.Wine, ListViewWine);
+            PopulateButtons(MenuItems.Beer, ListViewBeer);
+            PopulateButtons(MenuItems.Dessert, ListViewDessert);
+        }
+        if (Cache["MenuOrder"] == null)
+        {
+            Cache["MenuOrder"] = menuOrder;
+        }
+        if (Cache["MenuIDs"] == null)
+        {
+            Cache["MenuIDs"] = menuIDs;
+        }
         AddTab();
         loadDataTabs();
     }
 
-
-    public void populateBeverageButtons()
+    public enum MenuItems
     {
-        DataTable dt = sqC.getBeverages();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-        ListViewBeverage.DataSource = dt;
+        Beverages,
+        Soup,
+        Appetizers,
+        Sandwiches,
+        Dessert,
+        Beer,
+        Wine,
+        Entrees,
+        Salads
+    }
+
+    public void PopulateButtons(MenuItems menuItem, ListView listView)
+    {
         if (!IsPostBack)
         {
-            ListViewBeverage.DataBind();
+            DataTable dt = GetMenuData(menuItem);
+            PopulateMenuDictionaries(dt);
+            listView.DataSource = dt;
+            listView.DataBind();
         }
     }
 
-    public void populateSoupButtons()
+    public void PopulateMenuDictionaries(DataTable dt)
     {
-        DataTable dt = sqC.getSoup();
-        foreach (DataRow dr in dt.Rows)
+        if (Cache["MenuOrder"] == null || Cache["MenuIDs"] == null)
         {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-        ListViewSoup.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewSoup.DataBind();
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (!menuOrder.ContainsKey(dr["Name"].ToString()))
+                {
+                    menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
+                }
+
+                if (!menuIDs.ContainsKey(dr["Name"].ToString()))
+                {
+                    menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+                }
+            }
         }
     }
 
-    public void populateAppButtons()
-    {
-        DataTable dt = sqC.getApps();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
 
-        ListViewApps.DataSource = dt;
-        if (!IsPostBack)
+    public DataTable GetMenuData(MenuItems menuItem)
+    {
+        DataTable dt = null;
+        if (Cache[menuItem.ToString()] == null)
         {
-            ListViewApps.DataBind();
+            dt = GetSqlData(menuItem, dt);
+            Cache[menuItem.ToString()] = dt;
         }
+        else
+        {
+            dt = (DataTable)Cache[menuItem.ToString()];
+        }
+        return dt;
     }
 
-    public void populateSandwhichButtons()
+    public DataTable GetSqlData(MenuItems menuItem, DataTable dt)
     {
-        DataTable dt = sqC.getSandwichs();
-        foreach (DataRow dr in dt.Rows)
+        switch (menuItem)
         {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
+            case MenuItems.Beverages:
+                dt = sqC.getBeverages();
+                break;
+            case MenuItems.Soup:
+                dt = sqC.getSoup();
+                break;
+            case MenuItems.Appetizers:
+                dt = sqC.getApps();
+                break;
+            case MenuItems.Sandwiches:
+                dt = sqC.getSandwichs();
+                break;
+            case MenuItems.Dessert:
+                dt = sqC.getDesserts();
+                break;
+            case MenuItems.Beer:
+                dt = sqC.getBeer();
+                break;
+            case MenuItems.Wine:
+                dt = sqC.getWine();
+                break;
+            case MenuItems.Entrees:
+                dt = sqC.getEntree();
+                break;
+            case MenuItems.Salads:
+                dt = sqC.getSalads();
+                break;
+            default:
+                dt = null;
+                break;
         }
 
-        ListViewSandwichs.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewSandwichs.DataBind();
-        }
-    }
-
-    public void populateDessertButtons()
-    {
-
-        DataTable dt = sqC.getDesserts();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-   
-        ListViewDessert.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewDessert.DataBind();
-        }
-    }
-
-    public void populateBeerButtons()
-    {
-    
-        DataTable dt = sqC.getBeer();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-      
-        ListViewBeer.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewBeer.DataBind();
-        }
-    }
-
-    public void populateWineButtons()
-    {
-
-        DataTable dt = sqC.getWine();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
- 
-        ListViewWine.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewWine.DataBind();
-        }
-    }
-
-    public void populateEntreeButtons()
-    {
-        
-        DataTable dt = sqC.getEntree();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-   
-        ListViewEntree.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewEntree.DataBind();
-        }
-    }
-
-    public void populateSaladButtons()
-    {
-       
-        DataTable dt = sqC.getSalads();
-        foreach (DataRow dr in dt.Rows)
-        {
-            menuOrder.Add(dr["Name"].ToString(), (decimal)dr["Price"]);
-            menuIDs.Add(dr["Name"].ToString(), (int)dr["ID"]);
-        }
-  
-        ListViewSalad.DataSource = dt;
-        if (!IsPostBack)
-        {
-            ListViewSalad.DataBind();
-        }
+        return dt;
     }
 
     protected int getActiveTabIndex()
@@ -206,7 +184,7 @@ public partial class tblDetails : System.Web.UI.Page
         spacer.Style.Add("height", "150px");
         HtmlTable spacerTwo = new HtmlTable();
         spacerTwo.Style.Add("height", "50px");
-       divContainer.Attributes.Add("class", "checkGridView");
+        divContainer.Attributes.Add("class", "checkGridView");
         HtmlTableRow containerrow = new HtmlTableRow();
  
         HtmlTableCell containercell = new HtmlTableCell();
@@ -453,7 +431,7 @@ public partial class tblDetails : System.Web.UI.Page
 
         if (buttonClick)
         {
-            table.AddNewList(false);
+            table.AddNewList();
         }
         billContainer.Controls.Add(TabContainerBills);
 
@@ -472,7 +450,8 @@ public partial class tblDetails : System.Web.UI.Page
             value = lblSelectedRow.Value;
             value = value.Split('$')[0];
             updateValues(value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace(">>", "").Trim(), getActiveTabIndex());
-
+            lblSelectedRowIndex.Value = "";
+            updateHiddenFields.Update();
         }
     }
 
@@ -485,6 +464,7 @@ public partial class tblDetails : System.Web.UI.Page
             server.DeleteOrder(order, table);
             updateValues("", getActiveTabIndex());
             lblSelectedRowIndex.Value = "";
+            updateHiddenFields.Update();
         }
     }
 
@@ -495,24 +475,39 @@ public partial class tblDetails : System.Web.UI.Page
 
         foreach (Bill bill in bills)
         {
+            if (bill.ID == 0 && bill.Orders.Count > 0)
+            {
+                bill.SaveBill();
+            }
             bill.Update();
         }
 
-        Response.Redirect("PointOfSaleMain.aspx");
+        Response.Redirect("PointOfSaleMain.aspx", true);
     }
     protected void sendButton_Click(object sender, EventArgs e)
     {
+        var test = lblSelectedRowIndex.Value;
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
-            order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            var bill = table.GetBills()[getActiveTabIndex()];
+            order = bill.Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            if (bill.ID == 0 && bill.Orders.Count > 0)
+            {
+                bill.SaveBill();
+            }
             server.SendOrder(order);
+            lblSelectedRowIndex.Value = "";
+            updateHiddenFields.Update();
         }
         else
         {
+            if (bill.ID == 0 && bill.Orders.Count > 0)
+            {
+                bill.SaveBill();
+            }
             server.SendOrders(table);
         }
         updateValues("", getActiveTabIndex());
-
     }
 
 
@@ -541,9 +536,16 @@ public partial class tblDetails : System.Web.UI.Page
     {
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
+            var bill = table.GetBills()[getActiveTabIndex()];
             order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
+            if (bill.ID == 0 && bill.Orders.Count > 0)
+            {
+                bill.SaveBill();
+            }
             server.HoldOrder(order);
             updateValues("", getActiveTabIndex());
+            lblSelectedRowIndex.Value = "";
+            updateHiddenFields.Update();
         }
     }
     protected void btnCloseTable_Click(object sender, EventArgs e)

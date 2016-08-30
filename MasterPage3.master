@@ -130,6 +130,7 @@
     <script src='<%= ResolveUrl("~/Scripts/jquery-ui.min.js") %>'></script>
     <script src='<%= ResolveUrl("~/Scripts/bootstrap.js") %>'></script>
     <script src='<%= ResolveUrl("~/Scripts/bootstrap.min.js") %>'></script>
-     <script src='<%= ResolveUrl("~/Scripts/FooTable-2.0.3/js/footable.js") %>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/jquery.ui.touch-punch.min.js") %>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/FooTable-2.0.3/js/footable.js") %>'></script>
 </body>
 </html>

@@ -27,9 +27,14 @@ public class Table
         bills = new List<Bill>();
         if (!existing)
         {
-           Save();
+            Save();
         }
-        AddNewList(existing);
+        AddNewList();
+
+        if (!existing)
+        {
+            bills[0].SaveBill();
+        }
     }
 
     public TableStatus Status { get; set; }
@@ -80,9 +85,9 @@ public class Table
 
     }
 
-    public void AddNewList(bool existing)
+    public void AddNewList()
     {
-        bills.Add(new Bill(id, bills.Count, existing));
+        bills.Add(new Bill(id, bills.Count));
     }
 
    public void PlaceOrder(Order order, int i)

@@ -407,10 +407,10 @@
                             </div>
 
                             <div id="mainButtons" runat="server" class="row" style="padding-bottom: 20px;">
-                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px; ">
                                     <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" Style="width: 100%; background-color: #4baad3;" />
                                 </div>
-                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
                                     <asp:Button ID="btnCalculate" runat="server" CssClass="special_button_dark_panel" Visible="false" OnClick="btnCalculate_Click" Text="Calculate"
                                         ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
                                 </div>

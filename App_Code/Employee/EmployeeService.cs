@@ -95,7 +95,7 @@ public class EmployeeService
             int billsCount = sqc.getBillCount(table);
             while (billsCount > 0)
             {
-                table.AddNewList(true);
+                table.AddNewList();
                 billsCount -= 1;
             }
 

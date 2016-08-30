@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.Services;
@@ -106,8 +105,29 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
+        server = (Server)HttpContext.Current.Session["Employee"];
+        table = server.getTable(Int32.Parse(HttpContext.Current.Session["TableNum"].ToString()));
+        List<Bill> bills = table.GetBills();
+        RemoveEmptyBills(bills);
         Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
+    }
+
+    private void RemoveEmptyBills(List<Bill> bills)
+    {       
+        List<Bill> toRemove = new List<Bill>();
+        foreach (Bill bill in bills)
+        {
+            if (bill.ID == 0 && bill.Orders.Count == 0)
+            {
+                toRemove.Add(bill);
+            }
+        }
+
+        foreach (var bill in toRemove)
+        {
+            bills.Remove(bill);
+        }
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -116,7 +136,7 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
         {
             server = (Server)Session["Employee"];
             table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-            table.AddNewList(false);
+            table.AddNewList();
             GridView gv = new GridView();
             gv.ID = String.Format("myGridID{0}", table.BillCount - 1);
             DataTable dt = new DataTable();
@@ -148,22 +168,32 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
     protected void btnSave_Click(object sender, EventArgs e)
     {
         List<Order> updatedOrders = (List<Order>)HttpContext.Current.Session["UpdatedOrders"];
-        sqC = new sqlController();
-        foreach (Order order in updatedOrders)
+        if (updatedOrders != null)
         {
-            sqC.updateOrderBillID(order);
+            sqC = new sqlController();
+            foreach (Order order in updatedOrders)
+            {
+                sqC.updateOrderBillID(order);
+            }
+            sqC = null;
         }
-        sqC = null;
         server = (Server)HttpContext.Current.Session["Employee"];
         table = server.getTable(Int32.Parse(HttpContext.Current.Session["TableNum"].ToString()));
         List<Bill> bills = table.GetBills();
-
-        foreach (Bill bill in bills)
+        if (updatedOrders != null)
         {
-            bill.CalculateTotal();
-            bill.Update();
-        }
+            foreach (Bill bill in bills)
+            {
+                if (bill.ID == 0 && bill.Orders.Count > 0)
+                {
+                    bill.SaveBill();
+                }
 
+                bill.CalculateTotal();
+                bill.Update();
+            }
+        }
+        RemoveEmptyBills(bills);
         Session["Employee"] = server;
         Response.Redirect("~/Sales_App/tblDetails.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
@@ -191,6 +221,10 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
             Order order = fromBill.Orders[orderIndex];
             fromBill.RemoveOrder(order);
             toBill = table.tableBill(toBillIndex);
+            if (toBill.ID == 0)
+            {
+                toBill.SaveBill();
+            }
             order.BillID = toBill.ID;
             toBill.CalculateTotal();
             toBill.AddOrder(order);

@@ -12,8 +12,7 @@
 
     </script>
     <style>
-       .checkGridView tr:hover {
-   
+        .checkGridView tr:hover {
         }
     </style>
 </asp:Content>
@@ -229,7 +228,7 @@
                 <div class="col-sm-3">
                     <div style="padding: 10px;">
                         <asp:Button ID="exitButton" runat="server" class="special_button_dark table_button" Text='Exit' BackColor="Red"
-                            OnClick="exitButton_Click" />
+                            OnClick="exitButton_Click" UseSubmitBehavior="True" />
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -325,8 +324,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-4">
-                                                    <div style="padding-bottom: 10px !important;"> 
-
+                                                    <div style="padding-bottom: 10px !important;">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-4">
@@ -355,9 +353,9 @@
 
                                 </div>
                                 <div class="modal-footer">
-                            <button type="button" id="btnClose" class="btn btn-default"
-                                data-dismiss="modal">
-                                Close</button>
+                                    <button type="button" id="btnClose" class="btn btn-default"
+                                        data-dismiss="modal">
+                                        Close</button>
 
                                 </div>
                             </div>
@@ -367,6 +365,10 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:HiddenField runat="server" ID='lblSelectedRow' Value='' ClientIDMode="Static" />
-    <asp:HiddenField runat="server" ID='lblSelectedRowIndex' Value='' ClientIDMode="Static" />
+    <asp:UpdatePanel ID="updateHiddenFields" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:HiddenField runat="server" ID='lblSelectedRow' Value='' ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID='lblSelectedRowIndex' Value='' ClientIDMode="Static" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

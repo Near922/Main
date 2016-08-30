@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 /// <summary>
 /// Summary description for Bill
 /// </summary>
@@ -20,16 +17,16 @@ public class Bill
         private decimal payment;
         private List<Order> orders;
 
-        public Bill(int table_id, int check_num, bool existing, decimal payment = 0.00M)
+        public Bill(int table_id, int check_num, decimal payment = 0.00M)
         {
             this.table_id = table_id;
             this.payment = payment;
             this.check_num = check_num;
             orders = new List<Order>();
-            if (!existing)
-            {
-                SaveBill();
-            }
+            //if (!existing)
+            //{
+                //SaveBill();
+            //}
         }
 
         public List<Order> Orders
@@ -71,6 +68,10 @@ public class Bill
            sqlController sqC = new sqlController();
 
            this.id = sqC.insertBill(this);
+            foreach (Order order in Orders)
+            {
+                order.BillID = this.ID;
+            }
         }
 
         public int TableID
