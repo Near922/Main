@@ -26,10 +26,17 @@ public partial class tblDetails : System.Web.UI.Page
         {
             Response.Redirect("~/login.aspx");
         }
+
         server = (Server)Session["Employee"];
+        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+        if (table == null)
+        {
+            Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+        }
+
         lblTableNum.Text = String.Format("Table {0}", Request.QueryString["Table"].ToString());
         lblServerName.Text = server.Name;
-        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+
         if (Cache["MenuOrder"] != null)
         {
             menuOrder = (Dictionary<string, decimal>)Cache["MenuOrder"];

@@ -59,7 +59,8 @@ public class Server : Employee
             }
         }
 
-        return new Table(0, tablenumber, Int32.Parse(ID), false);
+        return null;
+        //return new Table(0, tablenumber, Int32.Parse(ID), false);
     }
 
 

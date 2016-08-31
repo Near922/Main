@@ -40,6 +40,11 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
         {
             server = (Server)Session["Employee"];
             table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
+            if (table == null)
+            {
+                Response.Redirect("~/Sales_App/PointOfSaleMain.aspx");
+            }
+
             Session["TableNum"] = Int32.Parse(Request.QueryString["Table"]);
             int i = 0;
             foreach (Bill bill in table.GetBills())
