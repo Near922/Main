@@ -13,15 +13,10 @@ public partial class PointOfSaleMain : System.Web.UI.Page
     sqlController sqC = new sqlController();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
+        if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");
         }
-        //Response.Cache.SetExpires(DateTime.Now);
-        //Response.Cache.SetValidUntilExpires(false);
-        //Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        //Response.Cache.SetNoStore();
 
         var user = (User)Session["User"];
         lblGreeting.Text = String.Format("Welcome {0}!", user.Name.ToUpper());

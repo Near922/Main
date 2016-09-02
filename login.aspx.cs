@@ -87,7 +87,6 @@ public partial class login : System.Web.UI.Page
         if (Validate(txtUserID.Text, txtPassword.Text))
         {
             var user = (User)Session["User"];
-            FormsAuthentication.SetAuthCookie(txtUserID.Text, true);
             FormsAuthentication.RedirectFromLoginPage(txtUserID.Text, true);
 
             if (user.IsAdmin)

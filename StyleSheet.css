@@ -1190,7 +1190,7 @@ td {
 .close_new_table {
 }
 
-.modal-header, h4, .close {
+.modal-header, h4 {
     background-color: #4baad3;
     color: white !important;
     text-align: center;

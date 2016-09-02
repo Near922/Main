@@ -29,12 +29,12 @@ public partial class Sales_App_Admin : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
+        if (Session["User"] == null)
         {
             Response.Redirect("~/Home.aspx");
         }
 
-        if (Session["User"] != null && Page.User.Identity.IsAuthenticated)
+        if (Session["User"] != null)
         {
             User user = (User)Session["User"];
             if (!user.IsAdmin)

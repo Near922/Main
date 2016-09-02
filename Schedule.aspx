@@ -22,13 +22,13 @@
         <div style="margin: 0 auto; padding-bottom: 20px; padding-top: 20px; width: 100%; text-align: center; display: table;">
             <asp:UpdatePanel runat="server" ID="Update">
                 <ContentTemplate>
-                    <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                    <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Success!</strong>
                         <asp:Label ID="lblMessage" runat="server" Text="" />
                     </div>
-                    <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                    <div id="errorDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Error!</strong> An error has occurred.  Please contact the administrator.
                     </div>
                 </ContentTemplate>
@@ -48,12 +48,16 @@
             </asp:UpdatePanel>
             <br />
             <br />
-            <div class="row">
-                <div class="col-sm-12">
-                    <asp:Button runat="server" ID="btnAddShift" CssClass="special_button_dark table_button"
-                        Text="Add Shift" OnClick="btnAddShift_Click" />
-                </div>
-            </div>
+            <asp:UpdatePanel ID="btnUpdatePanel" runat="server">
+                <ContentTemplate>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <asp:Button runat="server" ID="btnAddShift" CssClass="special_button_dark table_button"
+                                Text="Add Shift" OnClick="btnAddShift_Click" />
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
         <div>
             <asp:Label ID="lblMain" runat="server" Text="" />
@@ -166,7 +170,7 @@
                                     <td>
                                         <asp:LinkButton ID="lblSaturdayLunch" runat="server" Text='<%# Eval("Schedule.SaturdayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.SaturdayLunch.ID") %>' Enabled='<%# GetState((Shift)Eval("Schedule.SaturdayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SaturdayLunch") )%>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
-                                    <td >
+                                    <td>
                                         <asp:LinkButton ID="lblSundayLunch" runat="server" Text='<%# Eval("Schedule.SundayLunch.ShiftString") %>' CustomParameter='<%# Eval("Schedule.SundayLunch.ID") %>' Enabled='<%#GetState((Shift) Eval("Schedule.SundayLunch")) %>' ForeColor='<%# GetColor((Shift)Eval("Schedule.SundayLunch")) %>' OnClick="LinkButtonPopUp"></asp:LinkButton>
                                     </td>
                                     <tr class="alt">

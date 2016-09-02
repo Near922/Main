@@ -22,7 +22,7 @@ public partial class tblDetails : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null || !Page.User.Identity.IsAuthenticated)
+        if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");
         }

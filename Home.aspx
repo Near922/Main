@@ -328,13 +328,13 @@
         <div class="container">
             <asp:UpdatePanel ID="upPanel1" runat="server">
                 <ContentTemplate>
-                    <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                    <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Success!</strong>
                         <asp:Label ID="lblMessage" runat="server" Text="" />
                     </div>
-                    <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                    <div id="errorDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Error!</strong> An error has occurred.  Please contact the administrator.
                     </div>
                     <p class="section_header">

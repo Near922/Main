@@ -9,13 +9,13 @@
     <br />
     <asp:UpdatePanel ID="updatePanel1" runat="server">
         <ContentTemplate>
-            <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+            <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success alert-dismissible">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>Correct!</strong>
                 <asp:Label ID="lblMessage" runat="server" Text="You chose the correct answer." />
             </div>
-            <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+            <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>Incorrect!</strong>You chose the incorrect answer.
             </div>
             <br />

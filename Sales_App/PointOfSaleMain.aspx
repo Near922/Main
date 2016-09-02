@@ -14,8 +14,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
-    <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+    <div id="errorDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Error!</strong> An error has occurred.  Please contact the administrator.
     </div>
     <br />
@@ -23,26 +23,28 @@
     <br />
     <br />
     <br />
-
-    <div class="row">
-        <div class="col-sm-4">
-            <div style="padding: 15px;">
-                <asp:Button type="button" ID="btnNewTable" runat="server" class="special_button_blue_two table_button" Text="New Table" OnClick="btnNewTable_Click" />
+    <asp:UpdatePanel ID="btnUpdatePanel" runat="server">
+        <ContentTemplate>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div style="padding: 15px;">
+                        <asp:Button type="button" ID="btnNewTable" runat="server" class="special_button_blue_two table_button" Text="New Table" OnClick="btnNewTable_Click" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="padding: 15px;">
+                        <asp:Button ID="btnSales" runat="server" class="special_button_blue_two table_button" Text="Sales"
+                            OnClick="btnSales_Click" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="padding: 15px;">
+                        <asp:Button ID="btnClockOut" runat="server" class="special_button_red table_button" Text="Sign Out" OnClick="btnClockOut_Click" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div style="padding: 15px;">
-                <asp:Button ID="btnSales" runat="server" class="special_button_blue_two table_button" Text="Sales"
-                    OnClick="btnSales_Click" />
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div style="padding: 15px;">
-                <asp:Button ID="btnClockOut" runat="server" class="special_button_red table_button" Text="Sign Out" OnClick="btnClockOut_Click" />
-            </div>
-        </div>
-    </div>
-
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <table style="min-height: 500px; width: 100%; background-color: #F2F2F2;">
         <tr>
             <td style="height: 100%; vertical-align: top;">

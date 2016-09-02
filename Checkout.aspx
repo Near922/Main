@@ -23,13 +23,13 @@
         <asp:UpdatePanel ID="messageUpdate" runat="server">
             <ContentTemplate>
 
-                <div id="messageDiv" style="display: none; text-align: left;" runat="server" class="alert alert-success">
-                    <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <strong>Success!</strong>
                     <asp:Label ID="lblMessage" runat="server" Text="Data was saved successfully." />
                 </div>
-                <div id="errorDiv" style="display: none; text-align: left;" runat="server" class="alert alert-danger">
-                    <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                <div id="errorDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <strong>Error!</strong>
                     <asp:Label ID="lblErrorMessage" runat="server" Text="An error has occurred.  Please contact the administrator." />
                 </div>
@@ -48,19 +48,23 @@
         </div>
     </div>
     <cc1:CalendarExtender ID="calExtend" runat="server" TargetControlID="txtDatePicker" />
-    <div class="row" style="padding-bottom: 20px;">
-        <div class="col-sm-3" style="padding-bottom: 20px; text-align: left;">
-            <asp:Button runat="server" ID="btnAddServer" CssClass="special_button_dark table_button" Text="Add Server" ForeColor="White" OnClick="btnAddServer_Click" />
-        </div>
-        <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
-            <asp:Button runat="server" ID="btnAddSA" CssClass="special_button_dark table_button"
-                Text="Add SA" ForeColor="White" OnClick="btnAddSA_Click" />
-        </div>
-        <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
-        </div>
-        <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
-        </div>
-    </div>
+    <asp:UpdatePanel ID="btnUpdatePanel" runat="server">
+        <ContentTemplate>
+            <div class="row" style="padding-bottom: 20px;">
+                <div class="col-sm-3" style="padding-bottom: 20px; text-align: left;">
+                    <asp:Button runat="server" ID="btnAddServer" CssClass="special_button_dark table_button" Text="Add Server" ForeColor="White" OnClick="btnAddServer_Click" UseSubmitBehavior="False" />
+                </div>
+                <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
+                    <asp:Button runat="server" ID="btnAddSA" CssClass="special_button_dark table_button"
+                        Text="Add SA" ForeColor="White" OnClick="btnAddSA_Click" UseSubmitBehavior="False" />
+                </div>
+                <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
+                </div>
+                <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
     <asp:UpdatePanel ID="upPanelGrids" runat="server">
         <ContentTemplate>
@@ -176,10 +180,10 @@
                     <table style="width: 100%;" class="footable table toggle-medium">
                         <thead>
                             <tr>
-                                <th data-class="expand" style="width:60%;">
-     
+                                <th data-class="expand" style="width: 60%;">
+
                                     <asp:Label ID="Label2" runat="server" Font-Size="Large" Font-Strikeout="False"
-                                        ForeColor="Black" Style="text-align: left" Text="Totals" ></asp:Label>
+                                        ForeColor="Black" Style="text-align: left" Text="Totals"></asp:Label>
                                 </th>
                                 <th>
                                     <asp:Label ID="Label3" runat="server" Font-Size="Large" Font-Strikeout="False"
@@ -407,7 +411,7 @@
                             </div>
 
                             <div id="mainButtons" runat="server" class="row" style="padding-bottom: 20px;">
-                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px; ">
+                                <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
                                     <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" Style="width: 100%; background-color: #4baad3;" />
                                 </div>
                                 <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
