@@ -125,26 +125,31 @@ $(document).ready(function () {
     $("#hlExperience").click(function () {
 
         $('html, body').animate({ scrollTop: $("#divExperience").offset().top - $('#nav_bar').height() }, 'slow');
+        closeToggleIfVisiblie();
     });
 
     $("#hlAbout").click(function () {
 
         $('html, body').animate({ scrollTop: $("#divAbout").offset().top - $('#nav_bar').height() }, 'slow');
+        closeToggleIfVisiblie();
     });
 
     $("#hlSkills").click(function () {
 
         $('html, body').animate({ scrollTop: $("#divSkills").offset().top - $('#nav_bar').height() }, 'slow');
+        closeToggleIfVisiblie();
     });
 
     $("#hlPortfolio").click(function () {
 
         $('html, body').animate({ scrollTop: $("#divPortfolio").offset().top - $('#nav_bar').height() }, 'slow');
+        closeToggleIfVisiblie();
     });
 
     $("#hlContact").click(function () {
 
         $('html, body').animate({ scrollTop: $("#divContact").offset().top - $('#nav_bar').height() }, 'slow');
+        closeToggleIfVisiblie();
     });
 
 
@@ -152,6 +157,11 @@ $(document).ready(function () {
             $(".dial").knob();
         });
   
+        var closeToggleIfVisiblie = function () {
+            if ($('.navbar-toggle').is(':visible')) {
+                $('.navbar-toggle').click();
+            };
+        };
 
     $(".drag_drop_grid tbody").sortable({
         items: "> tr:not(:first)",
