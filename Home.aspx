@@ -56,7 +56,7 @@
                 Technical Skills
             </p>
 
-            <div class="row">
+           <!-- <div class="row">
                 <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
@@ -100,10 +100,10 @@
             </div>
 
         </div>
-    </div>
-    <div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
+    </div>-->
+    <!--<div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
         text-align="left">
-        <div class="container">
+        <div class="container">-->
             <div style="width: 100%; padding-top: 20px; text-align: left; color: #808080;">
                 <div>
                     <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
@@ -135,7 +135,7 @@
                         <span class="sub_header">Bisk
                         </span>
                         <br />
-                        <span class="sub_header">QA Engineer
+                        <span class="sub_header">Software Quality Assurance Engineer I
                         </span>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                 <br />
                 <div class="row">
                     <div class="col-sm-12">
-                        <p>Part of a team responsible for building and maintaining a test automation framework, build verification tests and regression tests for the Learning Management System and marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
+                        <p>I'm responsible for building and maintaining a test automation framework, build verification tests and regression tests for the Learning Management System and marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
                         <br />
                         <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
                     </div>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12" style="font-size: 16px;">
-                        <span>2012 - 2016
+                        <span>2013 - 2016
                         </span>
                         <br />
                         <span>Pinellas Park, FL</span>
@@ -179,12 +179,12 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <p>
-                            Part of a two member team responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  Also created and maintained utilities to automate QA Testing tasks and dashboards to track test results and metrics. These utilities were
+                            I was responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  I also created and maintained utilities to automate QA testing tasks and dashboards to track test results and metrics. These utilities were
                                 built using Ruby and Sinatra although there were some projects that required the work be done in VB.NET and ASP.NET.
                         </p>
                         <br />
                         <p>
-                            Trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  Created documentation for tools and led IT department "Lunch n' Learns" with team mate to review QA Automation process and tools.  Provided support and training to the manual QA Team when necessary.
+                            I trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible for production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  I created documentation and led IT department "Lunch and Learns" to review QA Automation process and tools.  I provided support and training to the manual QA Team when necessary.
                         </p>
                         <br />
                         <span class="skillTag">Ruby</span><span class="skillTag">WATIR</span><span class="skillTag">Cucumber</span><span class="skillTag">Sinatra</span><span class="skillTag">SQL</span><span class="skillTag">JQuery</span><span class="skillTag">VB.NET</span><span class="skillTag">Visual Studio</span>
@@ -194,15 +194,57 @@
             <div style="padding-bottom: 50px;">
                 <div class="row">
                     <div class="col-sm-12">
+                        <span class="sub_header">West Point Underwriters
+                        </span>
+                        <br />
+                        <span class="sub_header">Software Quality Assurance Analyst
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" style="font-size: 16px;">
+                        <span>2012 - 2013
+                        </span>
+                        <br />
+                        <span>Pinellas Park, FL</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>
+                            As QA Analyst I interpreted requirements and applied business logic to create test cases.  I executed the test cases and identified defects.  I provided detailed documentation 
+                            with steps to recreate for any defects found.
+                        </p>
+                        <br />
+                        <p>
+                            I also worked with the SDET to maintain automation scripts utilizing Ruby, WATIR and Cucumber.
+                        </p>
+                        <br />
+                        <span class="skillTag">Ruby</span><span class="skillTag">WATIR</span><span class="skillTag">Cucumber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divEducation" runat="server" class="contentDiv" clientidmode="static" style="background-color: White; min-height: 350px; color:#808080;"
+        text-align="left">
+        <div class="container">
+            <p class="section_header">
+                Education
+            </p>
+            <div style="padding-bottom: 50px;">
+                <div class="row">
+                    <div class="col-sm-12">
                         <span class="sub_header">University of South Florida
                         </span>
                         <br />
-                        <span class="sub_header">Management Information Systems, B.S.
+                        <span class="sub_header">Bachelor of Science in Management Information Systems
                         </span>
                     </div>
                     <div>
                         <div class="col-sm-12" style="font-size: 16px;">
-                            <span>2008 - 2012
+                            <span>May 2011
                             </span>
                             <br />
                             <span>Tampa, FL
@@ -220,6 +262,8 @@
                             <li>Business Application Development</li>
                             <li>Global Information Systems</li>
                             <li>E-Commerce</li>
+                            <li>Business Data Communications</li>
+                            <li>Managing Information Resourses</li>
                         </ul>
                         <br />
                         <span class="skillTag">C#</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span>
@@ -234,8 +278,6 @@
             <p class="section_header">
                 Projects
             </p>
-            <br />
-            <p>Below you can find projects that I worked on to help strengthen and develop my programming skills.  Each project includes a live demo.  More projects are on the way!</p>
             <br />
             <div class="row" style="padding-bottom: 100px;">
                 <div class="col-sm-6">
