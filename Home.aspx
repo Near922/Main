@@ -56,7 +56,7 @@
                 Technical Skills
             </p>
 
-           <!-- <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-3" style="padding-bottom: 30px;">
                     <div style="text-align: center;">
                         <div>
@@ -101,25 +101,29 @@
 
         </div>
     </div>-->
-    <!--<div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
+            <!--<div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
         text-align="left">
         <div class="container">-->
-            <div style="width: 100%; padding-top: 20px; text-align: left; color: #808080;">
-                <div>
-                    <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
-                    <p style="margin-bottom: 0 !important;">Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
+            <div style="padding-bottom: 50px;">
+                <div class="row">
+                    <div class="col-sm-12" style="color: #808080;">
+                        <div>
+                            <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
+                            <p style="margin-bottom: 0 !important;">Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
+                        </div>
+                        <br />
+                        <div>
+                            <span style="font-weight: bold; font-size: 19px;">Database/DBMS: </span>
+                            <p style="margin-bottom: 0 !important;">SQL, MS SQL Server 2012</p>
+                        </div>
+                        <br />
+                        <div>
+                            <span style="font-weight: bold; font-size: 19px;">Tools: </span>
+                            <p style="margin-bottom: 0 !important;">Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
+                        </div>
+                        <br />
+                    </div>
                 </div>
-                <br />
-                <div>
-                    <span style="font-weight: bold; font-size: 19px;">Database/DBMS: </span>
-                    <p style="margin-bottom: 0 !important;">SQL, MS SQL Server 2012</p>
-                </div>
-                <br />
-                <div>
-                    <span style="font-weight: bold; font-size: 19px;">Tools: </span>
-                    <p style="margin-bottom: 0 !important;">Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
-                </div>
-                <br />
             </div>
         </div>
     </div>
@@ -227,7 +231,7 @@
             </div>
         </div>
     </div>
-    <div id="divEducation" runat="server" class="contentDiv" clientidmode="static" style="background-color: White; min-height: 350px; color:#808080;"
+    <div id="divEducation" runat="server" class="contentDiv" clientidmode="static" style="background-color: White; min-height: 350px; color: #808080;"
         text-align="left">
         <div class="container">
             <p class="section_header">

@@ -8,6 +8,7 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetExpires(DateTime.Now.AddYears(1));
         HtmlGenericControl hlHome = Master.FindControl("hlHome") as HtmlGenericControl;
         hlHome.Style["display"] = "none";
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.UI;
 
 
@@ -8,6 +9,9 @@ public partial class SigilQuiz : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetCacheability(HttpCacheability.Public);
+        Response.Cache.SetMaxAge(new TimeSpan(1, 0, 0));
+
         if (!IsPostBack)
         {
             Session.Remove("Game");
@@ -24,6 +28,8 @@ public partial class SigilQuiz : System.Web.UI.Page
     private void SetImages()
     {
         lblHouse.Text = _game.CurrentSigil.House;
+        lblCurrentQuestionNumber.Text = _game.CurrentRound.ToString();
+        lblTotalQuestionNumber.Text = _game.TotalQuestions.ToString();
         sigil1.ImageUrl = _game.CurrentSigils[0].Src;
         sigil2.ImageUrl = _game.CurrentSigils[1].Src;
         sigil3.ImageUrl = _game.CurrentSigils[2].Src;

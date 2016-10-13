@@ -43,6 +43,24 @@ public class SigilGame
 
     public Sigil CurrentSigil { get; private set; }
 
+    public int CurrentRound
+    {
+        get
+        {
+            return _numberOfRounds + 1;
+        }
+    }
+
+    public int TotalQuestions
+    {
+        get
+        {
+            return _totalRounds;
+        }
+    }
+
+
+
     public int Score
     {
         get

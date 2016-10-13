@@ -19,6 +19,11 @@
                 <strong>Incorrect!</strong>You chose the incorrect answer.
             </div>
             <br />
+            <asp:Label ID="lblQ" runat="server" Font-Size="X-Large" Text="Question " />
+            <asp:Label ID="lblCurrentQuestionNumber" runat="server" Font-Size="X-Large" Text="" />
+            <asp:Label ID="lblOf" runat="server" Font-Size="X-Large" Text=" of " />
+            <asp:Label ID="lblTotalQuestionNumber" runat="server" Font-Size="X-Large" Text="" />
+            <br />
             <asp:Label ID="lblQuestion" runat="server" Font-Size="X-Large" Text="Please choose the sigil that belongs to " />
             <asp:Label ID="lblHouse" runat="server" Font-Size="X-Large" Text="" Font-Bold="True" />
             <div style="width: 100%; text-align: center;">
