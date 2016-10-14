@@ -5,29 +5,34 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 
-    <div id="divHeader" runat="server" style="background-color: #4baad3; height: 500px; width: 100%;">
-        <div class="container">
+    <div style="width: 100%; background-color: #4baad3;">
+        <div id="divHeader" class="container" runat="server">
             <br />
-            <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
-                <h1 id="header">James Bergen
-                </h1>
-                <h2>Software Developer and QA Engineer
-                </h2>
-                <div>
-                    <img src="images/icons/1467098942_Html.png" />
-                </div>
-                <p style="color: rgba(255,255,255,0.6);">
-                    I'm passionate about writing code.
-                </p>
-                <div>
-                    <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" Target="_blank" />
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
+                        <h1 id="header">James Bergen
+                        </h1>
+                        <h2>Software Developer and QA Engineer
+                        </h2>
+                        <div>
+                            <img src="images/icons/1467098942_Html.png" />
+                        </div>
+                        <p style="color: rgba(255,255,255,0.6);">
+                            I'm passionate about writing code.
+                        </p>
+                        <div>
+                            <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" Target="_blank" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="divAbout" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; color: #808080; min-height: 500px;"
-        text-align="left">
-        <div class="container">
+    <div style="width: 100%; background-color: #F4F4F4;">
+        <div id="divAbout" runat="server" class="container" clientidmode="static" style="color: #808080;"
+            text-align="left">
+
             <p class="section_header" style="color: #FF675B;">
                 About
             </p>
@@ -49,61 +54,12 @@
             </div>
         </div>
     </div>
-    <div id="divSkills" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 350px;"
-        text-align="left">
-        <div class="container">
+    <div style="width: 100%; background-color: #F4F4F4;">
+        <div id="divSkills" runat="server" class="container" clientidmode="static"
+            text-align="left">
             <p class="section_header">
                 Technical Skills
             </p>
-
-            <!-- <div class="row">
-                <div class="col-sm-3" style="padding-bottom: 30px;">
-                    <div style="text-align: center;">
-                        <div>
-                            <input type="text" value="65" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="font-size: 25px; color: #808080;">Ruby</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3" style="padding-bottom: 30px;">
-                    <div style="text-align: center;">
-                        <div>
-                            <input type="text" value="60" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="font-size: 25px; color: #808080;">C#</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3" style="padding-bottom: 30px;">
-                    <div style="text-align: center;">
-                        <div>
-                            <input type="text" value="40" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="font-size: 25px; color: #808080;">Javascript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3" style="padding-bottom: 30px;">
-                    <div style="text-align: center;">
-                        <div>
-                            <input type="text" value="55" class="dial" data-width="150" data-height="150" data-fgcolor="#1ABC9C" data-inputcolor="gray" data-readonly="true" />
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="font-size: 25px; color: #808080;">SQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>-->
-            <!--<div id="skillSummary" runat="server" class="contentDiv" clientidmode="static" style="background-color: #F4F4F4; min-height: 200px;"
-        text-align="left">
-        <div class="container">-->
             <div style="padding-bottom: 50px;">
                 <div class="row">
                     <div class="col-sm-12" style="color: #808080;">
@@ -127,9 +83,10 @@
             </div>
         </div>
     </div>
-    <div id="divExperience" clientidmode="static" runat="server" class="contentDiv" style="background-color: White; color: #808080;"
-        text-align="left">
-        <div class="container">
+    <div style="background-color: White; color: #808080; width: 100%">
+        <div id="divExperience" clientidmode="static" runat="server" class="container"
+            text-align="left">
+
             <p class="section_header">
                 Experience
             </p>
@@ -231,9 +188,9 @@
             </div>
         </div>
     </div>
-    <div id="divEducation" runat="server" class="contentDiv" clientidmode="static" style="background-color: White; min-height: 350px; color: #808080;"
-        text-align="left">
-        <div class="container">
+    <div style="background-color: White; color: #808080; width: 100%;">
+        <div id="divEducation" runat="server" class="container" clientidmode="static"
+            text-align="left">
             <p class="section_header">
                 Education
             </p>
@@ -276,9 +233,9 @@
             </div>
         </div>
     </div>
-    <div id="divPortfolio" runat="server" clientidmode="static" class="contentDiv" style="background-color: #F4F4F4; color: #808080;"
-        text-align="center">
-        <div class="container">
+    <div style="background-color: #F4F4F4; color: #808080; width: 100%;">
+        <div id="divPortfolio" runat="server" clientidmode="static" class="container"
+            text-align="center">
             <p class="section_header">
                 Projects
             </p>
@@ -369,9 +326,9 @@
             </div>
         </div>
     </div>
-    <div id="divContact" runat="server" clientidmode="static" class="contentDiv" style="background-color: white;"
-        text-align="Left">
-        <div class="container">
+    <div style="background-color: white; width: 100%;">
+        <div id="divContact" runat="server" clientidmode="static" class="container"
+            text-align="Left">
             <asp:UpdatePanel ID="upPanel1" runat="server">
                 <ContentTemplate>
                     <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
