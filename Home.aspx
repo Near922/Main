@@ -5,11 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 
-    <div class="container" style="width: 100%; background-color: #4baad3;">
+    <div class="container background-image-overlay" style="width: 100%;">
         <div id="divHeader" class="row" runat="server">
             <br />
 
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
                     <h1 id="header">James Bergen
                     </h1>
@@ -31,12 +31,12 @@
     <div class="container" style="width: 100%; background-color: #F4F4F4;">
         <div id="divAbout" class="row" runat="server" clientidmode="static" style="color: #808080;"
             text-align="left">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <p class="section_header" style="color: #FF675B;">
                     About
                 </p>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
 
                         <p>
                             Hi, my name is James Bergen.  I'm a Software Developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
@@ -48,7 +48,7 @@
                         <p>In my free time when I'm not writing code I like to practice my guitar, play video games, spend time with my dogs, and watch movies / tv shows (Game of Thrones!).</p>
 
                     </div>
-                    <div class="col-sm-6" style="text-align: center;">
+                    <div class="col-lg-6" style="text-align: center;">
                         <img src="images/my_profile_pic.png" height="250" width="250" style="vertical-align: middle;" />
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         <div id="divSkills" runat="server" class="row" clientidmode="static"
             text-align="left">
 
-            <div class="col-sm-8 col-sm-offset-2" style="color: #808080;">
+            <div class="col-lg-8 col-lg-offset-2" style="color: #808080;">
                 <p class="section_header">
                     Technical Skills
                 </p>
@@ -87,22 +87,22 @@
     <div class="container" style="background-color: White; color: #808080; width: 100%">
         <div id="divExperience" clientidmode="static" runat="server" class="row"
             text-align="left">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <p class="section_header">
                     Experience
                 </p>
                 <div style="padding-bottom: 50px;">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <span class="sub_header">Bisk
                             </span>
                             <br />
-                            <span class="sub_header">Software Quality Assurance Engineer I
+                            <span class="sub_header">Software Quality Assurance Test Engineer
                             </span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12" style="font-size: 16px;">
+                        <div class="col-lg-12" style="font-size: 16px;">
                             <span>2016 - Present
                             </span>
                             <br />
@@ -112,8 +112,9 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-sm-12">
-                            <p>I'm responsible for building and maintaining a test automation framework, build verification tests and regression tests for the Learning Management System and marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
+                        <div class="col-lg-12">
+                            <p>I'm responsible for building and maintaining a test automation framework.  I write regression tests for the Learning Management System and the university marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
+                            <p>Within a year I was promoted from Associate SQA Test Engineer to SQA Test Engineer.</p>
                             <br />
                             <span class="skillTag">C#</span><span class="skillTag">Selenium WebDriver</span><span class="skillTag">SQL</span><span class="skillTag">Visual Studio</span><span class="skillTag">NUnit</span>
                         </div>
@@ -121,7 +122,7 @@
                 </div>
                 <div style="padding-bottom: 50px;">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <span class="sub_header">West Point Underwriters
                             </span>
                             <br />
@@ -130,7 +131,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12" style="font-size: 16px;">
+                        <div class="col-lg-12" style="font-size: 16px;">
                             <span>2013 - 2016
                             </span>
                             <br />
@@ -139,12 +140,11 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <p>
                                 I was responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  I also created and maintained utilities to automate QA testing tasks and dashboards to track test results and metrics. These utilities were
                                 built using Ruby and Sinatra although there were some projects that required the work be done in VB.NET and ASP.NET.
                             </p>
-                            <br />
                             <p>
                                 I trained all new hires for the IT department in the QA Automation process and the available tools.  I was often responsible for production clean up incidents which involved automating a UI process for hundreds to thousands of policies.  I created documentation and led IT department "Lunch and Learns" to review QA Automation process and tools.  I provided support and training to the manual QA Team when necessary.
                             </p>
@@ -155,7 +155,7 @@
                 </div>
                 <div style="padding-bottom: 50px;">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <span class="sub_header">West Point Underwriters
                             </span>
                             <br />
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12" style="font-size: 16px;">
+                        <div class="col-lg-12" style="font-size: 16px;">
                             <span>2012 - 2013
                             </span>
                             <br />
@@ -173,12 +173,11 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <p>
                                 As QA Analyst I interpreted requirements and applied business logic to create test cases.  I executed the test cases and identified defects.  I provided detailed documentation 
                             with steps to recreate for any defects found.
                             </p>
-                            <br />
                             <p>
                                 I also worked with the SDET to maintain automation scripts utilizing Ruby, WATIR and Cucumber.
                             </p>
@@ -193,13 +192,13 @@
     <div class="container" style="background-color: White; color: #808080; width: 100%;">
         <div id="divEducation" runat="server" class="row" clientidmode="static"
             text-align="left">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <p class="section_header">
                     Education
                 </p>
                 <div style="padding-bottom: 50px;">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-12">
                             <span class="sub_header">University of South Florida
                             </span>
                             <br />
@@ -207,7 +206,7 @@
                             </span>
                         </div>
                         <div>
-                            <div class="col-sm-12" style="font-size: 16px;">
+                            <div class="col-lg-12" style="font-size: 16px;">
                                 <span>May 2011
                                 </span>
                                 <br />
@@ -218,7 +217,7 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-sm-12" style="font-size: 16px;">
+                        <div class="col-lg-12" style="font-size: 16px;">
                             <p>Relevant course work:</p>
                             <ul style="line-height: 1.4em;">
                                 <li>Systems Analysis and Design</li>
@@ -240,13 +239,13 @@
     <div class="container" style="background-color: #F4F4F4; color: #808080; width: 100%;">
         <div id="divPortfolio" runat="server" clientidmode="static" class="row"
             text-align="center">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <p class="section_header">
                     Projects
                 </p>
                 <br />
                 <div class="row" style="padding-bottom: 100px;">
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <div>
                             <asp:Label ID="lblCashout" runat="server" Text="Cash Out Utility"
                                 Font-Size="X-Large" ForeColor="#4baad3"></asp:Label>
@@ -259,7 +258,7 @@
                             <br />
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <div>
                             <img src="images/cashout_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
@@ -268,14 +267,14 @@
                     </div>
                 </div>
                 <div class="row swap" style="padding-bottom: 100px;">
-                    <div class="col-sm-6 second">
+                    <div class="col-lg-6 second">
                         <div>
                             <img src="images/schedule_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-sm-6 first">
+                    <div class="col-lg-6 first">
                         <div>
                             <asp:Label ID="lblScheduler" runat="server" Text="Employee Schedule Management System" ForeColor="#4baad3"
                                 Font-Size="X-Large"></asp:Label>
@@ -289,7 +288,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding-bottom: 100px;">
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <div>
                             <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" ForeColor="#4baad3"
                                 Font-Size="X-Large"></asp:Label>
@@ -301,21 +300,21 @@
                             <br />
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <img src="images/pos_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                         <br />
                         <br />
                     </div>
                 </div>
                 <div class="row swap" style="padding-bottom: 100px;">
-                    <div class="col-sm-6 second">
+                    <div class="col-lg-6 second">
                         <div>
                             <img src="images/sigil_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-sm-6 first">
+                    <div class="col-lg-6 first">
                         <div>
                             <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" ForeColor="#4baad3"
                                 Font-Size="X-Large"></asp:Label>
@@ -335,7 +334,7 @@
     <div class="container" style="background-color: white; width: 100%;">
         <div id="divContact" runat="server" clientidmode="static" class="row"
             text-align="Left">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-lg-8 col-lg-offset-2">
                 <asp:UpdatePanel ID="upPanel1" runat="server">
                     <ContentTemplate>
                         <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
@@ -351,7 +350,7 @@
                             Contact
                         </p>
                         <div class="row">
-                            <div class="col-sm-12" style="padding-bottom: 50px; color: #808080; font-size: 16px;">
+                            <div class="col-lg-12" style="padding-bottom: 50px; color: #808080; font-size: 16px;">
                                 <span>If you would like to get in touch you can email me at </span>
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="mailto:jmbergen922@gmail.com" Font-Size="16px" Text="jmbergen922@gmail.com"></asp:HyperLink>
                                 <span>or complete the below form:</span>
