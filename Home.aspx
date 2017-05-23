@@ -1,15 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>James Bergen - Software Developer Portfolio</title>
+        <style type="text/css">
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-
-    <div class="container background-image-overlay" style="width: 100%;">
-        <div id="divHeader" class="row" runat="server">
+    <div class="container-fluid">
+        <div id="divHeader" class="row justify-content-center hero-image"  runat="server">
             <br />
-
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-xs-12">
                 <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
                     <h1 id="header">James Bergen
                     </h1>
@@ -22,45 +24,37 @@
                         I'm passionate about writing code.
                     </p>
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse" Style="width: 300px;" Target="_blank" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse"  Target="_blank" />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container" style="width: 100%; background-color: #F4F4F4;">
-        <div id="divAbout" class="row" runat="server" clientidmode="static" style="color: #808080;"
+        <div id="divAbout" class="row" runat="server" clientidmode="static" style="color: #808080; background-color: #F4F4F4;"
             text-align="left">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10">
                 <p class="section_header" style="color: #FF675B;">
                     About
                 </p>
-                <div class="row">
-                    <div class="col-lg-6">
-
-                        <p>
-                            Hi, my name is James Bergen.  I'm a Software Developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
-                        </p>
-                        <p>
-                            I studied Management Information Systems at University of South Florida and I've spent the last few years working in test automation.  Most of my programming experience is with C# and Ruby but
+                <p>
+                    Hi, my name is James Bergen.  I'm a Software Developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
+                </p>
+                <p>
+                    I studied Management Information Systems at University of South Florida and I've spent the last few years working in test automation.  Most of my programming experience is with C# and Ruby but
                             I'm always interested in learning something new and always looking for ways to improve myself.
-                        </p>
-                        <p>In my free time when I'm not writing code I like to practice my guitar, play video games, spend time with my dogs, and watch movies / tv shows (Game of Thrones!).</p>
-
-                    </div>
-                    <div class="col-lg-6" style="text-align: center;">
-                        <img src="images/my_profile_pic.png" height="250" width="250" style="vertical-align: middle;" />
-                    </div>
-                </div>
+                </p>
+                <p>In my free time when I'm not writing code I like to practice my guitar, play video games, spend time with my dogs, and watch movies / tv shows (Game of Thrones!).</p>
+            </div>
+            <div class="col-lg-3 col-sm-1">
             </div>
         </div>
 
-    </div>
-    <div class="container" style="width: 100%; background-color: #F4F4F4;">
-        <div id="divSkills" runat="server" class="row" clientidmode="static"
+        <div id="divSkills" runat="server" class="row" clientidmode="static" style="background-color: #F4F4F4;"
             text-align="left">
-
-            <div class="col-lg-8 col-lg-offset-2" style="color: #808080;">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10" style="color: #808080;">
                 <p class="section_header">
                     Technical Skills
                 </p>
@@ -82,18 +76,20 @@
                     <br />
                 </div>
             </div>
+            <div class="col-lg-3 col-sm-1">
+            </div>
         </div>
-    </div>
-    <div class="container" style="background-color: White; color: #808080; width: 100%">
         <div id="divExperience" clientidmode="static" runat="server" class="row"
-            text-align="left">
-            <div class="col-lg-8 col-lg-offset-2">
+            text-align="left" style="color: #808080;">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10">
                 <p class="section_header">
                     Experience
                 </p>
                 <div style="padding-bottom: 50px;">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <span class="sub_header">Bisk
                             </span>
                             <br />
@@ -101,8 +97,9 @@
                             </span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12" style="font-size: 16px;">
+
+                    <div>
+                        <div style="font-size: 16px;">
                             <span>2016 - Present
                             </span>
                             <br />
@@ -111,8 +108,8 @@
                         </div>
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <p>I'm responsible for building and maintaining a test automation framework.  I write regression tests for the Learning Management System and the university marketing sites.  The framework and tests are built using C#, NUnit, and Selenium WebDriver.  I report any defects that are discovered in TFS for the development team to address and assist the manual QA team with regression testing when needed.</p>
                             <p>Within a year I was promoted from Associate SQA Test Engineer to SQA Test Engineer.</p>
                             <br />
@@ -121,8 +118,8 @@
                     </div>
                 </div>
                 <div style="padding-bottom: 50px;">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <span class="sub_header">West Point Underwriters
                             </span>
                             <br />
@@ -130,8 +127,8 @@
                             </span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12" style="font-size: 16px;">
+                    <div>
+                        <div style="font-size: 16px;">
                             <span>2013 - 2016
                             </span>
                             <br />
@@ -139,8 +136,8 @@
                         </div>
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <p>
                                 I was responsible for building and maintaining a test automation framework.  The framework was built using Ruby, WATIR, and Cucumber.  I also created and maintained utilities to automate QA testing tasks and dashboards to track test results and metrics. These utilities were
                                 built using Ruby and Sinatra although there were some projects that required the work be done in VB.NET and ASP.NET.
@@ -154,8 +151,8 @@
                     </div>
                 </div>
                 <div style="padding-bottom: 50px;">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <span class="sub_header">West Point Underwriters
                             </span>
                             <br />
@@ -163,8 +160,8 @@
                             </span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12" style="font-size: 16px;">
+                    <div>
+                        <div style="font-size: 16px;">
                             <span>2012 - 2013
                             </span>
                             <br />
@@ -172,8 +169,8 @@
                         </div>
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <p>
                                 As QA Analyst I interpreted requirements and applied business logic to create test cases.  I executed the test cases and identified defects.  I provided detailed documentation 
                             with steps to recreate for any defects found.
@@ -186,19 +183,22 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+           <div class="col-lg-3 col-sm-1">
+           </div>
         </div>
-    </div>
-    <div class="container" style="background-color: White; color: #808080; width: 100%;">
-        <div id="divEducation" runat="server" class="row" clientidmode="static"
+        <div id="divEducation" runat="server" class="row" clientidmode="static" style="color: #808080;"
             text-align="left">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10">
                 <p class="section_header">
                     Education
                 </p>
                 <div style="padding-bottom: 50px;">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div>
+                        <div>
                             <span class="sub_header">University of South Florida
                             </span>
                             <br />
@@ -206,7 +206,7 @@
                             </span>
                         </div>
                         <div>
-                            <div class="col-lg-12" style="font-size: 16px;">
+                            <div style="font-size: 16px;">
                                 <span>May 2011
                                 </span>
                                 <br />
@@ -216,8 +216,8 @@
                         </div>
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-lg-12" style="font-size: 16px;">
+                    <div>
+                        <div style="font-size: 16px;">
                             <p>Relevant course work:</p>
                             <ul style="line-height: 1.4em;">
                                 <li>Systems Analysis and Design</li>
@@ -234,107 +234,122 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-sm-10">
+            </div>
         </div>
-    </div>
-    <div class="container" style="background-color: #F4F4F4; color: #808080; width: 100%;">
         <div id="divPortfolio" runat="server" clientidmode="static" class="row"
-            text-align="center">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p class="section_header">
+            text-align="center" style="background-color: #e74c3c; color: white;">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+                <p class="section_header" style="color: white;">
                     Projects
                 </p>
                 <br />
-                <div class="row" style="padding-bottom: 100px;">
-                    <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-6">
                         <div>
                             <asp:Label ID="lblCashout" runat="server" Text="Cash Out Utility"
-                                Font-Size="X-Large" ForeColor="#4baad3"></asp:Label>
+                                Font-Size="X-Large" ForeColor="white"></asp:Label>
                             <p>Utility that allows restaurant management to document cash collected from front of house employees at the end of each shift, storing information in a SQL Server database.</p>
                             <p>Also calculates the wages of support staff based on support staff hours and front of house sales.</p>
                             <br />
                             <br />
-                            <asp:LinkButton ID="btnCashout" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/Checkout.aspx" />
+                            <asp:LinkButton ID="btnCashout" runat="server" CssClass="special_button_project" Text="Demo" PostBackUrl="~/Checkout.aspx" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div>
-                            <img src="images/cashout_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/cashout.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
                     </div>
                 </div>
-                <div class="row swap" style="padding-bottom: 100px;">
-                    <div class="col-lg-6 second">
+
+
+                <div class="row swap">
+                    <div class="col-md-6  first">
                         <div>
-                            <img src="images/schedule_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/scheduler.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-lg-6 first">
+                    <div class="col-md-6">
+
                         <div>
-                            <asp:Label ID="lblScheduler" runat="server" Text="Employee Schedule Management System" ForeColor="#4baad3"
+                            <asp:Label ID="lblScheduler" runat="server" Text="Employee Schedule Management System" ForeColor="white"
                                 Font-Size="X-Large"></asp:Label>
                             <p>Allows restaurant managers to easily add and delete shifts for staff.  Features filtering by role and easily allows management to track the number of shifts and hours per week an employee is scheduled.</p>
                             <br />
                             <br />
-                            <asp:LinkButton ID="btnSchedule" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/Schedule.aspx" />
+                            <asp:LinkButton ID="btnSchedule" runat="server" CssClass="special_button_project" Text="Demo" PostBackUrl="~/Schedule.aspx" />
                             <br />
                             <br />
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding-bottom: 100px;">
-                    <div class="col-lg-6">
+
+                <div class="row">
+                    <div class="col-md-6">
                         <div>
-                            <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" ForeColor="#4baad3"
+                            <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" ForeColor="white"
                                 Font-Size="X-Large"></asp:Label>
                             <p>Point of sale system that allows restaurant front of house staff to order menu items for their patrons.  Features login system, sales report, adding and removing items, placing items on hold, splitting checks, and appying payment.</p>
                             <br />
                             <br />
-                            <asp:LinkButton ID="btnPointSale" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/login.aspx" />
+                            <asp:LinkButton ID="btnPointSale" runat="server" CssClass="special_button_project" Text="Demo" PostBackUrl="~/login.aspx" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <img src="images/pos_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
-                        <br />
-                        <br />
+                    <div class="col-md-6">
+                        <div>
+                            <img src="images/pos.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <br />
+                            <br />
+                        </div>
                     </div>
                 </div>
-                <div class="row swap" style="padding-bottom: 100px;">
-                    <div class="col-lg-6 second">
+
+
+                <div class="row swap">
+                    <div class="col-md-6 second">
                         <div>
-                            <img src="images/sigil_50.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/sigil.PNG" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
                     </div>
-                    <div class="col-lg-6 first">
+                    <div class="col-md-6 first">
                         <div>
-                            <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" ForeColor="#4baad3"
+                            <asp:Label ID="lblSigilQuiz" runat="server" Text="Game Of Thrones Sigil Quiz" ForeColor="white"
                                 Font-Size="X-Large"></asp:Label>
 
                             <p>A simple 20 question quiz inspired by the HBO series Game Of Thrones.  Choose the correct sigil for the given house.</p>
                             <br />
                             <br />
-                            <asp:LinkButton ID="btnQuiz" runat="server" CssClass="special_button_blue" Text="Demo" PostBackUrl="~/SigilQuiz.aspx" />
+                            <asp:LinkButton ID="btnQuiz" runat="server" CssClass="special_button_project" Text="Demo" PostBackUrl="~/SigilQuiz.aspx" />
                             <br />
                             <br />
                         </div>
+
                     </div>
+
                 </div>
+
+            </div>
+            <div class="col-lg-2">
             </div>
         </div>
-    </div>
-    <div class="container" style="background-color: white; width: 100%;">
         <div id="divContact" runat="server" clientidmode="static" class="row"
             text-align="Left">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10">
                 <asp:UpdatePanel ID="upPanel1" runat="server">
                     <ContentTemplate>
                         <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
@@ -349,36 +364,45 @@
                         <p class="section_header">
                             Contact
                         </p>
-                        <div class="row">
-                            <div class="col-lg-12" style="padding-bottom: 50px; color: #808080; font-size: 16px;">
+                        <div>
+                            <div style="padding-bottom: 50px; color: #808080; font-size: 16px;">
                                 <span>If you would like to get in touch you can email me at </span>
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="mailto:jmbergen922@gmail.com" Font-Size="16px" Text="jmbergen922@gmail.com"></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="mailto:jmbergen922@gmail.com" Font-Size="16px" ForeColor="#337ab7" Text="jmbergen922@gmail.com"></asp:HyperLink>
                                 <span>or complete the below form:</span>
                             </div>
                         </div>
-                        <div class="email">
-                            <div class="form-group">
-                                <asp:TextBox ID="txtName" runat="server" BackColor="white" ForeColor="black" placeholder="Name"
-                                    CssClass="textbox"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
+                        <div style="text-align: center; width: 100%;">
+                            <div style="max-width: 600px; padding: 20px; margin: 0 auto;">
+
                                 <div>
-                                    <asp:Label ID="lblEmail" runat="server" Text="" ForeColor="red" />
+                                    <div class="form-group">
+                                        <asp:TextBox ID="txtName" runat="server" BackColor="white" ForeColor="black" placeholder="Name"
+                                            CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <asp:Label ID="lblEmail" runat="server" Text="" ForeColor="red" />
+                                        </div>
+                                        <asp:TextBox ID="txtEmail" runat="server" BackColor="white" ForeColor="black"
+                                            placeholder="E-mail" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" BackColor="white"
+                                            ForeColor="black" Style="margin-left: 0px; height: 200px !important;" placeholder="Message" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div>
+                                        <asp:LinkButton ID="btnSubmit" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" runat="server"
+                                            Text="Submit" OnClick="btnSubmit_Click"></asp:LinkButton>
+                                    </div>
                                 </div>
-                                <asp:TextBox ID="txtEmail" runat="server" BackColor="white" ForeColor="black"
-                                    placeholder="E-mail" CssClass="textbox"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" BackColor="white"
-                                    ForeColor="black" Style="margin-left: 0px; height: 200px !important;" placeholder="Message" CssClass="textbox"></asp:TextBox>
-                            </div>
-                            <div>
-                                <asp:LinkButton ID="btnSubmit" CssClass="opac special_link_button" Style="width: 100%; max-width: 600px; background-color: #4baad3" runat="server"
-                                    Text="Submit" OnClick="btnSubmit_Click"></asp:LinkButton>
                             </div>
                         </div>
+                        <br />
+                        <br />
                     </ContentTemplate>
                 </asp:UpdatePanel>
+            </div>
+            <div class="col-lg-3 col-sm-1">
             </div>
         </div>
     </div>

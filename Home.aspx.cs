@@ -103,7 +103,7 @@ public partial class Home : System.Web.UI.Page
                 lblMessage.Text = "Message was sent successfully.";
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessMessage", "showSuccessMessage();", true);
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
                 Logger.Log(ex);
                 ScriptManager.RegisterStartupScript(this, GetType(), "showErrorMessage", "showErrorMessage();", true);

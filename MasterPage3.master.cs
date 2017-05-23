@@ -22,6 +22,8 @@ public partial class MasterPage3 : System.Web.UI.MasterPage
             hlAdmin.Style["display"] = "none";
             hlLogout.Style["display"] = "none";
         }
+
+        lblCopyRight.Text = string.Format("Copyright © James Bergen {0}", DateTime.Today.Year.ToString());
     }
 
     protected void hlLogout_Click(object sender, EventArgs e)

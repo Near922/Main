@@ -14,6 +14,11 @@
             $('#bwPanel').modal('show');
         }
     </script>
+    <style type="text/css">
+        a:hover{
+            color: white !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManagerProxy ID="ScriptManager10" runat="server">
@@ -39,11 +44,11 @@
         <br />
         <div class="row" style="padding-bottom: 20px;">
             <div class="col-sm-6" style="padding-bottom: 20px; text-align: left;">
-                <asp:TextBox CssClass="textbox" runat="server" ID="txtDatePicker" />
+                <asp:TextBox CssClass="form-control" runat="server" ID="txtDatePicker" />
             </div>
             <div class="col-sm-6" style="padding-bottom: 20px; text-align: left;">
-                <asp:Button runat="server" ID="btnSearch" CssClass="special_button_dark table_button"
-                    Text="Search" ForeColor="White" OnClick="btnSearch_Click" />
+                <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-block btn-lg btn-primary"
+                    Text="Search" ForeColor="White"   Style="background-color: #34495E; max-width:300px;" OnClick="btnSearch_Click" />
             </div>
         </div>
     </div>
@@ -52,10 +57,10 @@
         <ContentTemplate>
             <div class="row" style="padding-bottom: 20px;">
                 <div class="col-sm-3" style="padding-bottom: 20px; text-align: left;">
-                    <asp:Button runat="server" ID="btnAddServer" CssClass="special_button_dark table_button" Text="Add Server" ForeColor="White" OnClick="btnAddServer_Click" UseSubmitBehavior="False" />
+                    <asp:Button runat="server" ID="btnAddServer" CssClass="btn btn-block btn-lg btn-primary" Text="Add Server"  Style="background-color: #34495E; max-width:300px !important;" ForeColor="White" OnClick="btnAddServer_Click" UseSubmitBehavior="False" />
                 </div>
                 <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
-                    <asp:Button runat="server" ID="btnAddSA" CssClass="special_button_dark table_button"
+                    <asp:Button runat="server" ID="btnAddSA" CssClass="btn btn-block btn-lg btn-primary" Style="background-color: #34495E;"
                         Text="Add SA" ForeColor="White" OnClick="btnAddSA_Click" UseSubmitBehavior="False" />
                 </div>
                 <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
@@ -286,7 +291,7 @@
                                             <asp:Label ID="Label8" runat="server" ForeColor="Black" Text="Shift:"></asp:Label>
                                         </div>
                                         <asp:DropDownList ID="cboShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
-                                            ForeColor="Black" CssClass="textbox">
+                                            ForeColor="Black" CssClass="form-control">
                                         </asp:DropDownList>
                                         <asp:Label ID="lblShiftEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -298,7 +303,7 @@
                                         </div>
 
                                         <asp:DropDownList ID="txtName" runat="server" BToolTip="Enter Server/Bartender name."
-                                            ForeColor="Black" CssClass="textbox">
+                                            ForeColor="Black" CssClass="form-control">
                                         </asp:DropDownList>
                                         <asp:Label ID="lblNameEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -310,7 +315,7 @@
                                         </div>
 
                                         <asp:DropDownList ID="cboOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cboOptions_SelectedIndexChanged"
-                                            ToolTip="Select serving section." ForeColor="Black" CssClass="textbox">
+                                            ToolTip="Select serving section." ForeColor="Black" CssClass="form-control">
                                         </asp:DropDownList>
 
                                         <asp:Label ID="lblSectionEdit" runat="server" Style="text-align: center"></asp:Label>
@@ -318,7 +323,7 @@
                                 </div>
                                 <div class="row" style="padding-bottom: 20px; text-align: left;">
                                     <div class="col-sm-12">
-                                        <asp:Button ID="btnNext" runat="server" CssClass="special_button_dark" Text="Next" OnClick="btnNext_Click" Style="width: 100%; background-color: #4baad3;" />
+                                        <asp:Button ID="btnNext" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" Text="Next" OnClick="btnNext_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +335,7 @@
                                         </div>
 
                                         <asp:TextBox ID="txtSales" runat="server" ToolTip="Enter Sales." ForeColor="Black"
-                                            CssClass="textbox"></asp:TextBox>
+                                            CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblSalesEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -343,7 +348,7 @@
                                         </div>
 
                                         <asp:TextBox ID="txtOwed" runat="server" ToolTip="Enter cash owed to the house or server."
-                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                            ForeColor="Black" CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblCashEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -355,7 +360,7 @@
                                         </div>
 
                                         <asp:TextBox ID="txtCharge" runat="server" ToolTip="Enter charge tips." ForeColor="Black"
-                                            CssClass="textbox"></asp:TextBox>
+                                            CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblChargeEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -367,7 +372,7 @@
                                             <asp:Label ID="Label39" runat="server" ForeColor="Black" Text="Bar:"></asp:Label>
                                         </div>
                                         <asp:TextBox ID="txtBarTips" runat="server" ToolTip="Enter bar tips unless a bartender or ToGo server."
-                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                            ForeColor="Black" CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblBarEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -384,7 +389,7 @@
                                 <div class="row" style="padding-bottom: 20px; text-align: left;">
 
                                     <div class="col-sm-12">
-                                        <asp:Button ID="btnClose" runat="server" Style="width: 100%; background-color: #4baad3;" CssClass="special_button_dark" Text="Next" OnClick="btnClose_Click" />
+                                        <asp:Button ID="btnClose" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" Text="Next" OnClick="btnClose_Click" />
                                     </div>
 
                                 </div>
@@ -397,14 +402,14 @@
                                         </div>
 
                                         <asp:TextBox ID="txtTips" runat="server" ToolTip="Must claim at least 15% of sales."
-                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                            ForeColor="Black" CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblTipsEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <asp:Button ID="btnSend" runat="server" CssClass="special_button_dark" OnClick="btnSend_Click" Text="Send" Style="width: 100%; background-color: #4baad3;"
+                                        <asp:Button ID="btnSend" runat="server" CssClass="btn btn-block btn-lg btn-primary #2980b9" Style="background-color: #4baad3" OnClick="btnSend_Click" Text="Send"
                                             ToolTip="Send results to the grid." />
                                     </div>
                                 </div>
@@ -412,11 +417,11 @@
 
                             <div id="mainButtons" runat="server" class="row" style="padding-bottom: 20px;">
                                 <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
-                                    <asp:Button ID="btnBack" runat="server" CssClass="special_button_dark" Text="Back" Visible="false" OnClick="btnBack_Click" Style="width: 100%; background-color: #4baad3;" />
+                                    <asp:Button ID="btnBack" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" Text="Back" Visible="false" OnClick="btnBack_Click"  />
                                 </div>
                                 <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
-                                    <asp:Button ID="btnCalculate" runat="server" CssClass="special_button_dark_panel" Visible="false" OnClick="btnCalculate_Click" Text="Calculate"
-                                        ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
+                                    <asp:Button ID="btnCalculate" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" Visible="false" OnClick="btnCalculate_Click" Text="Calculate"
+                                        ToolTip="Send results to the grid." />
                                 </div>
                             </div>
                         </div>
@@ -450,7 +455,7 @@
                                     </div>
 
                                     <asp:DropDownList ID="cboBWShiftOptions" runat="server" BackColor="White" ToolTip="Select Lunch or Dinner for shift."
-                                        ForeColor="Black" CssClass="textbox">
+                                        ForeColor="Black"  CssClass="form-control">
                                     </asp:DropDownList>
                                     <asp:Label ID="lblBWShiftEdit" runat="server" Style="text-align: center"></asp:Label>
                                 </div>
@@ -462,7 +467,7 @@
                                     </div>
 
                                     <asp:DropDownList ID="txtBackName" runat="server" ToolTip="Enter Backwaiter name."
-                                        ForeColor="Black" CssClass="textbox">
+                                        ForeColor="Black" CssClass="form-control">
                                     </asp:DropDownList>
                                     <asp:Label ID="lblBackNameEdit" runat="server" Style="text-align: center"></asp:Label>
                                 </div>
@@ -474,7 +479,7 @@
                                     </div>
                                     <div>
                                         <asp:TextBox ID="txtHours" runat="server" ToolTip="Enter hours backwaiter worked."
-                                            ForeColor="Black" CssClass="textbox"></asp:TextBox>
+                                            ForeColor="Black" CssClass="form-control"></asp:TextBox>
 
                                         <asp:Label ID="lblHoursEdit" runat="server" Style="text-align: center"></asp:Label>
                                     </div>
@@ -482,8 +487,8 @@
                             </div>
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-sm-12">
-                                    <asp:Button ID="button1" runat="server" CssClass="special_button_dark_panel" OnClick="button1_Click" Text="Send"
-                                        ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
+                                    <%--<asp:Button ID="button1" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" OnClick="button1_Click" Text="Send"
+                                        ToolTip="Send results to the grid."  />--%>
                                 </div>
                             </div>
                         </div>

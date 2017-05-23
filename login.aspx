@@ -18,17 +18,17 @@
                     <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
                         <div class="col-sm-12">
                             <asp:TextBox ID="txtUserID" runat="server"
-                                placeholder="User ID" CssClass="textbox" />
+                                placeholder="User ID" CssClass="form-control" />
                         </div>
                     </div>
                     <div class="row" style="padding-bottom: 30px;">
                         <div class="col-sm-12">
-                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="textbox" />
+                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="form-control"/>
                         </div>
                     </div>
                     <div class="row" style="padding-bottom: 20px;">
                         <div class="col-sm-12">
-                            <asp:LinkButton ID="btnLogin" runat="server" OnClick="btnLogin_Click" CssClass="opac special_link_button" Style="width: 100%; background-color: #4baad3;"
+                            <asp:LinkButton ID="btnLogin" runat="server" OnClick="btnLogin_Click" CssClass="btn btn-block btn-lg btn-primary" Style="background-color: #4baad3"
                                 Text="Login" />
                         </div>
                     </div>

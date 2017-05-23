@@ -7,12 +7,17 @@ html, body {
     padding: 0 !important;
 }
 
-
-* {
-    font-family: 'Roboto', sans-serif !important;
-    margin: 0;
+.hero-image {
+    /* The image used */
+    background-image: linear-gradient(90deg, rgba(52,73,94,0.7), rgba(52,73,94,0.7)), url('images/pexels-photo-204611.jpeg');
+    /* Set a specific height */
+    height: 900px;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
-
 
 p {
     line-height: 1.4em;
@@ -20,10 +25,13 @@ p {
 }
 
 .background-image-overlay {
-    background-image: linear-gradient(rgba(75,170,211, 0.8), rgba(75,170,211, 0.8)), url('images/pexels-photo.jpg');
+    background-image: linear-gradient(rgba(75,170,211, 0.9), rgba(75,170,211, 0.9)), url('images/pexels-photo.jpg');
     background-repeat: no-repeat;
 }
- 
+
+.project_image {
+    max-width: 800px;
+}
 /*a:link {color:#ffffff;}    /* unvisited link */
 /*a:visited {color:#f13f58;}*/ /* visited link */
 /*a:hover {color:#FFFF99;} */ /* mouse over link */
@@ -39,6 +47,18 @@ td.navigation:hover {
 td.navigation {
     text-align: center;
 }
+
+.carousel-control.left, .carousel-control.right {
+    background: transparent !important;
+    filter: none !important;
+    filter: none !important;
+    background-image: none;
+    outline: 0;
+    opacity: 1;
+    max-height: 100px;
+}
+
+
 /** {padding: 0; margin: 0; border: 0;}*/
 .textbox {
     width: 100%;
@@ -108,7 +128,6 @@ tr.selected {
 
 /*Header*/
 .Tab .ajax__tab_tab {
-    font-family: Roboto;
     font-size: 14px;
     margin-left: 0px;
     font-weight: bold;
@@ -188,7 +207,6 @@ tr.selected {
     /* margin:0;*/
     padding: 10px;
     font-size: large;
-    font-family: Roboto;
     border-collapse: collapse;
     position: relative;
 }
@@ -207,7 +225,6 @@ tr.selected {
     -webkit-box-shadow: #B3B3B3 1px 1px 1px;
     -moz-box-shadow: #B3B3B3 1px 1px 1px;
     box-shadow: #B3B3B3 1px 1px 1px;
-    font-family: Roboto;
     padding-left: 20px;
     overflow: hidden;
     border-collapse: collapse;
@@ -310,7 +327,6 @@ tr.selected {
 }
 
 .grid {
-    font-family: Roboto;
     width: 100%;
     border-collapse: collapse;
 }
@@ -406,11 +422,11 @@ tr.selected {
 
 #nav_bar {
     /**background-color: #3498db !important;*/
-    background-color: #42484d !important;
+    background-color: #34495E !important;
     background-image: none;
     border: none;
     text-align: right;
-    font-size: 18px;
+    font-size: 16px;
     min-height: 60px;
 }
 
@@ -428,7 +444,7 @@ tr.selected {
 }
 
 .sticky {
-    background-color: #3498db;
+    background-color: #34495E;
     position: fixed;
     width: 100%;
     height: 70px;
@@ -449,12 +465,21 @@ tr.selected {
     cursor: pointer;
     min-height: 60px;
     line-height: 60px;
-    color: white !important;
+    color: white;
 }
 
     .header_cell:hover {
-     background-color: rgba(75,170,211, 0.8);
+        background-color: #2C3E50;
+        color: #4baad3 !important;
     }
+
+.nav a:hover {
+    color: #4baad3 !important;
+}
+
+.navbar-toggle:hover:before, .navbar-toggle:focus:before {
+    color: #4baad3 !important;
+}
 
 .element {
     position: relative;
@@ -477,7 +502,6 @@ tr.selected {
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
     display: inline-block;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -498,7 +522,6 @@ tr.selected {
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -507,6 +530,16 @@ tr.selected {
 
     .special_button_dark:hover {
         opacity: 0.8;
+    }
+
+.social {
+    height: 35px;
+    background-color: white !important;
+}
+
+    .social:hover {
+        height: 50px;
+        background-color: #4baad3 !important;
     }
 
 .special_button_dark_panel {
@@ -522,7 +555,6 @@ tr.selected {
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -549,7 +581,6 @@ tr.selected {
     border-color: #4baad3;
     border-width: thin;
     text-decoration: none;
-    font-family: Roboto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -558,11 +589,42 @@ tr.selected {
 
     .special_button_blue:hover {
         color: white;
-        background-color: #4baad3;
+        background-color: #2980b9;
         text-decoration: none !important;
     }
 
 .special_button_blue_reverse {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    /*background-color: #42729B;*/
+    background-color: transparent;
+    font-size: large !important;
+    font-weight: 200;
+    border-style: solid;
+    border-color: white;
+    border-width: thin;
+    text-decoration: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+    .special_button_blue_reverse:hover {
+        color: white;
+        background-color: #4baad3;
+        text-decoration: none !important;
+        border-color: #4baad3;
+    }
+
+.special_button_project {
     text-align: center;
     vertical-align: middle;
     min-width: 200px;
@@ -578,15 +640,14 @@ tr.selected {
     border-color: white;
     border-width: thin;
     text-decoration: none;
-    font-family: Roboto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;
 }
 
-    .special_button_blue_reverse:hover {
-        color: #4baad3;
+    .special_button_project:hover {
+        color: #e74c3c;
         background-color: white;
         text-decoration: none !important;
     }
@@ -604,7 +665,6 @@ tr.selected {
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -632,7 +692,7 @@ td {
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
+
     display: inline-block;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -653,12 +713,11 @@ td {
     padding-bottom: 10px;
     color: white;
     /*background-color: #42729B;*/
-    background-color: #3498db;
+    background-color: #4baad3;
     font-size: large !important;
     font-weight: 200;
     border-style: none;
     text-decoration: none;
-    font-family: Roboto;
     display: inline-block;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -667,8 +726,15 @@ td {
 }
 
     .special_button_blue_two:hover {
-        opacity: 0.8;
+        background-color: #2980b9;
         color: white !important;
+    }
+
+.button_flat_blue {
+}
+
+    .button_flat_blue:hover {
+        background-color: #2980b9 !important;
     }
 
 .ajax__tab_tab {
@@ -681,7 +747,7 @@ td {
 
 .footer {
     width: 100%;
-    background-color: #42484d;
+    background-color: #2C3E50;
     min-height: 70px;
     color: white;
     bottom: 0;
@@ -861,7 +927,6 @@ td {
 }
 
 .MyTabStyle .ajax__tab_header {
-    font-family: "Roboto", Arial, Sans-Serif;
     font-size: 20px;
     font-weight: bold;
     display: block;
@@ -900,7 +965,6 @@ td {
 }
 
 .MyTabStyle .ajax__tab_body {
-    font-family: Roboto;
     font-size: 16px;
     background-color: #fff;
     border-top-width: 0;
@@ -959,7 +1023,6 @@ td {
 
 
 #schedule {
-    font-family: Roboto;
     width: 100%;
     border-collapse: collapse;
 }
@@ -989,7 +1052,7 @@ td {
     font-size: 38px;
     padding-bottom: 20px;
     padding-top: 50px;
-    text-align: left !important;
+    text-align: center !important;
 }
 
 #circularG {
@@ -1240,13 +1303,27 @@ td {
     }
 }
 
+@media (max-width: 500px) {
+    .jumbotron h1 {
+        font-size: 40px !important;
+    }
+
+    .jumbotron h2 {
+        font-size: 30px !important;
+    }
+
+    .hero-image {
+        height: 100% !important;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .header_button {
         width: 100% !important;
     }
 }
 
-@media (max-width:400px) {
+@media (max-width:768px) {
     .swap {
         display: flex;
         flex-flow: column;

@@ -2,6 +2,11 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+        <style type="text/css">
+        a:hover{
+            color: white !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
@@ -64,10 +69,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6" style="padding: 10px;">
-                                    <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_dark" Style="background-color: #4baad3;" OnClick="btnRestart_Click" />
+                                    <asp:Button ID="btnRestart" runat="server" Text="Play Again" CssClass="special_button_blue_two"  OnClick="btnRestart_Click" />
                                 </div>
                                 <div class="col-sm-6" style="padding: 10px;">
-                                    <asp:LinkButton ID="btnClose" runat="server" CssClass="special_button_dark" Style="background-color: #4baad3;" Text="Exit" UseSubmitBehavior="False" PostBackUrl="~/Home.aspx" />
+                                    <asp:LinkButton ID="btnClose" runat="server" CssClass="special_button_blue_two" Text="Exit" UseSubmitBehavior="False" PostBackUrl="~/Home.aspx" />
                                 </div>
                             </div>
                         </div>

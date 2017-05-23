@@ -141,7 +141,7 @@
                                 <tr>
                                     <td style="border-bottom: none;">
                                         <asp:Label ID="lblTestName" runat="server" Text='<%# Eval("NAME") %>' Font-Bold="True"
-                                            Font-Size="Small">
+                                            >
            
                                         </asp:Label>
                                     </td>
@@ -259,7 +259,7 @@
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-sm-12">
 
-                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_dark" OnClick="btnDelete_Click" Style="width: 100%; background-color: #4baad3;" UseSubmitBehavior="False" />
+                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="special_button_blue_two" OnClick="btnDelete_Click" Style="width: 100%;" UseSubmitBehavior="False" />
 
                                 </div>
                             </div>
@@ -378,8 +378,8 @@
 
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-sm-12">
-                                    <asp:Button ID="btnSave" runat="server" CssClass="special_button_dark_panel" OnClick="btnSave_Click" Text="Send"
-                                        ToolTip="Send results to the grid." Style="width: 100%; background-color: #4baad3;" />
+                                    <asp:Button ID="btnSave" runat="server" CssClass="special_button_blue_two" OnClick="btnSave_Click" Text="Send"
+                                        ToolTip="Send results to the grid." Style="width: 100%;" />
 
                                 </div>
                             </div>
