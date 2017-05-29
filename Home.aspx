@@ -5,6 +5,10 @@
         a:hover{
             text-decoration: underline;
         }
+                a:visited{
+                    color: white;
+
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
@@ -239,9 +243,9 @@
         </div>
         <div id="divPortfolio" runat="server" clientidmode="static" class="row"
             text-align="center" style="background-color: #e74c3c; color: white;">
-            <div class="col-lg-2">
+            <div class="col-sm-1">
             </div>
-            <div class="col-lg-8">
+            <div class="col-sm-10">
                 <p class="section_header" style="color: white;">
                     Projects
                 </p>
@@ -342,7 +346,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-2">
+            <div class="col-sm-1">
             </div>
         </div>
         <div id="divContact" runat="server" clientidmode="static" class="row"
