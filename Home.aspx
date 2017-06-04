@@ -1,19 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-        <style type="text/css">
-        a:hover{
+    <style type="text/css">
+        a:hover {
             text-decoration: underline;
         }
-                a:visited{
-                    color: white;
-
+       #btnResume {
+            color: white !important;
+        }
+        #btnResume:visited {
+            color: white !important;
+        }
+        #btnResume:active {
+            color: white !important;
+        }
+        #btnResume:focus {
+            color: white !important;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
     <div class="container-fluid">
-        <div id="divHeader" class="row justify-content-center hero-image"  runat="server">
+        <div id="divHeader" class="row justify-content-center hero-image" runat="server">
             <br />
             <div class="col-xs-12">
                 <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
@@ -28,7 +36,7 @@
                         I'm passionate about writing code.
                     </p>
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" CssClass="special_button_blue_reverse"  Target="_blank" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" style="color: white !important;" CssClass="special_button_blue_reverse" Target="_blank" />
                     </div>
                 </div>
             </div>
@@ -42,7 +50,7 @@
                     About
                 </p>
                 <p>
-                    Hi, my name is James Bergen.  I'm a Software Developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
+                    Hi, my name is James Bergen.  I'm a software developer living in Tampa, Florida.  I'm passionate about writing code and coming up with solutions to help people work more efficiently.
                 </p>
                 <p>
                     I studied Management Information Systems at University of South Florida and I've spent the last few years working in test automation.  Most of my programming experience is with C# and Ruby but
@@ -189,8 +197,8 @@
                 </div>
 
             </div>
-           <div class="col-lg-3 col-sm-1">
-           </div>
+            <div class="col-lg-3 col-sm-1">
+            </div>
         </div>
         <div id="divEducation" runat="server" class="row" clientidmode="static" style="color: #808080;"
             text-align="left">
@@ -239,6 +247,33 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-10">
+            </div>
+        </div>
+        <div id="div1" runat="server" class="row" clientidmode="static" style="color: #808080;"
+            text-align="left">
+            <div class="col-lg-3 col-sm-1">
+            </div>
+            <div class="col-lg-6 col-sm-10">
+                <p class="section_header">
+                    Treehouse
+                </p>
+                <p>Treehouse is an online technology school that offers web development courses at an affordable price.  Badges are earned by completing courses and workshops.</p>
+                <asp:HyperLink ID="treeHouseLink" runat="server" NavigateUrl="https://teamtreehouse.com/" Target="_blank" Font-Size="16px" ForeColor="#337ab7" Text="More about Treehouse"></asp:HyperLink>
+                <br />
+                <br />
+                <p class="sub_header">Badges Earned:</p>
+                <br />
+                <br />
+                <div id="badges">
+                </div>
+                <button type="button" id="showBadge" class="btn btn-info button_flat_blue" data-toggle="collapse" data-target="#moreBadges">Show More</button>
+                <div id="moreBadges" class="collapse">
+                </div>
+                <button type="button" id="hideBadge" class="btn btn-info button_flat_blue" data-toggle="collapse" style="display: none;" data-target="#moreBadges">Show Less</button>
+                <br />
+                <br />
+            </div>
+            <div class="col-lg-3 col-sm-1">
             </div>
         </div>
         <div id="divPortfolio" runat="server" clientidmode="static" class="row"

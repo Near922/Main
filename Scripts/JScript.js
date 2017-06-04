@@ -40,15 +40,15 @@ function pageLoad() {
 
     $(".close_new_table").click(function () {
 
-            $('#txtTblNum').text("");
-            $('#tableNumber').val("");
-            $('#lblNumGuests').text("");
-            $('#lblTblNumber').text("Table Number");
-            $('#lblNumGuests').text("");
-            $('#tblNumError').text("");
-            $('#numberGuests').val("");
-            $('#txtTblNum').show();
-            $('#lblNumGuests').hide();
+        $('#txtTblNum').text("");
+        $('#tableNumber').val("");
+        $('#lblNumGuests').text("");
+        $('#lblTblNumber').text("Table Number");
+        $('#lblNumGuests').text("");
+        $('#tblNumError').text("");
+        $('#numberGuests').val("");
+        $('#txtTblNum').show();
+        $('#lblNumGuests').hide();
     });
 
     $(".money_back_button").click(function () {
@@ -99,6 +99,56 @@ function showErrorMessage() {
     $('.alert-danger').show();
 
 }
+
+function getBadges() {
+    $.getJSON("https://teamtreehouse.com/jamesbergen.json",
+        function (data) {
+            $('#badges').empty(); // Clear the table body.
+
+            // Loop through the list of products.
+            var badges = data['badges'];
+
+            var items = 0;
+            var rowCount = 0;
+            var row = ""
+            $.each(badges, function (key, val) {
+                // Add a table row for the product.
+                var courses = val.courses;
+
+                var content = ""
+                if (items == 0) {
+                    rowCount += 1;
+                    row = "<div id='badge_row" + rowCount + "'class='row' style='padding-bottom:20px;'></div>";
+                    if (rowCount > 1) {
+                        $('#moreBadges').append(row);
+                    }
+                    else {
+                        $('#badges').append(row);
+                    }
+                }
+                content += "<div class='col-md-4' style='height:300px;'>";
+                content += '<div><p style="font-weight:bold;text-align:center;">' + val.name + '</p></div><div style="text-align:center;"><img style="height: 100px;" src="' + val.icon_url + '"</img></div><br />';
+
+                if (courses.length > 0) {
+                    content += '<div style="text-align:center;"><p>Course: ' + courses[0].title + '</p></div>';
+                }
+                content += '</div>';
+                $('#badge_row' + rowCount).append(content);
+                items += 1;
+                if (items == 3) {
+                    items = 0;
+                }
+
+            });
+
+        });
+}
+$(document).ready(getBadges);
+
+$('#showBadge').click(function () {
+    $('#showBadge').hide();
+});
+
 
 $(document).ready(function () {
     var jqueryCall = function JQueryAjaxCall(fromBillIndex, toBillIndex, orderIndex) {
@@ -152,16 +202,11 @@ $(document).ready(function () {
         closeToggleIfVisiblie();
     });
 
-
-        $(function() {
-            $(".dial").knob();
-        });
-  
-        var closeToggleIfVisiblie = function () {
-            if ($('.navbar-toggle').is(':visible')) {
-                $('.navbar-toggle').click();
-            };
+    var closeToggleIfVisiblie = function () {
+        if ($('.navbar-toggle').is(':visible')) {
+            $('.navbar-toggle').click();
         };
+    };
 
     $(".drag_drop_grid tbody").sortable({
         items: "> tr:not(:first)",
@@ -181,7 +226,7 @@ $(document).ready(function () {
             var billFrom = billFromStr.slice(-1);
             jqueryCall(billFrom, billTo, (rowIndex - 1));
             ui.draggable.remove();
-            
+
         }
     });
 

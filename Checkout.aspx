@@ -18,6 +18,15 @@
         a:hover{
             color: white !important;
         }
+        a:visited {
+            color: white !important;
+        }
+        a:active {
+            color: white !important;
+        }
+        a:focus {
+            color: white !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
