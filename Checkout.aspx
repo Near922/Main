@@ -496,8 +496,8 @@
                             </div>
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-sm-12">
-                                    <%--<asp:Button ID="button1" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" OnClick="button1_Click" Text="Send"
-                                        ToolTip="Send results to the grid."  />--%>
+                                    <asp:Button ID="button1" runat="server" CssClass="btn btn-block btn-lg btn-primary button_flat_blue" Style="background-color: #4baad3" OnClick="button1_Click" Text="Send"
+                                        ToolTip="Send results to the grid."  />
                                 </div>
                             </div>
                         </div>

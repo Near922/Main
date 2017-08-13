@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "..\..\GitHub\Main\", "{97A5EB47-29FE-4BDC-AC07-DBC582E7722A}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Main", ".", "{97A5EB47-29FE-4BDC-AC07-DBC582E7722A}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.2"
 		Debug.AspNetCompiler.VirtualPath = "/Main"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\GitHub\Main\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Main\"
