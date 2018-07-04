@@ -1,6 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage3.master.cs" Inherits="MasterPage3" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
 <!DOCTYPE html>
@@ -9,12 +8,8 @@
 <head runat="server">
     <title>James Bergen - Software Developer Portfolio</title>
     <link href="~/StyleSheet.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel='stylesheet' />
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-    <link href="~/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
     <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/Flat-UI-master/Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet" />
-    <link href="~/Scripts/FooTable-2.0.3/css/footable.core.css" rel="stylesheet" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
 
 
@@ -25,6 +20,13 @@
 <body>
     <form id="form1" runat="server">
         <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="Scripts/jquery-3.0.0.min.js" />
+                <asp:ScriptReference Path="Scripts/JScript.js" />
+                <asp:ScriptReference Path="Scripts/jquery-ui.min.js" />
+                <asp:ScriptReference Path="Scripts/jquery.ui.touch-punch.min.js" />
+                <asp:ScriptReference Path="Scripts/bootstrap.min.js" />
+            </Scripts>
         </cc1:ToolkitScriptManager>
         <asp:UpdateProgress ID="updateProgress" runat="server">
             <ProgressTemplate>
@@ -65,14 +67,14 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height: 100%; text-align: right;">
                             <ul id="ulNav" runat="server" class="nav navbar-nav" style="float: right;">
                                 <li id="hlHome" class="header_cell" runat="server">
-                                    <asp:HyperLink runat="server" ID="homeLink"  NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
+                                    <asp:HyperLink runat="server" ID="homeLink" NavigateUrl="~/Home.aspx">Home</asp:HyperLink></li>
                                 <li id="hlAbout" class="header_cell" runat="server" style="display: none;"><a>About</a></li>
                                 <li id="hlSkills" class="header_cell" runat="server" style="display: none;"><a>Skills</a></li>
                                 <li id="hlExperience" class="header_cell" runat="server" style="display: none;"><a>Experience</a></li>
                                 <li id="hlPortfolio" class="header_cell" runat="server" style="display: none;"><a>Projects</a></li>
                                 <li id="hlContact" class="header_cell" runat="server" style="display: none;"><a>Contact</a></li>
                                 <li id="hlAdmin" class="header_cell" runat="server" style="display: none;">
-                                    <asp:HyperLink runat="server" ID="adminLink"  NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
+                                    <asp:HyperLink runat="server" ID="adminLink" NavigateUrl="/Sales_App/Admin.aspx">Admin</asp:HyperLink></li>
                                 <li id="LiLogout" class="header_cell" runat="server">
                                     <asp:LinkButton runat="server" ID="hlLogout" NavigateUrl="" OnClick="hlLogout_Click">Log Out</asp:LinkButton></li>
                             </ul>
@@ -128,11 +130,5 @@
             </div>
         </div>
     </form>
-    <script src='<%= ResolveUrl("~/Scripts/jquery-3.0.0.min.js") %>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/JScript.js") %>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/jquery-ui.min.js") %>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/jquery.ui.touch-punch.min.js") %>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/FooTable-2.0.3/js/footable.js") %>'></script>
-    <script src='<%= ResolveUrl("~/Content/Flat-UI-master/Flat-UI-master/dist/js/flat-ui.min.js") %>'></script>
 </body>
 </html>

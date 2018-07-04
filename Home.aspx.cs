@@ -92,6 +92,7 @@ public partial class Home : System.Web.UI.Page
 
         if (txtName.Text != "" && txtEmail.Text != "" && txtMessage.Text != "" && IsValid(txtEmail.Text))
         {
+            string action;
             try
             {
                 Message message = new Message(txtName.Text, txtEmail.Text, txtMessage.Text);
@@ -101,13 +102,15 @@ public partial class Home : System.Web.UI.Page
                 txtEmail.Text = "";
                 txtMessage.Text = "";
                 lblMessage.Text = "Message was sent successfully.";
-                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessMessage", "showSuccessMessage();", true);
+                action = "Success";
             }
             catch (Exception ex)
             {
+                action = "Error";
                 Logger.Log(ex);
-                ScriptManager.RegisterStartupScript(this, GetType(), "showErrorMessage", "showErrorMessage();", true);
+      
             }
+            ScriptManager.RegisterStartupScript(this, GetType(), "show" + action + "Message", "show" + action + "Message();", true);
         }
     }
 }

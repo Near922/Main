@@ -63,7 +63,6 @@ function pageLoad() {
             $('#numberGuests').val(txt.slice(0, -1));
         }
         return false;
-        return false;
     });
 }
 
@@ -100,55 +99,61 @@ function showErrorMessage() {
 
 }
 
-function getBadges() {
-    $.getJSON("https://teamtreehouse.com/jamesbergen.json",
-        function (data) {
-            $('#badges').empty(); // Clear the table body.
+//function getBadges() {
+//    $.getJSON("https://teamtreehouse.com/jamesbergen.json",
+//        function (data) {
+//            $('#badges').empty(); // Clear the table body.
 
-            // Loop through the list of products.
-            var badges = data['badges'];
+//            // Loop through the list of products.
+//            var badges = data['badges'];
 
-            var items = 0;
-            var rowCount = 0;
-            var row = ""
-            $.each(badges, function (key, val) {
-                // Add a table row for the product.
-                var courses = val.courses;
+//            var items = 0;
+//            var rowCount = 0;
+//            var row = ""
+//            $.each(badges, function (key, val) {
+//                // Add a table row for the product.
+//                var courses = val.courses;
 
-                var content = ""
-                if (items == 0) {
-                    rowCount += 1;
-                    row = "<div id='badge_row" + rowCount + "'class='row' style='padding-bottom:20px;'></div>";
-                    if (rowCount > 1) {
-                        $('#moreBadges').append(row);
-                    }
-                    else {
-                        $('#badges').append(row);
-                    }
-                }
-                content += "<div class='col-md-4' style='height:300px;'>";
-                content += '<div><p style="font-weight:bold;text-align:center;">' + val.name + '</p></div><div style="text-align:center;"><img style="height: 100px;" src="' + val.icon_url + '"</img></div><br />';
+//                var content = ""
+//                if (items == 0) {
+//                    rowCount += 1;
+//                    row = "<div id='badge_row" + rowCount + "'class='row' style='padding-bottom:20px;'></div>";
+//                    if (rowCount > 1) {
+//                        $('#moreBadges').append(row);
+//                    }
+//                    else {
+//                        $('#badges').append(row);
+//                    }
+//                }
+//                content += "<div class='col-md-4' style='height:300px;'>";
+//                content += '<div><p style="font-weight:bold;text-align:center;">' + val.name + '</p></div><div style="text-align:center;"><img style="height: 100px;" src="' + val.icon_url + '"</img></div><br />';
 
-                if (courses.length > 0) {
-                    content += '<div style="text-align:center;"><p>Course: ' + courses[0].title + '</p></div>';
-                }
-                content += '</div>';
-                $('#badge_row' + rowCount).append(content);
-                items += 1;
-                if (items == 3) {
-                    items = 0;
-                }
+//                if (courses.length > 0) {
+//                    content += '<div style="text-align:center;"><p>Course: ' + courses[0].title + '</p></div>';
+//                }
+//                content += '</div>';
+//                $('#badge_row' + rowCount).append(content);
+//                items += 1;
+//                if (items == 3) {
+//                    items = 0;
+//                }
 
-            });
+//            });
 
-        });
-}
-$(document).ready(getBadges);
+//        });
+//}
+//$(document).ready(getBadges);
 
-$('#showBadge').click(function () {
-    $('#showBadge').hide();
-});
+//$('#showBadge').click(function () {
+//    $('#showBadge').hide();
+//});
 
+$(document).ready(
+    function () {
+        var slideDuration = 2000;
+        $('#containHeader').fadeIn({ duration: slideDuration, queue: false }).css('display', 'none').slideDown(slideDuration);
+    }
+);
 
 $(document).ready(function () {
     var jqueryCall = function JQueryAjaxCall(fromBillIndex, toBillIndex, orderIndex) {
@@ -171,6 +176,14 @@ $(document).ready(function () {
         //alert(response.d);
     }
 
+    function openServerModal() {
+        $('#serverPanel').modal('show');
+    }
+
+    function openBWModal() {
+        $('#bwPanel').modal('show');
+    }
+
 
     $("#hlExperience").click(function () {
 
@@ -185,19 +198,16 @@ $(document).ready(function () {
     });
 
     $("#hlSkills").click(function () {
-
         $('html, body').animate({ scrollTop: $("#divSkills").offset().top - $('#nav_bar').height() }, 'slow');
         closeToggleIfVisiblie();
     });
 
     $("#hlPortfolio").click(function () {
-
         $('html, body').animate({ scrollTop: $("#divPortfolio").offset().top - $('#nav_bar').height() }, 'slow');
         closeToggleIfVisiblie();
     });
 
     $("#hlContact").click(function () {
-
         $('html, body').animate({ scrollTop: $("#divContact").offset().top - $('#nav_bar').height() }, 'slow');
         closeToggleIfVisiblie();
     });

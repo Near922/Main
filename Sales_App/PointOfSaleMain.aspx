@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true"
     CodeFile="PointOfSaleMain.aspx.cs" Inherits="PointOfSaleMain" EnableEventValidation="false" %>
-
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="../Scripts/jquery-3.0.0.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         function openModal() {
             $('#newTblModal').modal('show');

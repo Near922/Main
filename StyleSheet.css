@@ -5,6 +5,7 @@ html, body {
     height: 100%;
     margin: 0 !important;
     padding: 0 !important;
+    font-family: 'Lato', sans-serif !important;
 }
 
 .hero-image {
@@ -20,10 +21,13 @@ html, body {
 }
 
 p {
-    line-height: 1.4em;
-    font-size: 16px;
+    line-height: 1.72222;
+    font-size: 18px;
 }
 
+.fade{
+    opacity: 0;
+}
 .background-image-overlay {
     background-image: linear-gradient(rgba(75,170,211, 0.9), rgba(75,170,211, 0.9)), url('images/pexels-photo.jpg');
     background-repeat: no-repeat;
@@ -454,24 +458,21 @@ tr.selected {
 }
 
 .header_cell {
-    /*float: left;
-    overflow: hidden;
-    padding-left: 20px;
-    padding-right: 20px;
-    line-height: 70px;
-    text-align: center;
-    margin: 0 auto;
-       */
     cursor: pointer;
     min-height: 60px;
     line-height: 60px;
-    color: white;
 }
 
     .header_cell:hover {
         background-color: #2C3E50;
         color: #4baad3 !important;
+ 
     }
+
+.nav a {
+    color: white !important;
+    font-weight: bold;
+}
 
 .nav a:hover {
     color: #4baad3 !important;

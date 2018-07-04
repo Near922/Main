@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true"
     CodeFile="Checkout.aspx.cs" Inherits="Checkout3" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="Scripts/jquery-3.0.0.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Scripts/FooTable-2.0.3/css/footable.core.min.css" rel="stylesheet" />
     <script type="text/javascript">
+
         function openServerModal() {
             $('#serverPanel').modal('show');
         }
@@ -31,6 +30,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManagerProxy ID="ScriptManager10" runat="server">
+            <Scripts>
+            <asp:ScriptReference Path="Scripts/FooTable-2.0.3/js/footable.js" />
+            </Scripts>
     </asp:ScriptManagerProxy>
     <div>
         <br />
@@ -69,7 +71,7 @@
                     <asp:Button runat="server" ID="btnAddServer" CssClass="btn btn-block btn-lg btn-primary" Text="Add Server"  Style="background-color: #34495E; max-width:300px !important;" ForeColor="White" OnClick="btnAddServer_Click" UseSubmitBehavior="False" />
                 </div>
                 <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">
-                    <asp:Button runat="server" ID="btnAddSA" CssClass="btn btn-block btn-lg btn-primary" Style="background-color: #34495E;"
+                    <asp:Button runat="server" ID="btnAddSA" CssClass="btn btn-block btn-lg btn-primary" Style="background-color: #34495E; max-width:300px !important;"
                         Text="Add SA" ForeColor="White" OnClick="btnAddSA_Click" UseSubmitBehavior="False" />
                 </div>
                 <div class="col-sm-3" style="padding-bottom: 20px; text-align: left">

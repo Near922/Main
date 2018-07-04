@@ -24,11 +24,11 @@
         <div id="divHeader" class="row justify-content-center hero-image" runat="server">
             <br />
             <div class="col-xs-12">
-                <div id="containHeader" class="jumbotron" style="border: none; color: white; text-align: center;">
+                <div id="containHeader" class="jumbotron" style="display: none; border: none; color: white; text-align: center;">
                     <h1 id="header">James Bergen
                     </h1>
-                    <h2>Software Developer and QA Engineer
-                    </h2>
+                    <h1>Software Developer
+                    </h1>
                     <div>
                         <img src="images/icons/1467098942_Html.png" />
                     </div>
@@ -36,7 +36,7 @@
                         I'm passionate about writing code.
                     </p>
                     <div>
-                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/James Bergen Resume.pdf" style="color: white !important;" CssClass="special_button_blue_reverse" Target="_blank" />
+                        <asp:HyperLink ID="btnResume" runat="server" Text="View Resume" NavigateUrl="~/Files/james-bergen-resume.pdf" style="color: white !important;" CssClass="special_button_blue_reverse" Target="_blank" />
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
             text-align="left">
             <div class="col-lg-3 col-sm-1">
             </div>
-            <div class="col-lg-6 col-sm-10">
+            <div id="aboutContent" class="col-lg-6 col-sm-10">
                 <p class="section_header" style="color: #FF675B;">
                     About
                 </p>
@@ -66,24 +66,24 @@
             text-align="left">
             <div class="col-lg-3 col-sm-1">
             </div>
-            <div class="col-lg-6 col-sm-10" style="color: #808080;">
+            <div id="skillsContent" class="col-lg-6 col-sm-10" style="color: #808080;">
                 <p class="section_header">
                     Technical Skills
                 </p>
                 <div style="padding-bottom: 50px;">
                     <div>
                         <span style="font-weight: bold; font-size: 19px;">Programming/Web: </span>
-                        <p style="margin-bottom: 0 !important;">Ruby, C#, JavaScript, VB.NET, ASP.NET, Sinatra, HTML, CSS, Slim</p>
+                        <p style="margin-bottom: 0 !important;">C#, Ruby, JavaScript, JQuery, ASP.NET, Sinatra, HTML, CSS</p>
                     </div>
                     <br />
                     <div>
                         <span style="font-weight: bold; font-size: 19px;">Database/DBMS: </span>
-                        <p style="margin-bottom: 0 !important;">SQL, MS SQL Server 2012</p>
+                        <p style="margin-bottom: 0 !important;">SQL, MS SQL Server</p>
                     </div>
                     <br />
                     <div>
                         <span style="font-weight: bold; font-size: 19px;">Tools: </span>
-                        <p style="margin-bottom: 0 !important;">Selenium WebDriver, Cucumber, WATIR, Visual Studio 2012, TFS, SVN</p>
+                        <p style="margin-bottom: 0 !important;">Selenium WebDriver, Cucumber, WATIR, Visual Studio, TFS, GitHub</p>
                     </div>
                     <br />
                 </div>
@@ -95,7 +95,7 @@
             text-align="left" style="color: #808080;">
             <div class="col-lg-3 col-sm-1">
             </div>
-            <div class="col-lg-6 col-sm-10">
+            <div id="experienceContent" class="col-lg-6 col-sm-10">
                 <p class="section_header">
                     Experience
                 </p>
@@ -204,7 +204,7 @@
             text-align="left">
             <div class="col-lg-3 col-sm-1">
             </div>
-            <div class="col-lg-6 col-sm-10">
+            <div id="educationContent" class="col-lg-6 col-sm-10">
                 <p class="section_header">
                     Education
                 </p>
@@ -249,11 +249,11 @@
             <div class="col-lg-3 col-sm-10">
             </div>
         </div>
-        <div id="div1" runat="server" class="row" clientidmode="static" style="color: #808080;"
+   <!--     <div id="divTreeHouse" runat="server" class="row" clientidmode="static" style="color: #808080;"
             text-align="left">
             <div class="col-lg-3 col-sm-1">
             </div>
-            <div class="col-lg-6 col-sm-10">
+            <div id="treeHouse" style="display: none;" class="col-lg-6 col-sm-10">
                 <p class="section_header">
                     Treehouse
                 </p>
@@ -275,17 +275,17 @@
             </div>
             <div class="col-lg-3 col-sm-1">
             </div>
-        </div>
+        </div>-->
         <div id="divPortfolio" runat="server" clientidmode="static" class="row"
             text-align="center" style="background-color: #e74c3c; color: white;">
             <div class="col-sm-1">
             </div>
-            <div class="col-sm-10">
+            <div id="projectsContent"  class="col-sm-10">
                 <p class="section_header" style="color: white;">
                     Projects
                 </p>
                 <br />
-                <div class="row">
+                <div id="divCashout" class="row">
                     <div class="col-md-6">
                         <div>
                             <asp:Label ID="lblCashout" runat="server" Text="Cash Out Utility"
@@ -301,7 +301,7 @@
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <img src="images/cashout.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/cashout.jpg" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
@@ -309,10 +309,10 @@
                 </div>
 
 
-                <div class="row swap">
+                <div id="divScheduler" class="row swap">
                     <div class="col-md-6  first">
                         <div>
-                            <img src="images/scheduler.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/scheduler.jpg" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
@@ -332,7 +332,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div id="divSale" class="row">
                     <div class="col-md-6">
                         <div>
                             <asp:Label ID="lblPointOfSale" runat="server" Text="Point Of Sale" ForeColor="white"
@@ -347,7 +347,7 @@
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <img src="images/pos.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/pos.jpg" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>
@@ -355,10 +355,10 @@
                 </div>
 
 
-                <div class="row swap">
+                <div id="divGot" class="row swap">
                     <div class="col-md-6 second">
                         <div>
-                            <img src="images/sigil.PNG" class="img-responsive" style="padding-bottom: 50px;" />
+                            <img src="images/sigil.jpg" class="img-responsive" style="padding-bottom: 50px;" />
                             <br />
                             <br />
                         </div>

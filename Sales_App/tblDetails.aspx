@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true"
     CodeFile="tblDetails.aspx.cs" Inherits="tblDetails" EnableEventValidation="true" %>
-
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="../Scripts/jquery-3.0.0.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         function openModal() {
             $('#numberPanel').modal('show');
