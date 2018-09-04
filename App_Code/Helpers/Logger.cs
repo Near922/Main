@@ -18,6 +18,7 @@ public class Logger
 
     public static void Log(Exception ex)
     {
+        var t = "test";
         //using (StreamWriter writer = new StreamWriter(@"C:\Temp\error_log.txt", true))
         //{
          //   writer.WriteLine(string.Format("{0} - {1} - {2}", DateTime.Now, ex.Message, ex.StackTrace));

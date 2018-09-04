@@ -391,7 +391,7 @@
             <div class="col-lg-6 col-sm-10">
                 <asp:UpdatePanel ID="upPanel1" runat="server">
                     <ContentTemplate>
-                        <div id="messageDiv" style="display: none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
+                        <div id="messageDiv" style="display:none; text-align: left;" runat="server" role="alert" class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <strong>Success!</strong>
                             <asp:Label ID="lblMessage" runat="server" Text="" />

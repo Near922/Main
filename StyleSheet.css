@@ -79,8 +79,8 @@ td.navigation {
 }
 
 tr.selected {
-    background-color: #FFCF8B;
-    border-color: #FFCF8B;
+    background-color: #FFCF8B !important;
+    border-color: #FFCF8B !important;
 }
 
 .StaticMenuHeader td a {

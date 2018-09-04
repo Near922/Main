@@ -7,16 +7,16 @@ using System.Text;
 using System.Web.UI.HtmlControls;
 
 
-public partial class tblDetails : System.Web.UI.Page
+public partial class tblDetails : Page
 {
     static Dictionary<string, decimal> menuOrder;
     static Dictionary<string, int> menuIDs;
     sqlController sqC = new sqlController();
-    AjaxControlToolkit.TabContainer TabContainerBills;
-    Server server;
-    Table table;
-    Order order;
-    Bill bill;
+
+    public Server server;
+    public Table table;
+    public Order order;
+    public Bill bill;
     string paymentAmount;
 
 
@@ -75,8 +75,8 @@ public partial class tblDetails : System.Web.UI.Page
         {
             Cache["MenuIDs"] = menuIDs;
         }
-        AddTab();
-        loadDataTabs();
+
+        bill = table.GetBills()[getActiveTabIndex()];
     }
 
     public enum MenuItems
@@ -179,47 +179,12 @@ public partial class tblDetails : System.Web.UI.Page
 
     protected int getActiveTabIndex()
     {
-
-        return TabContainerBills.ActiveTabIndex;
+        return int.Parse(lblActiveBill.Value);
     }
 
 
     protected void updateValues(string value, int index, int status = 0)
     {
-        HtmlTable divContainer = new HtmlTable();
-        HtmlTable spacer = new HtmlTable();
-        spacer.Style.Add("height", "150px");
-        HtmlTable spacerTwo = new HtmlTable();
-        spacerTwo.Style.Add("height", "50px");
-        divContainer.Attributes.Add("class", "checkGridView");
-        HtmlTableRow containerrow = new HtmlTableRow();
- 
-        HtmlTableCell containercell = new HtmlTableCell();
-        containercell.VAlign = "top";
-
-        HtmlTable httable = new HtmlTable();
-        httable.Style.Add("width", "100%");
-        httable.BgColor = "cyan";
-        HtmlTable billTotal = new HtmlTable();
-        billTotal.Style.Add("width", "100%");
-        billTotal.Style.Add("color", "red");
-        billTotal.BgColor = "cyan";
-        HtmlTable paymentTable = new HtmlTable();
-        paymentTable.Style.Add("width", "100%");
-        paymentTable.Style.Add("color", "red");
-        paymentTable.BgColor = "cyan";
-        HtmlTable totalTable = new HtmlTable();
-        totalTable.Style.Add("width", "100%");
-        totalTable.Style.Add("color", "red");
-        totalTable.BgColor = "cyan";
-        httable.Attributes.Add("class", "add");
-        HtmlTableRow row;
-        HtmlTableCell first_cell;
-        HtmlTableCell second_cell;
-        httable.ID = "ordersTable" + index.ToString();
-        table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
-        StringBuilder sb = new StringBuilder();
-        sb.Append("<table>");
 
         if (value != "")
         {
@@ -228,109 +193,6 @@ public partial class tblDetails : System.Web.UI.Page
             order.ServerID = Int32.Parse(server.ID);
             server.TakeOrder(order, index);
         }
-
-        bill = table.GetBills()[index];
-        if (bill != null)
-        {
-            foreach (Order o in bill.Orders)
-            {
-                row = new HtmlTableRow();
-                row.Style.Add("width", "100%");
-                first_cell = new HtmlTableCell();
-                first_cell.Width = "50%";
-                second_cell = new HtmlTableCell();
-                second_cell.Align = "right";
-                switch (o.Status)
-                {
-                    case OrderStatus.UnOrdered:
-                        first_cell.InnerText = String.Format("{0}", o.GetName);
-                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
-                        break;
-                    case OrderStatus.Ordered:
-                        first_cell.InnerText = String.Format(">>{0}", o.GetName);
-                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
-                        break;
-                    case OrderStatus.OnHold:
-                        first_cell.InnerText = String.Format("{0}", o.GetName);
-                        second_cell.InnerText = String.Format("{0:C}", o.GetPrice);
-                        row.BgColor = "pink";
-                        break;
-                }
-
-                row.Cells.Add(first_cell);
-                row.Cells.Add(second_cell);
-                row.Style.Add("height", "50px");
-                httable.Rows.Add(row);
-            }
-            if (table.tableBill(index).Payment > 0.00M)
-            {
-                HtmlTableRow paymentrow = new HtmlTableRow();
-                paymentrow.Style.Add("width", "100%");
-                HtmlTableCell paymentcell = new HtmlTableCell();
-                paymentcell.Width = "50%";
-                HtmlTableCell second_paymentcell = new HtmlTableCell();
-                second_paymentcell.Align = "right";
-                paymentcell.InnerText = String.Format("Cash");
-                second_paymentcell.InnerText = String.Format("({0:C})", table.tableBill(index).Payment);
-                paymentrow.Cells.Add(paymentcell);
-                paymentrow.Cells.Add(second_paymentcell);
-                paymentTable.Rows.Add(paymentrow);
-                HtmlTableRow totalrow = new HtmlTableRow();
-                HtmlTableCell totalcell = new HtmlTableCell();
-                HtmlTableCell second_totalcell = new HtmlTableCell();
-                second_totalcell.Align = "right";
-                totalcell.InnerText = String.Format("Balance Due");
-                second_totalcell.InnerText = String.Format("{0:C}", (table.tableBill(index).FinalTotal - table.tableBill(index).Payment));
-                totalrow.Cells.Add(totalcell);
-                totalrow.Cells.Add(second_totalcell);
-                totalTable.Rows.Add(totalrow);
-            }
-            HtmlTableRow subtotalrow = new HtmlTableRow();
-            subtotalrow.Style.Add("width", "100%");
-            HtmlTableCell subtotalcell = new HtmlTableCell();
-            subtotalcell.Width = "50%";
-            HtmlTableCell second_subtotalcell = new HtmlTableCell();
-            second_subtotalcell.Align = "right";
-            subtotalcell.InnerText = String.Format("Subtotal");
-            second_subtotalcell.InnerText = String.Format("{0:C}", table.tableBill(index).SubTotal);
-            subtotalrow.Cells.Add(subtotalcell);
-            subtotalrow.Cells.Add(second_subtotalcell);
-            billTotal.Rows.Add(subtotalrow);
-
-            HtmlTableRow taxrow = new HtmlTableRow();
-            taxrow.Style.Add("width", "100%");
-            HtmlTableCell taxcell = new HtmlTableCell();
-            HtmlTableCell second_taxcell = new HtmlTableCell();
-            second_taxcell.Align = "right";
-            taxcell.InnerText = String.Format("Tax", table.tableBill(index).TaxTotal);
-            second_taxcell.InnerText = String.Format("{0:C}", table.tableBill(index).TaxTotal);
-            taxrow.Cells.Add(taxcell);
-            taxrow.Cells.Add(second_taxcell);
-            billTotal.Rows.Add(taxrow);
-
-            HtmlTableRow finalrow = new HtmlTableRow();
-            finalrow.Style.Add("width", "100%");
-            HtmlTableCell finalcell = new HtmlTableCell();
-            HtmlTableCell second_finalcell = new HtmlTableCell();
-            second_finalcell.Align = "right";
-            finalcell.InnerText = String.Format("Total");
-            second_finalcell.InnerText = String.Format("{0:C}", table.tableBill(index).FinalTotal);
-            finalrow.Cells.Add(finalcell);
-            finalrow.Cells.Add(second_finalcell);
-            billTotal.Rows.Add(finalrow);
-        }
-
-
-        TabContainerBills.Tabs[index].Controls.Clear();
-        containercell.Controls.Add(httable);
-        containercell.Controls.Add(spacer);
-        containercell.Controls.Add(billTotal);
-        containercell.Controls.Add(paymentTable);
-        containercell.Controls.Add(totalTable);
-        containerrow.Cells.Add(containercell);
-        divContainer.Rows.Add(containerrow);
-        containercell.Controls.Add(spacerTwo);
-        TabContainerBills.Tabs[index].Controls.Add(divContainer);
     }
 
     protected void ListViewEntree_ItemCommand(object source, ListViewCommandEventArgs e)
@@ -379,9 +241,9 @@ public partial class tblDetails : System.Web.UI.Page
 
     protected void Item_Command(object source, ListViewCommandEventArgs e)
     {
-        //ListViewRunningTotal.SelectedIndex = e.Item.ItemIndex;
-        //ListViewRunningTotal.DataBind();
+
     }
+
     protected void addButton_Click(object sender, EventArgs e)
     {
         AddTab(true);
@@ -412,37 +274,12 @@ public partial class tblDetails : System.Web.UI.Page
             tabCount += 1;
         }
 
-        billContainer.Controls.Remove(TabContainerBills);
-
-        TabContainerBills = new AjaxControlToolkit.TabContainer();
-        TabContainerBills.ID = "tabContainerBills";
-        TabContainerBills.ActiveTabChanged += tabContainerBills_ActiveTabChanged;
-
-        TabContainerBills.CssClass = "MyTabStyle";
-        TabContainerBills.Style.Add("position", "relative");
-        TabContainerBills.Width = 250;
-
-        AjaxControlToolkit.TabPanel initialTab = new AjaxControlToolkit.TabPanel();
-        initialTab.BackColor = System.Drawing.Color.Cyan;
-        initialTab.ID = "tabPanel" + "1".ToString();
-        initialTab.HeaderText = String.Format("Table {0} / 1", Request.QueryString["Table"]);
-        TabContainerBills.Tabs.Add(initialTab);
-        for (int i = 1; i < tabCount; i++)
-        {
-            AjaxControlToolkit.TabPanel Dyntab = new AjaxControlToolkit.TabPanel();
-            Dyntab.ID = "tabPanel" + (i + 1).ToString();
-            Dyntab.BackColor = System.Drawing.Color.Cyan;
-            Dyntab.HeaderText = String.Format("Table {0} / {1}", Request.QueryString["Table"], i + 1);
-            TabContainerBills.Tabs.Add(Dyntab);
-        }
-
         if (buttonClick)
         {
             table.AddNewList();
         }
-        billContainer.Controls.Add(TabContainerBills);
-
     }
+
     protected void tabContainerBills_ActiveTabChanged(object sender, EventArgs e)
     {
         Session["TabIndex"] = getActiveTabIndex();

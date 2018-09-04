@@ -10,47 +10,23 @@
     <link href="~/StyleSheet.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
     <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    
+
+
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
-
-
-
+    <script src="../Scripts/jquery-3.0.0.min.js"></script>
+    <script src="../Scripts/JScript.js"></script>
+    <script src="../Scripts/jquery-ui.min.js"></script>
+    <script src="../Scripts/jquery.ui.touch-punch.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/FooTable-2.0.3/js/footable.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-            <Scripts>
-                <asp:ScriptReference Path="Scripts/jquery-3.0.0.min.js" />
-                <asp:ScriptReference Path="Scripts/JScript.js" />
-                <asp:ScriptReference Path="Scripts/jquery-ui.min.js" />
-                <asp:ScriptReference Path="Scripts/jquery.ui.touch-punch.min.js" />
-                <asp:ScriptReference Path="Scripts/bootstrap.min.js" />
-            </Scripts>
-        </cc1:ToolkitScriptManager>
-        <asp:UpdateProgress ID="updateProgress" runat="server">
-            <ProgressTemplate>
-                <div class="updateProgressBackground">
-                    <div style="position: relative; top: 30%;">
-                        <div style="padding-bottom: 20px;">
-                            <div id="circularG">
-                                <div id="circularG_1" class="circularG"></div>
-                                <div id="circularG_2" class="circularG"></div>
-                                <div id="circularG_3" class="circularG"></div>
-                                <div id="circularG_4" class="circularG"></div>
-                                <div id="circularG_5" class="circularG"></div>
-                                <div id="circularG_6" class="circularG"></div>
-                                <div id="circularG_7" class="circularG"></div>
-                                <div id="circularG_8" class="circularG"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <span style="color: white; font-size: 16px;">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-            </ProgressTemplate>
-        </asp:UpdateProgress>
+     <asp:ScriptManager EnablePartialRendering="true"
+ ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="nav_bar" class="navbar navbar-inverse navbar-fixed-top" style="width: 100%; text-align: right;">
             <div class="container" style="width: 100%;">
                 <div class="row" style="text-align: right;">
@@ -108,7 +84,7 @@
                                     </a>
                                 </div>
                                 <div style="padding: 5px; float: left; text-align: center;">
-                                    <a target="_blank" href="https://github.com/Near922/Main">
+                                    <a target="_blank" href="https://github.com/Near922">
                                         <img src="~/images/icons/GitHub-Mark-Light-32px.png" runat="server" alt="github profile" style="height: 35px" />
                                     </a>
                                 </div>

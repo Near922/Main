@@ -95,6 +95,7 @@ public class Order
         }
     }
 
+
     public void Delete()
     {
         sqC.DeleteOrder(this);
@@ -119,7 +120,7 @@ public class Order
         {
             this.ID = sqC.insertOrders(this);
         }
-        sqC = null;
+       // sqC = null;
 
     }
 }

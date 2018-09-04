@@ -1,19 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage3.master" AutoEventWireup="true"
     CodeFile="tblDetails.aspx.cs" Inherits="tblDetails" EnableEventValidation="true" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+
     <script type="text/javascript">
         function openModal() {
             $('#numberPanel').modal('show');
         }
-
+        $(document).ready(function () {
+            var val = $('#lblMenuButtonActive').val();
+            $('a[href="' + val + '"]').parents("li").addClass("active");
+            $(val).addClass("active");
+        }
+        );
     </script>
     <style>
         .checkGridView tr:hover {
         }
 
-        a:hover{
+        a:hover {
             color: white !important;
         }
+
         a:visited {
             color: white !important;
         }
@@ -21,6 +29,7 @@
         a:active {
             color: white !important;
         }
+
         a:focus {
             color: white !important;
         }
@@ -33,147 +42,231 @@
     <asp:Label ID="lblTableNum" runat="server" Text="" Font-Size="20px" Font-Names="Oxygen" Font-Bold="True"></asp:Label>
     <br />
     <br />
-    <asp:UpdatePanel ID="billUpdate" runat="server">
-        <ContentTemplate>
 
-            <div class="row">
-                <div class="col-sm-3">
+
+    <div class="row">
+        <div class="col-sm-3">
+            <asp:UpdatePanel ID="billUpdate" runat="server">
+                <ContentTemplate>
                     <div id="billContainer" runat="server" style="min-height: 300px; padding: 10px;">
+                        <ul style="color: black !important;" class="nav  nav-tabs">
+                                         <% var tab_state = ""; %>
+                            <% for (int i = 0; i < table.GetBills().Count; i++)
+                                { %>
+                            <% if (int.Parse(lblActiveBill.Value) == i)
+                                {
+                                    tab_state = "active";%>
+                            <%} %>
+                            <% else
+                                {
+                                    tab_state = "";%>
+                            <%} %>
+                            <li class="<%= tab_state %> billTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#<%=string.Format("bill_{0}", i)%>">
+
+                                <%= string.Format("Check {0}", i + 1) %>
+
+                            </a>
+                                <input type="hidden" id='billIndex' value="<%=string.Format("{0}", i) %>" />
+                            </li>
+                            <% } %>
+                        </ul>
+                        <div class="tab-content">
+                            <% var state = ""; %>
+                            <% var bills = table.GetBills(); %>
+                            <% for (int i = 0; i < bills.Count; i++)
+                                { %>
+                            <% if (int.Parse(lblActiveBill.Value) == i)
+                                {
+                                    state = "active";%>
+                            <%} %>
+                            <% else
+                                {
+                                    state = "";%>
+                            <%} %>
+                            <div id="<%=string.Format("bill_{0}", i)%>" style="height: 100%; background-color: cyan;" class="tab-pane fade in <%= state %>">
+                                <div class="checkGridView" style="min-height: 500px;">
+                                    <% if (bills[i].Orders != null && bills[i].Orders.Count > 0)
+                                        {%>
+                                    <table class="add checkGridView" id="<%=string.Format("ordersTable{0}", i) %>">
+                                        <%foreach (var order in bills[i].Orders)
+                                            {%>
+                                        <% string format = order.GetName; %>
+                                        <% string bgColor = "cyan"; %>
+                                        <% if (order.Status.Equals(OrderStatus.Ordered)){ %>
+                                        <%format = ">>" + order.GetName; %>
+                                        <%} %>
+
+                                        <% if (order.Status.Equals(OrderStatus.OnHold)){ %>
+                                              <%bgColor = "pink"; %>
+                                        <% } %>
+                                        <tr style="background-color: <%= bgColor %>;">
+                                            <td><%= format%></td>
+                                            <td><%=string.Format("{0:C}", order.GetPrice)%></td>
+                                        </tr>
+                                        <%}%>
+                                    </table>
+
+                                    <table style="color: black !important; width: 100%;">
+
+                                        <tr>
+                                            <td style="color: black !important;">Subtotal</td>
+                                            <td style="color: black !important; text-align: right;"><%=string.Format("{0:C}", bills[i].SubTotal)%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: black !important;">Tax</td>
+                                            <td style="color: black !important; text-align: right;"><%=string.Format("{0:C}", bills[i].TaxTotal)%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: black !important;">Total</td>
+                                            <td style="color: black !important; text-align: right;"><%=string.Format("{0:C}", bills[i].FinalTotal)%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: black !important;">Payment</td>
+                                            <td style="color: black !important; text-align: right;"><%=string.Format("{0:C}", bills[i].Payment)%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: black !important;">Balance Due</td>
+                                            <td style="color: black !important; text-align: right;"><%=string.Format("{0:C}", bills[i].FinalTotal - bills[i].Payment)%></td>
+                                        </tr>
+                                    </table>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
                     </div>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="repeatButton" EventName="Click" />
+                    <asp:AsyncPostBackTrigger ControlID="deleteButton" EventName="Click" />
+                </Triggers>
+            </asp:UpdatePanel>
+        </div>
+        <div class="col-sm-9">
+
+
+                <ul style="color: black !important;" class="nav  nav-tabs">
+
+                <li class="menuTab" style="color: black !important; border-color: gray !important;"><a data-toggle="tab" style="color: black !important;" href="#bev">Beverages</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#soup">Soup</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#apps">Appetizers</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#salads">Salads</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#sand">Sandwiches</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#entree">Entrees</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#dessert">Desserts</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#beer">Beer</a></li>
+                <li class="menuTab" style="border-color: gray;"><a data-toggle="tab" style="color: black !important;" href="#wine">Wine</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="bev" class="tab-pane fade in">
+                    <asp:ListView ID="ListViewBeverage" runat="server" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewBeverage_ItemCommand1">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="bvgButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
                 </div>
-                <div class="col-sm-9">
-                    <cc1:TabContainer ID="TabContainer1" CssClass="MyTabStyle" runat="server" ActiveTabIndex="0" Style="text-align: left; position: relative;"
-                        ForeColor="Black" Width="100%" Height="300">
-                        <cc1:TabPanel runat="server" ID="TabPanelBev" HeaderText="Beverages" Style="position: relative;">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewBeverage" runat="server" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewBeverage_ItemCommand1">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="bvgButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelSoup" HeaderText="Soup" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewSoup" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSoup_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="soupButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelApps" HeaderText="Appetizers" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewApps" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewApps_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="appsButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelSalad" HeaderText="Salads" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewSalad" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSalad_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="saladButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelSandwichs" HeaderText="Sandwichs" Width="100%">
-                            <HeaderTemplate>
-                                Sandwichs
-                            </HeaderTemplate>
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewSandwichs" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewSandwichs_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="sandwichButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelEntree" HeaderText="Entrees" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewEntree" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewEntree_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="entreeButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelDessert" HeaderText="Desserts" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewDessert" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewDessert_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="dessertButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelBeer" HeaderText="Beer" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewBeer" runat="server" CellSpacing="5" RepeatColumns="4"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewBeer_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="beerButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanelWine" HeaderText="Wine" Width="100%">
-                            <ContentTemplate>
-                                <asp:ListView ID="ListViewWine" runat="server" CellSpacing="5" RepeatColumns="5"
-                                    RepeatDirection="Horizontal" OnItemCommand="ListViewWine_ItemCommand">
-                                    <ItemTemplate>
-                                        <div style="padding: 15px; float: left;" class="table_button">
-                                            <asp:Button ID="wineButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
-                                                CommandName='<%# Eval("Name") %>' />
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                    </cc1:TabContainer>
+                <div id="soup" class="tab-pane fade in">
+
+                    <asp:ListView ID="ListViewSoup" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewSoup_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="soupButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="apps" class="tab-pane fade in">
+                    <asp:ListView ID="ListViewApps" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewApps_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="appsButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                </div>
+                <div id="salads" class="tab-pane fade in">
+                    <asp:ListView ID="ListViewSalad" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewSalad_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="saladButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="sand" class="tab-pane fade in">
+                    <asp:ListView ID="ListViewSandwichs" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewSandwichs_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="sandwichButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="entree" class="tab-pane fade in">
+
+                    <asp:ListView ID="ListViewEntree" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewEntree_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="entreeButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="dessert" class="tab-pane fade in">
+
+                    <asp:ListView ID="ListViewDessert" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewDessert_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="dessertButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="beer" class="tab-pane fade in">
+
+                    <asp:ListView ID="ListViewBeer" runat="server" CellSpacing="5" RepeatColumns="4"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewBeer_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="beerButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
+                <div id="wine" class="tab-pane fade in">
+
+                    <asp:ListView ID="ListViewWine" runat="server" CellSpacing="5" RepeatColumns="5"
+                        RepeatDirection="Horizontal" OnItemCommand="ListViewWine_ItemCommand">
+                        <ItemTemplate>
+                            <div style="padding: 15px; float: left;" class="table_button">
+                                <asp:Button ID="wineButton" runat="server" class="special_link_button opac table_button" Text='<%# Eval("Name") %>'
+                                    CommandName='<%# Eval("Name") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
                 </div>
             </div>
-        </ContentTemplate>
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="repeatButton" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="deleteButton" EventName="Click" />
-        </Triggers>
-    </asp:UpdatePanel>
 
+        </div>
+    </div>
     <!-- ModalPopupExtender -->
 
 
@@ -375,8 +468,12 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+
+
     <asp:UpdatePanel ID="updateHiddenFields" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
+            <asp:HiddenField runat="server" ID='lblActiveBill' Value='0' ClientIDMode="Static" />
+             <asp:HiddenField runat="server" ID='lblMenuButtonActive' Value='#bev' ClientIDMode="Static" />
             <asp:HiddenField runat="server" ID='lblSelectedRow' Value='' ClientIDMode="Static" />
             <asp:HiddenField runat="server" ID='lblSelectedRowIndex' Value='' ClientIDMode="Static" />
         </ContentTemplate>

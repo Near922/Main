@@ -1,5 +1,21 @@
 ﻿
 function pageLoad() {
+    $(".billTab").click(function () {
+        $('#lblActiveBill').val($(this).children("input").val());
+        $(".selected").each(function () {
+            $(this).removeClass("selected");
+        });
+
+        $("#lblSelectedRow").val("");
+        $("#lblSelectedRowIndex").val("");
+    });
+
+    $(".menuTab").click(function () {
+        var href = $(this).children("a").attr('href');
+        $('#lblMenuButtonActive').val(href);
+
+    });
+
     $(".add tr").click(function () {
         var tds = $(this).addClass("selected").siblings().removeClass("selected");
         var values = $(this).text();

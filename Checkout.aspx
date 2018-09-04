@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="Scripts/FooTable-2.0.3/css/footable.core.min.css" rel="stylesheet" />
+    <link href="Content/jquery-ui.min.css" rel="stylesheet" /> 
     <script type="text/javascript">
 
         function openServerModal() {
@@ -12,28 +13,19 @@
         function openBWModal() {
             $('#bwPanel').modal('show');
         }
+
+         $( function() {
+    $( "#txtDatePicker" ).datepicker();
+  } );
     </script>
     <style type="text/css">
-        a:hover{
-            color: white !important;
+        a {
+            color: black !important;
         }
-        a:visited {
-            color: white !important;
-        }
-        a:active {
-            color: white !important;
-        }
-        a:focus {
-            color: white !important;
-        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:ScriptManagerProxy ID="ScriptManager10" runat="server">
-            <Scripts>
-            <asp:ScriptReference Path="Scripts/FooTable-2.0.3/js/footable.js" />
-            </Scripts>
-    </asp:ScriptManagerProxy>
     <div>
         <br />
         <asp:UpdatePanel ID="messageUpdate" runat="server">
@@ -55,7 +47,7 @@
         <br />
         <div class="row" style="padding-bottom: 20px;">
             <div class="col-sm-6" style="padding-bottom: 20px; text-align: left;">
-                <asp:TextBox CssClass="form-control" runat="server" ID="txtDatePicker" />
+                <asp:TextBox clientidmode="static" CssClass="form-control" runat="server" ID="txtDatePicker" />
             </div>
             <div class="col-sm-6" style="padding-bottom: 20px; text-align: left;">
                 <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-block btn-lg btn-primary"
@@ -63,7 +55,6 @@
             </div>
         </div>
     </div>
-    <cc1:CalendarExtender ID="calExtend" runat="server" TargetControlID="txtDatePicker" />
     <asp:UpdatePanel ID="btnUpdatePanel" runat="server">
         <ContentTemplate>
             <div class="row" style="padding-bottom: 20px;">
@@ -87,14 +78,13 @@
             <div class="table-responsive">
                 <div class="table">
 
-                    <cc1:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Style="text-align: left;"
-                        ForeColor="Black" Width="100%" CssClass="MyTabStyle">
-                        <cc1:TabPanel runat="server" ID="TabPanel1" HeaderText="Lunch" Width="100%">
-                            <ContentTemplate>
-                                <div>
-                                    <asp:Label ID="linkbutton1" runat="server" Text="+ Lunch"></asp:Label>
-                                </div>
-                                <asp:Panel ID="Panel1" runat="server" Style="width: 100%;">
+                <ul style="color:black !important;" class="nav  nav-tabs">
+
+                  <li style="color:black !important; border-color: gray !important;" class="active"><a data-toggle="tab" style="color: black !important;" href="#lunch">Lunch</a></li>
+                  <li style="border-color: gray;"><a data-toggle="tab" style="color: black !important;"  href="#dinner">Dinner</a></li>
+                </ul>
+        <div class="tab-content">
+  <div id="lunch" class="tab-pane fade in active">
 
                                     <asp:GridView ID="tblServerDataGridView" CssClass="style_grid footable toggle-medium" runat="server" AllowSorting="True"
                                         AutoGenerateColumns="False" OnSorting="tblServerDataGridView_Sorting"
@@ -133,19 +123,11 @@
                                             <EmptyDataRowStyle BackColor="White" Width="100%" />
                                         </asp:GridView>
                                     </div>
-                                </asp:Panel>
-                                <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="server" CollapseControlID="linkbutton1"
-                                    ExpandControlID="linkbutton1" CollapsedSize="0" CollapsedText="+ Lunch" ExpandedText="- Lunch"
-                                    SuppressPostBack="True" TargetControlID="Panel1" TextLabelID="linkbutton1" Enabled="True">
-                                </cc1:CollapsiblePanelExtender>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                        <cc1:TabPanel runat="server" ID="TabPanel2" HeaderText="Dinner" ForeColor="Black">
-                            <ContentTemplate>
-                                <div>
-                                    <asp:Label ID="linkbutton2" runat="server" Text="+ Dinner"></asp:Label>
-                                </div>
-                                <asp:Panel ID="Panel2" runat="server">
+
+      </div>
+             <div id="dinner" class="tab-pane fade">
+  
+
                                     <div>
                                         <asp:GridView ID="tblServerDataGridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False"
                                             OnSorting="tblServerDataGridView_Sorting"
@@ -184,15 +166,9 @@
                                             <EmptyDataRowStyle BackColor="White" Width="100%" />
                                         </asp:GridView>
                                     </div>
-                                </asp:Panel>
+
                                 </div>
-                                <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" CollapseControlID="linkbutton2"
-                                    ExpandControlID="linkbutton2" CollapsedSize="0" CollapsedText="+ Dinner" ExpandedText="- Dinner"
-                                    SuppressPostBack="True" TargetControlID="Panel2" TextLabelID="linkbutton2" Enabled="True">
-                                </cc1:CollapsiblePanelExtender>
-                            </ContentTemplate>
-                        </cc1:TabPanel>
-                    </cc1:TabContainer>
+            </div>
                     <table style="width: 100%;" class="footable table toggle-medium">
                         <thead>
                             <tr>
