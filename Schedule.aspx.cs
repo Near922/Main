@@ -98,6 +98,11 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
+            if (Session["PreviousDate"] == null)
+            {
+                Response.Redirect("Home.aspx");
+            }
+
             previousDate = (DateTime)Session["PreviousDate"];
         }
     }

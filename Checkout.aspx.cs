@@ -142,6 +142,11 @@ public partial class Checkout3 : System.Web.UI.Page
         }
         else
         {
+            if (Session["Restaurant"] == null)
+            {
+                Response.Redirect("Home.aspx");
+            }
+
             restaurant = (Restaurant)Session["Restaurant"];
         }
         

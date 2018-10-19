@@ -21,6 +21,10 @@ public partial class SigilQuiz : System.Web.UI.Page
         }
         else
         {
+            if (Session["Game"] == null)
+            {
+                Response.Redirect("Home.aspx");
+            }
             _game = (SigilGame)Session["Game"];
         }
     }
