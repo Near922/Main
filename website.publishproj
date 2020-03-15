@@ -18,7 +18,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0cd92e19-dab0-4ccd-a4be-a4b18ad9f4a3}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
-    <SourceWebVirtualPath>/Main</SourceWebVirtualPath>
+    <SourceWebVirtualPath>/OnlinePortfolio</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <SourceWebProject>
     </SourceWebProject>

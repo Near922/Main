@@ -28,6 +28,13 @@ public partial class tblDetails : Page
         }
 
         server = (Server)Session["Employee"];
+
+        if (Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
+
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
         if (table == null)
         {
@@ -246,6 +253,11 @@ public partial class tblDetails : Page
 
     protected void addButton_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         AddTab(true);
         loadDataTabs();
     }
@@ -267,6 +279,10 @@ public partial class tblDetails : Page
 
     protected void AddTab(bool buttonClick = false)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
 
         int tabCount = table.BillCount;
         if (buttonClick)
@@ -287,6 +303,12 @@ public partial class tblDetails : Page
 
     protected void repeatButton_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
+
         string value = "";
 
         if (lblSelectedRow.Value != "")
@@ -302,6 +324,11 @@ public partial class tblDetails : Page
     protected void deleteButton_Click(object sender, EventArgs e)
     {
 
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
             order = table.GetBills()[getActiveTabIndex()].Orders[Int32.Parse(lblSelectedRowIndex.Value.Replace("\r", "").Replace("\n", "").Replace("\t", "").Trim())];
@@ -315,6 +342,11 @@ public partial class tblDetails : Page
 
     protected void exitButton_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+
+        }
         List<Bill> bills = table.GetBills();
 
         foreach (Bill bill in bills)
@@ -330,6 +362,12 @@ public partial class tblDetails : Page
     }
     protected void sendButton_Click(object sender, EventArgs e)
     {
+
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         var test = lblSelectedRowIndex.Value;
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
@@ -357,6 +395,12 @@ public partial class tblDetails : Page
 
     protected void btnEnter_Click(object sender, EventArgs e)
     {
+
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         if ((tableNumber.Value.ToString() == ""))
         {
             if (tableNumber.Value.ToString() == "")
@@ -378,6 +422,11 @@ public partial class tblDetails : Page
     }
     protected void holdButton_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         if (lblSelectedRowIndex.Value != "" && !lblSelectedRow.Value.Contains(">>"))
         {
             var bill = table.GetBills()[getActiveTabIndex()];
@@ -394,6 +443,11 @@ public partial class tblDetails : Page
     }
     protected void btnCloseTable_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         decimal total = 0.00M;
         foreach (Bill bill in table.GetBills())
         {
@@ -425,6 +479,11 @@ public partial class tblDetails : Page
 
     protected void btnSplit_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
         Response.Redirect("~/Sales_App/SplitBills.aspx?Table=" + Int32.Parse(table.TableNumber.ToString()), false);
         Context.ApplicationInstance.CompleteRequest();
@@ -433,6 +492,12 @@ public partial class tblDetails : Page
 
     protected void paymentButton_Click(object sender, EventArgs e)
     {
+
+        if (Session["User"] == null || Session["Employee"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         tblNumError.Text = "";
         txtPaymentSpan.Text = "";
         tableNumber.Value = "";

@@ -39,6 +39,13 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
         try
         {
             server = (Server)Session["Employee"];
+
+            if (server == null)
+            {
+                Response.Redirect("~/login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+
             table = server.getTable(Int32.Parse(Request.QueryString["Table"]));
             if (table == null)
             {
@@ -110,6 +117,13 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
+
+        if (HttpContext.Current.Session["Employee"] == null)
+        {
+            Response.Redirect("~/login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
         server = (Server)HttpContext.Current.Session["Employee"];
         table = server.getTable(Int32.Parse(HttpContext.Current.Session["TableNum"].ToString()));
         List<Bill> bills = table.GetBills();
@@ -172,6 +186,12 @@ public partial class Sales_App_SplitBills : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
+        if (HttpContext.Current.Session["Employee"] == null)
+        {
+            Response.Redirect("~/login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
         List<Order> updatedOrders = (List<Order>)HttpContext.Current.Session["UpdatedOrders"];
         if (updatedOrders != null)
         {

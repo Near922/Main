@@ -57,6 +57,12 @@ public partial class PointOfSaleMain : System.Web.UI.Page
     }
     protected void btnEnter_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
+
         if (txtTblNum.Visible)
             {
             if ((tableNumber.Value.ToString() == ""))
@@ -108,6 +114,12 @@ public partial class PointOfSaleMain : System.Web.UI.Page
 
     protected void btnClockOut_Click(object sender, EventArgs e)
     {
+        if (Session["User"] == null)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
+
         Session.Clear();
         Session.Abandon();
         FormsAuthentication.SignOut();

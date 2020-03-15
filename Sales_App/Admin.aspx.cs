@@ -88,6 +88,13 @@ public partial class Sales_App_Admin : System.Web.UI.Page
     {
         try
         {
+
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
+
+
             foreach (RepeaterItem item in rptMessages.Items)
             {
                 var checkbox = item.FindControl("chkbox") as CheckBox;
